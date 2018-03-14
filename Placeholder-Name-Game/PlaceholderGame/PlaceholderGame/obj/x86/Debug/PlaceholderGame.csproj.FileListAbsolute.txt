@@ -1,0 +1,50 @@
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\PlaceholderGame.exe
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\PlaceholderGame.pdb
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\MonoGame.Framework.dll
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.dll
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.dll
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\MonoGame.Framework.xml
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.xml
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csprojResolveAssemblyReference.cache
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
+c:\users\spellabbet\documents\visual studio 2015\Projects\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Tile.xnb
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Tile.xnb
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\PlaceholderGame.exe
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\PlaceholderGame.pdb
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.dll
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.xml
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csprojResolveAssemblyReference.cache
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\TileWall.xnb
+D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Placeholder_Player.xnb
