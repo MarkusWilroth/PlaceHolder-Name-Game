@@ -18,7 +18,8 @@ namespace PlaceholderGame {
         List<Rectangle> playerRectList;
         int newDestX, newDestY, player, players, deBugPlayer;
         bool hitWall, isMoving;
-        float rotation, speed;
+        float speed;
+        float[] rotation;
         SpriteEffects playerFx;
         KeyboardState keyState, oldKeyState;
         
@@ -30,10 +31,11 @@ namespace PlaceholderGame {
             playerPos = new Vector2[players];
             destination = new Vector2[players];
             newDestination = new Vector2[players];
+            rotation = new float[players];
 
-            
 
-           
+
+
             playerList = new List<Vector2>();
             playerRectList = new List<Rectangle>();
             playerList = new List<Vector2>(GetPos('s', game.currentLevel));
@@ -70,19 +72,19 @@ namespace PlaceholderGame {
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
                     ChangeDirection(new Vector2(-1, 0));
-                    rotation = MathHelper.ToRadians(90);
+                    rotation[player] = MathHelper.ToRadians(90);
 
                 } else if (keyState.IsKeyDown(Keys.Up)) {
                     ChangeDirection(new Vector2(0, -1));
-                    rotation = MathHelper.ToRadians(-180);
+                    rotation[player] = MathHelper.ToRadians(-180);
 
                 } else if (keyState.IsKeyDown(Keys.Right)) {
                     ChangeDirection(new Vector2(1, 0));
-                    rotation = MathHelper.ToRadians(-90);
+                    rotation[player] = MathHelper.ToRadians(-90);
 
                 } else if (keyState.IsKeyDown(Keys.Down)) {
                     ChangeDirection(new Vector2(0, 1));
-                    rotation = MathHelper.ToRadians(0);
+                    rotation[player] = MathHelper.ToRadians(0);
 
                 }
 
@@ -124,9 +126,10 @@ namespace PlaceholderGame {
 
         }
 
-        public override void Draw(SpriteBatch sb) {
+        public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
+        
             for (int i = 0; i < players; i++) {
-                sb.Draw(picPlayer, new Vector2(playerPos[i].X + 25, playerPos[i].Y + 25), null, Color.White, rotation, new Vector2(25, 25), 1, playerFx, 1);
+                sb.Draw(picPlayer, new Vector2(playerPos[i].X + 25, playerPos[i].Y + 25), null, Color.White, rotation[i], new Vector2(25, 25), 1, playerFx, 1);
             }
 
 

@@ -32,8 +32,9 @@ namespace PlaceholderGame {
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 1600;
             graphics.PreferredBackBufferHeight = 900;
-            players = 4;
-            levels = 1;
+            players = 4; //Flyttas till menyn, bestämmer hur många spelare det är!
+            levels = 1; //Hur många banfiler, asså hur många banor man man spela på
+
             printMap = new String[levels];
             printObjects = new string[levels];
             gameList = new List<GameObjects>();
@@ -58,7 +59,7 @@ namespace PlaceholderGame {
 
         }
         protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates
-            switch (currentGS) {
+            switch (currentGS) { //gameStates
                 case GameStates.Menu:
                     if (Keyboard.GetState().IsKeyDown(Keys.Enter)){
                         currentGS = GameStates.Game;
@@ -86,7 +87,7 @@ namespace PlaceholderGame {
             spriteBatch.End();
             base.Draw(gameTime);
         }
-        public void FileReader() {
+        public void FileReader() { //Läser av filerna i c filen, ska vi ha fler banor behöver vi ändra de till arrays och ha struktur 
             for (int i = 0; i < 1; i++) {
                 StreamReader fileMap = new StreamReader("c:\\basemap.txt");
                 while (!fileMap.EndOfStream) {
