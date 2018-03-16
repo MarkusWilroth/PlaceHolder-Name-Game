@@ -23,7 +23,7 @@ namespace PlaceholderGame {
         List<GameObjects> gameList;
         string getLine;
         String[] printMap, printObjects;
-        public int levels, currentLevel;
+        public int levels, currentLevel, players;
         Texture2D ground, tileWall, picPlayer;
         GameStates currentGS;
 
@@ -32,7 +32,7 @@ namespace PlaceholderGame {
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 1600;
             graphics.PreferredBackBufferHeight = 900;
-
+            players = 4;
             levels = 1;
             printMap = new String[levels];
             printObjects = new string[levels];

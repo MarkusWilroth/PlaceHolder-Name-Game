@@ -15,23 +15,23 @@ namespace PlaceholderGame {
         List<Vector2> playerList;
         Rectangle playerRect, playerHitBox;
         List<Rectangle> playerRectList;
-        int newDestX, newDestY, player;
+        int newDestX, newDestY, player, players;
         bool hitWall, isMoving;
         float rotation, speed;
         SpriteEffects playerFx;
         
 
-        public PlayerObjects (Texture2D picPlayer, String[] printObjects, int players, Game1 game) : base (picPlayer, printObjects, game) {
+        public PlayerObjects (Texture2D picPlayer, String[] printObjects, Game1 game) : base (picPlayer, printObjects, game) {
             this.picPlayer = picPlayer;
 
-            playerPos = new Vector2[players];
+            playerPos = new Vector2[game.players];
 
             playerList = new List<Vector2>();
             playerRectList = new List<Rectangle>();
             playerList = new List<Vector2>(GetPos('s', game.currentLevel));
             speed = 75;
             playerFx = SpriteEffects.None;
-
+            this.players = game.players;
             player = 0;
 
             foreach (Vector2 pos in playerList) {
@@ -70,19 +70,23 @@ namespace PlaceholderGame {
 
             } else {
                 //frameTimer -= gameTime.ElapsedGameTime.TotalMilliseconds;
-                playerPos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (Vector2.Distance(playerPos, destination) < 1) {
-                    playerPos = destination;
-                    playerHitBox = new Rectangle((int)playerPos.X, (int)playerPos.Y, 50, 50);
+
+                playerPos[player] += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (Vector2.Distance(playerPos[player], destination) < 1) {
+                    playerPos[player] = destination;
+                    playerHitBox = new Rectangle((int)playerPos[player].X, (int)playerPos[player].Y, 50, 50);
                     isMoving = false;
                 }
+
             }
+
+
 
 
         }
         private void ChangeDirection(Vector2 dir) {
             direction = dir;
-            Vector2 newDestination = playerPos + (direction * 50);
+            Vector2 newDestination = playerPos[player] + (direction * 50);
             
             newDestX = (int)newDestination.X;
             newDestY = (int)newDestination.Y;
@@ -101,9 +105,12 @@ namespace PlaceholderGame {
         }
 
         public override void Draw(SpriteBatch sb) {
-            foreach (Rectangle playerRect in playerRectList) {
-                sb.Draw(picPlayer, new Vector2(playerPos.X +25, playerPos.Y +25), null, Color.White, rotation, new Vector2(25,25), 1, playerFx, 1);
-            }
+            //foreach (Rectangle playerRect in playerRectList) {
+                for (int i = 0; i < players; i++) {
+                    sb.Draw(picPlayer, new Vector2(playerPos[i].X + 25, playerPos[i].Y + 25), null, Color.White, rotation, new Vector2(25, 25), 1, playerFx, 1);
+                }
+            //}
+            
         }
     }
 }
