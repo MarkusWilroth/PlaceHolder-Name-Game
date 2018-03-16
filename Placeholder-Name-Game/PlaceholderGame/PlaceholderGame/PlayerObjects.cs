@@ -20,6 +20,7 @@ namespace PlaceholderGame {
         bool hitWall, isMoving;
         float rotation, speed;
         SpriteEffects playerFx;
+        KeyboardState keyState, oldKeyState;
         
 
         public PlayerObjects (Texture2D picPlayer, String[] printObjects, Game1 game) : base (picPlayer, printObjects, game) {
@@ -29,6 +30,8 @@ namespace PlaceholderGame {
             playerPos = new Vector2[players];
             destination = new Vector2[players];
             newDestination = new Vector2[players];
+
+            
 
            
             playerList = new List<Vector2>();
@@ -55,28 +58,29 @@ namespace PlaceholderGame {
         }
 
         public override void Update(Game game, GameTime gameTime) {
-            if (Keyboard.GetState().IsKeyDown(Keys.End)) {
+            keyState = Keyboard.GetState();
+            if (keyState.IsKeyDown(Keys.End) && !(oldKeyState.IsKeyDown(Keys.End))) {
                 player++;
-                if (player > players) {
+                if (player >= players) {
                     player = 0;
                 }
                 Console.WriteLine("Players turn: " + player);
-                deBugPlayer = player;
+                
             }
             if (!isMoving) {
-                if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
+                if (keyState.IsKeyDown(Keys.Left)) {
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(90);
 
-                } else if (Keyboard.GetState().IsKeyDown(Keys.Up)) {
+                } else if (keyState.IsKeyDown(Keys.Up)) {
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-180);
 
-                } else if (Keyboard.GetState().IsKeyDown(Keys.Right)) {
+                } else if (keyState.IsKeyDown(Keys.Right)) {
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(-90);
 
-                } else if (Keyboard.GetState().IsKeyDown(Keys.Down)) {
+                } else if (keyState.IsKeyDown(Keys.Down)) {
                     ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(0);
 
@@ -93,6 +97,8 @@ namespace PlaceholderGame {
                 }
 
             }
+            oldKeyState = keyState;
+
 
 
 
