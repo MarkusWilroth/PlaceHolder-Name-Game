@@ -5,17 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+
 using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
         Texture2D picPlayer;
-        Vector2 movement, direction, destination;
-        Vector2[] playerPos;
+        Vector2 movement, direction;
+        Vector2[] playerPos, destination, newDestination;
         List<Vector2> playerList;
         Rectangle playerRect, playerHitBox;
         List<Rectangle> playerRectList;
-        int newDestX, newDestY, player, players;
+        int newDestX, newDestY, player, players, deBugPlayer;
         bool hitWall, isMoving;
         float rotation, speed;
         SpriteEffects playerFx;
@@ -23,16 +24,20 @@ namespace PlaceholderGame {
 
         public PlayerObjects (Texture2D picPlayer, String[] printObjects, Game1 game) : base (picPlayer, printObjects, game) {
             this.picPlayer = picPlayer;
+            this.players = game.players;
 
-            playerPos = new Vector2[game.players];
+            playerPos = new Vector2[players];
+            destination = new Vector2[players];
+            newDestination = new Vector2[players];
 
+           
             playerList = new List<Vector2>();
             playerRectList = new List<Rectangle>();
             playerList = new List<Vector2>(GetPos('s', game.currentLevel));
             speed = 75;
             playerFx = SpriteEffects.None;
-            this.players = game.players;
-            player = 0;
+            
+            
 
             foreach (Vector2 pos in playerList) {
                 if (player >= players) {
@@ -45,10 +50,19 @@ namespace PlaceholderGame {
 
             }
             playerHitBox = playerRect;
+            player = 0;
 
         }
 
         public override void Update(Game game, GameTime gameTime) {
+            if (Keyboard.GetState().IsKeyDown(Keys.End)) {
+                player++;
+                if (player > players) {
+                    player = 0;
+                }
+                Console.WriteLine("Players turn: " + player);
+                deBugPlayer = player;
+            }
             if (!isMoving) {
                 if (Keyboard.GetState().IsKeyDown(Keys.Left)) {
                     ChangeDirection(new Vector2(-1, 0));
@@ -72,8 +86,8 @@ namespace PlaceholderGame {
                 //frameTimer -= gameTime.ElapsedGameTime.TotalMilliseconds;
 
                 playerPos[player] += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (Vector2.Distance(playerPos[player], destination) < 1) {
-                    playerPos[player] = destination;
+                if (Vector2.Distance(playerPos[player], destination[player]) < 1) {
+                    playerPos[player] = destination[player];
                     playerHitBox = new Rectangle((int)playerPos[player].X, (int)playerPos[player].Y, 50, 50);
                     isMoving = false;
                 }
@@ -95,7 +109,7 @@ namespace PlaceholderGame {
             Console.WriteLine("is hit walL: " + hitWall);
             
             if (!hitWall) {
-                destination = newDestination;
+                destination[player] = newDestination;
                 isMoving = true;
             }
             if (hitWall) {
@@ -105,12 +119,11 @@ namespace PlaceholderGame {
         }
 
         public override void Draw(SpriteBatch sb) {
-            //foreach (Rectangle playerRect in playerRectList) {
-                for (int i = 0; i < players; i++) {
-                    sb.Draw(picPlayer, new Vector2(playerPos[i].X + 25, playerPos[i].Y + 25), null, Color.White, rotation, new Vector2(25, 25), 1, playerFx, 1);
-                }
-            //}
-            
+            for (int i = 0; i < players; i++) {
+                sb.Draw(picPlayer, new Vector2(playerPos[i].X + 25, playerPos[i].Y + 25), null, Color.White, rotation, new Vector2(25, 25), 1, playerFx, 1);
+            }
+
+
         }
     }
 }
