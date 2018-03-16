@@ -12,6 +12,8 @@ namespace PlaceholderGame
     {
         List<Vector2> groundList, wallList;
         Texture2D ground, TileWall;
+        float scale;
+        SpriteEffects fx;
 
         public GroundObjects(Texture2D ground, Texture2D TileWall, String[] printLevel, Game1 game):base(ground, printLevel, game)
         {
@@ -24,6 +26,7 @@ namespace PlaceholderGame
             groundList = new List<Vector2>(GetPos('-', game.currentLevel));
             wallList = new List<Vector2>(GetPos('v', game.currentLevel));
 
+            fx = SpriteEffects.None;
             int i = 0;
             foreach (Vector2 pos in wallList) {
                 
@@ -43,7 +46,7 @@ namespace PlaceholderGame
         {
             foreach(Vector2 pos in groundList)
             {
-                sb.Draw(ground, pos, Color.White);
+                sb.Draw(ground, pos, null, Color.White, null, scale, fx, 1);
             }
             foreach(Vector2 pos in wallList)
             {

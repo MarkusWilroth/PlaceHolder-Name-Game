@@ -18,7 +18,7 @@ namespace PlaceholderGame {
         List<Rectangle> playerRectList;
         int newDestX, newDestY, player, players, deBugPlayer;
         bool hitWall, isMoving;
-        float speed;
+        float speed, scale;
         float[] rotation;
         SpriteEffects playerFx;
         KeyboardState keyState, oldKeyState;
@@ -32,6 +32,7 @@ namespace PlaceholderGame {
             destination = new Vector2[players];
             newDestination = new Vector2[players];
             rotation = new float[players];
+            scale = 0.5f;
 
 
 
@@ -48,7 +49,7 @@ namespace PlaceholderGame {
                 if (player >= players) {
                     break;
                 }
-                playerRect = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
+                playerRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
                 playerPos[player] = new Vector2(pos.X, pos.Y);
                 playerRectList.Add(playerRect);
                 player++;
@@ -94,7 +95,7 @@ namespace PlaceholderGame {
                 playerPos[player] += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (Vector2.Distance(playerPos[player], destination[player]) < 1) {
                     playerPos[player] = destination[player];
-                    playerHitBox = new Rectangle((int)playerPos[player].X, (int)playerPos[player].Y, 50, 50);
+                    playerHitBox = new Rectangle((int)playerPos[player].X, (int)playerPos[player].Y, 25, 25);
                     isMoving = false;
                 }
 
@@ -108,12 +109,12 @@ namespace PlaceholderGame {
         }
         private void ChangeDirection(Vector2 dir) {
             direction = dir;
-            Vector2 newDestination = playerPos[player] + (direction * 50);
+            Vector2 newDestination = playerPos[player] + (direction * 25);
             
             newDestX = (int)newDestination.X;
             newDestY = (int)newDestination.Y;
 
-            hitWall = HitWall(new Rectangle(newDestX, newDestY, 50, 50));
+            hitWall = HitWall(new Rectangle(newDestX, newDestY, 25, 25));
             Console.WriteLine("is hit walL: " + hitWall);
             
             if (!hitWall) {
@@ -129,7 +130,7 @@ namespace PlaceholderGame {
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
         
             for (int i = 0; i < players; i++) {
-                sb.Draw(picPlayer, new Vector2(playerPos[i].X + 25, playerPos[i].Y + 25), null, Color.White, rotation[i], new Vector2(25, 25), 1, playerFx, 1);
+                sb.Draw(picPlayer, new Vector2(playerPos[i].X + 35, playerPos[i].Y +10), null, Color.White, rotation[i], new Vector2(25, 25), scale , playerFx, 1);
             }
 
 

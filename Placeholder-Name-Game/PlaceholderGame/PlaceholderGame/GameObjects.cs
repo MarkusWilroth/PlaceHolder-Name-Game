@@ -52,7 +52,7 @@ namespace PlaceholderGame
 
         protected bool HitWall(Rectangle playerDest) { //pos i WallList verkar tom... varför????
             foreach (Vector2 pos in wallList) {
-                wallRect = new Rectangle((int)pos.X, (int)pos.Y, 50, 50);
+                wallRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
                 if (wallRect.Intersects(playerDest)) {
                     hitWall = true;
                     break;
@@ -75,12 +75,12 @@ namespace PlaceholderGame
                 {
                     pos = new Vector2(groundX, groundY);
                     posList.Add(pos);
-                    groundX += 50;
+                    groundX += 25;
                 }
                 else if (textLetter == '|')
                 {
                     groundX = 350;
-                    groundY += 50;
+                    groundY += 25;
                 }
                 else if (textLetter == '#')
                 {
@@ -89,7 +89,7 @@ namespace PlaceholderGame
                 }
                 else
                 {
-                    groundX += 50;
+                    groundX += 25;
                 }
             }
             return posList;
