@@ -7,17 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PlaceholderGame {
-    class GroundObjects : GameObjects {
-        List<Vector2> groundList, wallList;
-        Texture2D ground, TileWall;
+    class WallObjects : GameObjects {
+        Texture2D TileWall;
         float scale, rotation;
         SpriteEffects fx;
-        
 
-        public GroundObjects(Texture2D ground, Vector2 groundPos, Game1 game) : base(ground, groundPos, game) {
-            this.ground = ground;
+
+        public WallObjects(Texture2D TileWall, Vector2 wallPos, Game1 game) : base(TileWall, wallPos, game) {
+            this.TileWall = TileWall;
             scale = 0.5f;
             rotation = MathHelper.ToRadians(0);
+
             fx = SpriteEffects.None;
         }
         public override void Update(GameTime gameTime) {
@@ -26,7 +26,7 @@ namespace PlaceholderGame {
 
 
         public override void Draw(SpriteBatch sb) {
-            sb.Draw(ground, pos, Color.White);
+            sb.Draw(TileWall, pos, null, Color.White, rotation, new Vector2(0, 0), scale, fx, 1);
         }
     }
 }

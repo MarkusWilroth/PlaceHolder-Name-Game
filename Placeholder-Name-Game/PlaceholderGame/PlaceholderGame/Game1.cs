@@ -19,9 +19,13 @@ namespace PlaceholderGame {
         SpriteBatch spriteBatch;
         GroundObjects groundO;
         GameObjects gameO;
+        WallObjects wallO;
         PlayerObjects playerO;
         List<GameObjects> gameList;
         string getLine;
+        Vector2 pos, wallPos, groundPos, playerPos;
+        int groundX, groundY;
+        char textLetter;
         String[] printMap, printObjects;
         public int levels, currentLevel, players;
         Texture2D ground, tileWall, picPlayer;
@@ -38,6 +42,7 @@ namespace PlaceholderGame {
             printMap = new String[levels];
             printObjects = new string[levels];
             gameList = new List<GameObjects>();
+            currentLevel = 0;
             FileReader();
             
         }
@@ -51,11 +56,25 @@ namespace PlaceholderGame {
             tileWall = Content.Load<Texture2D>("TileWall");
             picPlayer = Content.Load<Texture2D>("Placeholder_Player");
 
-            groundO = new GroundObjects(ground, tileWall, printMap, this);
-            gameList.Add(groundO);
-
-            playerO = new PlayerObjects(picPlayer, printObjects, this);
-            gameList.Add(playerO);
+            ResetMap();
+            for (int i = 0; i < printMap[currentLevel].Length; i++) {
+                wallPos = posGiver(printMap, 'v', i);
+                wallO = new WallObjects(tileWall, wallPos, this);
+                gameList.Add(wallO);
+            }
+            ResetMap();
+            for (int i = 0; i < printMap[currentLevel].Length; i++) {
+                groundPos = posGiver(printMap, '-', i);
+                groundO = new GroundObjects(ground, groundPos, this);
+                gameList.Add(groundO);
+            }
+            ResetMap();
+            for (int i = 0; i < printMap[currentLevel].Length; i++) {
+                playerPos = posGiver(printMap, 's', i);
+                playerO = new PlayerObjects(picPlayer, playerPos, this);
+                gameList.Add(playerO);
+            }
+            ResetMap();
 
         }
         protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates
@@ -66,7 +85,7 @@ namespace PlaceholderGame {
                     }
                     break;
                 case GameStates.Game:
-                    playerO.Update(this, gameTime);
+                    playerO.Update(gameTime);
                     break;
                 case GameStates.Scoreboard:
 
@@ -105,6 +124,29 @@ namespace PlaceholderGame {
                 printObjects[i] = getLine;
                 getLine = "";
             }
+        }
+        public Vector2 posGiver(String[] printLevel, char getLetter, int i) {
+            //for (int i = 0; i < printLevel[currentLevel].Length; i++) {
+                textLetter = printLevel[currentLevel][i];
+                if (textLetter == getLetter) {
+                    pos = new Vector2(groundX, groundY);
+                    groundX += 25;
+                    //break;
+                } else if (textLetter == '|') {
+                    groundX = 350;
+                    groundY += 25;
+                } else if (textLetter == '#') {
+                    groundX = 350;
+                    groundY = 0;
+                } else {
+                    groundX += 25;
+                }
+            //}
+            return pos;
+        }
+        public void ResetMap () {
+            groundX = 350;
+            groundY = 0;
         }
     }
 }
