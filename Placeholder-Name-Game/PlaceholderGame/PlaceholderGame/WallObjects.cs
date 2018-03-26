@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 namespace PlaceholderGame {
     class WallObjects : GameObjects {
         Texture2D TileWall;
+        Vector2 wallPos;
         float scale, rotation;
         SpriteEffects fx;
 
 
-        public WallObjects(Texture2D TileWall, Vector2 wallPos, Game1 game) : base(TileWall, wallPos, game) {
+        public WallObjects(Texture2D TileWall, Vector2 wallPos) : base(TileWall, wallPos) {
             this.TileWall = TileWall;
+            this.wallPos = wallPos;
             scale = 0.5f;
             rotation = MathHelper.ToRadians(0);
 
@@ -26,7 +28,7 @@ namespace PlaceholderGame {
 
 
         public override void Draw(SpriteBatch sb) {
-            sb.Draw(TileWall, pos, null, Color.White, rotation, new Vector2(0, 0), scale, fx, 1);
+            sb.Draw(TileWall, wallPos, null, Color.White, rotation, new Vector2(0, 0), scale, fx, 1);
         }
     }
 }

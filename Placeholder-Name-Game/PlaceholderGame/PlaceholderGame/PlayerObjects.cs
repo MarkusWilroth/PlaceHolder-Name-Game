@@ -11,8 +11,7 @@ using Microsoft.Xna.Framework.Input;
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
         Texture2D picPlayer;
-        Vector2 movement, direction;
-        Vector2 playerPos, destination, newDestination;
+        Vector2 movement, direction, playerPos, destination, newDestination;
         Rectangle playerRect, playerHitBox;
         int newDestX, newDestY, player, players, deBugPlayer;
         bool hitWall, isMoving;
@@ -21,9 +20,10 @@ namespace PlaceholderGame {
         KeyboardState keyState, oldKeyState;
         
 
-        public PlayerObjects (Texture2D picPlayer, Vector2 playerPos, Game1 game) : base (picPlayer, playerPos, game) {
+        public PlayerObjects (Texture2D picPlayer, Vector2 playerPos) : base (picPlayer, playerPos) {
             this.picPlayer = picPlayer;
-            this.players = game.players;
+            this.playerPos = playerPos;
+            //this.players = game.players;
             scale = 0.5f;
             speed = 100;
             playerFx = SpriteEffects.None;
