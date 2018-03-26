@@ -19,7 +19,7 @@ namespace PlaceholderGame {
         GroundObjects groundO;
         bool hitWall;
 
-        public GameObjects(Texture2D pic, Vector2 pos, Game1 game) {
+        public GameObjects(Texture2D pic, Vector2 pos) {
         }
 
         public abstract void Update(GameTime gameTime);
