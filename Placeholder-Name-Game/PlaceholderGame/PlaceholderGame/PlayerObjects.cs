@@ -11,10 +11,10 @@ using Microsoft.Xna.Framework.Input;
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
         Texture2D picPlayer;
-        Vector2 movement, direction, playerPos, destination, newDestination;
+        Vector2 direction, playerPos, destination;
         Rectangle playerRect, playerHitBox, playerDest;
         List<Rectangle> wallRectList;
-        int newDestX, newDestY, player, players, deBugPlayer;
+        int newDestX, newDestY;
         bool hitWall, isMoving;
         float speed, scale, rotation;
         SpriteEffects playerFx;
@@ -89,7 +89,7 @@ namespace PlaceholderGame {
         }
 
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
-            sb.Draw(picPlayer, new Vector2(playerPos.X + 12, playerPos.Y + 12), null, Color.White, rotation, new Vector2(25, 25), scale, playerFx, 1);
+            sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), null, Color.White, rotation, new Vector2(25, 25), scale, playerFx, 1);
         }
     }
 }
