@@ -12,7 +12,8 @@ namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
         Texture2D picPlayer;
         Vector2 movement, direction, playerPos, destination, newDestination;
-        Rectangle playerRect, playerHitBox;
+        Rectangle playerRect, playerHitBox, playerDest;
+        List<Rectangle> wallRectList;
         int newDestX, newDestY, player, players, deBugPlayer;
         bool hitWall, isMoving;
         float speed, scale, rotation;
@@ -20,10 +21,11 @@ namespace PlaceholderGame {
         KeyboardState keyState, oldKeyState;
         
 
-        public PlayerObjects (Texture2D picPlayer, Vector2 playerPos) : base (picPlayer, playerPos) {
+        public PlayerObjects (Texture2D picPlayer, Vector2 playerPos, List<Rectangle> wallRectList) : base (picPlayer, playerPos) {
             this.picPlayer = picPlayer;
             this.playerPos = playerPos;
-            //this.players = game.players;
+            this.wallRectList = wallRectList;
+
             scale = 0.5f;
             speed = 100;
             playerFx = SpriteEffects.None;
@@ -74,8 +76,15 @@ namespace PlaceholderGame {
             
             newDestX = (int)newDestination.X;
             newDestY = (int)newDestination.Y;
+            playerDest = new Rectangle(newDestX, newDestY, 25, 25);
 
-            hitWall = HitWall(new Rectangle(newDestX, newDestY, 25, 25));
+            //foreach (Rectangle wallRect in wallRectList) {
+            //    hitWall = HitWall(playerDest, wallRect);
+            //    if (hitWall) {
+            //        break;
+            //    }
+            //}
+            
             Console.WriteLine("is hit walL: " + hitWall);
             
             if (!hitWall) {

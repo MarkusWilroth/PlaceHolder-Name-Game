@@ -11,9 +11,7 @@ namespace PlaceholderGame {
         Game,
         Scoreboard,
     }
-        
-         
-        
+
     public class Game1 : Game {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -23,6 +21,8 @@ namespace PlaceholderGame {
         PlayerObjects playerO;
         List<GameObjects> gameList;
         List<Vector2> wallPosList, groundPosList, playerPosList, posList;
+        List<Rectangle> wallRectList;
+        Rectangle wallRect;
         string getLine;
         Vector2 pos, wallPos, groundPos, playerPos;
         int groundX, groundY, count, countPos;
@@ -47,6 +47,7 @@ namespace PlaceholderGame {
             groundPosList = new List<Vector2>();
             playerPosList = new List<Vector2>();
             posList = new List<Vector2>();
+            //wallRectList = new List<Rectangle>();
             currentLevel = 0;
             count = 0;
             FileReader();
@@ -63,13 +64,6 @@ namespace PlaceholderGame {
             picPlayer = Content.Load<Texture2D>("Placeholder_Player");
             ResetMap();
 
-
-
-            
-
-
-            countPos = 0;
-
             groundPosList = posGiver(printMap, '-');
             foreach (Vector2 pos in groundPosList) {
                 groundO = new GroundObjects(ground, pos);
@@ -80,13 +74,16 @@ namespace PlaceholderGame {
             foreach (Vector2 pos in wallPosList) {
                 wallO = new WallObjects(tileWall, pos);
                 gameList.Add(wallO);
+                //wallRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
+                //wallRectList.Add(wallRect);
             }
 
             playerPosList = posGiver(printObjects, 's');
             foreach (Vector2 pos in playerPosList) {
-                playerO = new PlayerObjects(picPlayer, pos);
+                playerO = new PlayerObjects(picPlayer, pos, wallRectList);
                 gameList.Add(playerO);
             }
+
         }
 
         protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates

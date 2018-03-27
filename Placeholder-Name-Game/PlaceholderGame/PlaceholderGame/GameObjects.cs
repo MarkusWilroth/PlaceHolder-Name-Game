@@ -26,17 +26,12 @@ namespace PlaceholderGame {
 
         public abstract void Draw(SpriteBatch sb);
 
-        protected bool HitWall(Rectangle playerDest) { //pos i WallList verkar tom... varför????
-            foreach (Vector2 pos in wallList) {
-                wallRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
-                if (wallRect.Intersects(playerDest)) {
-                    hitWall = true;
-                    break;
-                } else {
-                    hitWall = false;
-                }
+        protected bool HitWall(Rectangle playerDest, Rectangle wallRect) { //pos i WallList verkar tom... varför????
+            if (wallRect.Intersects(playerDest)) {
+                return true;
+            } else {
+                return false;
             }
-            return hitWall;
         }
     }
 }
