@@ -18,19 +18,20 @@ namespace PlaceholderGame {
         GroundObjects groundO;
         GameObjects gameO;
         WallObjects wallO;
-        PlayerObjects playerO;
+        PlayerObjects[] playerO;
         List<GameObjects> gameList;
         List<Vector2> wallPosList, groundPosList, playerPosList, posList;
         List<Rectangle> wallRectList;
         Rectangle wallRect;
         string getLine;
         Vector2 pos, wallPos, groundPos, playerPos;
-        int groundX, groundY, count, countPos;
+        int groundX, groundY, count, player;
         char textLetter;
         String[] printMap, printObjects;
         public int levels, currentLevel, players;
         Texture2D ground, tileWall, picPlayer;
         GameStates currentGS;
+        KeyboardState keyState, oldKeyState;
 
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
@@ -39,15 +40,18 @@ namespace PlaceholderGame {
             graphics.PreferredBackBufferHeight = 900;
             players = 4; //Flyttas till menyn, bestämmer hur många spelare det är!
             levels = 1; //Hur många banfiler, asså hur många banor man man spela på
+            player = 0;
 
             printMap = new String[levels];
             printObjects = new string[levels];
+            playerO = new PlayerObjects[players];
+
             gameList = new List<GameObjects>();
             wallPosList = new List<Vector2>();
             groundPosList = new List<Vector2>();
             playerPosList = new List<Vector2>();
             posList = new List<Vector2>();
-            //wallRectList = new List<Rectangle>();
+            wallRectList = new List<Rectangle>();
             currentLevel = 0;
             count = 0;
             FileReader();
@@ -74,15 +78,16 @@ namespace PlaceholderGame {
             foreach (Vector2 pos in wallPosList) {
                 wallO = new WallObjects(tileWall, pos);
                 gameList.Add(wallO);
-                //wallRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
-                //wallRectList.Add(wallRect);
+                wallRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
+                wallRectList.Add(wallRect);
             }
 
             playerPosList = posGiver(printObjects, 's');
             foreach (Vector2 pos in playerPosList) {
-                playerO = new PlayerObjects(picPlayer, pos, wallRectList);
-                gameList.Add(playerO);
+                playerO[player] = new PlayerObjects(picPlayer, pos, wallRectList);
+                player++;
             }
+            player = 0;
 
         }
 
@@ -94,7 +99,16 @@ namespace PlaceholderGame {
                     }
                     break;
                 case GameStates.Game:
-                    playerO.Update(gameTime);
+                    playerO[player].Update(gameTime);
+                    keyState = Keyboard.GetState();
+                    if (keyState.IsKeyDown(Keys.End) && !(oldKeyState.IsKeyDown(Keys.End))) {
+                        player++;
+                        if (player >= players) {
+                            player = 0;
+                        }
+                        Console.WriteLine("Players turn: " + player);
+                    }
+                    oldKeyState = keyState;
                     break;
                 case GameStates.Scoreboard:
 
@@ -111,6 +125,9 @@ namespace PlaceholderGame {
             spriteBatch.Begin();
             foreach (GameObjects gameO in gameList) {
                 gameO.Draw(spriteBatch);
+            }
+            for (int i = 0; i < players; i++) {
+                playerO[i].Draw(spriteBatch);
             }
             spriteBatch.End();
             base.Draw(gameTime);

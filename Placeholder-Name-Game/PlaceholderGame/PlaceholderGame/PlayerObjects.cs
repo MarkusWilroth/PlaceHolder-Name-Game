@@ -34,14 +34,6 @@ namespace PlaceholderGame {
 
         public override void Update(GameTime gameTime) {
             keyState = Keyboard.GetState();
-            if (keyState.IsKeyDown(Keys.End) && !(oldKeyState.IsKeyDown(Keys.End))) {
-                player++;
-                if (player >= players) {
-                    player = 0;
-                }
-                Console.WriteLine("Players turn: " + player);
-                
-            }
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
                     ChangeDirection(new Vector2(-1, 0));
@@ -78,12 +70,12 @@ namespace PlaceholderGame {
             newDestY = (int)newDestination.Y;
             playerDest = new Rectangle(newDestX, newDestY, 25, 25);
 
-            //foreach (Rectangle wallRect in wallRectList) {
-            //    hitWall = HitWall(playerDest, wallRect);
-            //    if (hitWall) {
-            //        break;
-            //    }
-            //}
+            foreach (Rectangle wallRect in wallRectList) {
+                hitWall = HitWall(playerDest, wallRect);
+                if (hitWall) {
+                    break;
+                }
+            }
             
             Console.WriteLine("is hit walL: " + hitWall);
             
