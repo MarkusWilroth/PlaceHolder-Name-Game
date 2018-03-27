@@ -89,7 +89,7 @@ namespace PlaceholderGame {
         }
 
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
-            sb.Draw(picPlayer, new Vector2(playerPos.X + 35, playerPos.Y + 10), null, Color.White, rotation, new Vector2(25, 25), scale, playerFx, 1);
+            sb.Draw(picPlayer, new Vector2(playerPos.X + 12, playerPos.Y + 12), null, Color.White, rotation, new Vector2(25, 25), scale, playerFx, 1);
         }
     }
 }
