@@ -14,17 +14,19 @@ namespace PlaceholderGame {
         Vector2 direction, playerPos, destination;
         Rectangle playerRect, playerHitBox, playerDest, sourceRect;
         List<Rectangle> wallRectList;
-        int newDestX, newDestY;
+        int newDestX, newDestY, player;
         bool hitWall, isMoving;
         float speed, scale, rotation;
         SpriteEffects playerFx;
         KeyboardState keyState, oldKeyState;
         
 
-        public PlayerObjects (Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int players) : base (spriteSheet, playerPos) {
+        public PlayerObjects (Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int player) : base (spriteSheet, playerPos) {
             this.spriteSheet = spriteSheet;
             this.playerPos = playerPos;
             this.wallRectList = wallRectList;
+            this.player = player;
+            sourceRect = new Rectangle((25*player)+6, 2, 25,25);
 
             scale = 0.5f;
             speed = 100;
