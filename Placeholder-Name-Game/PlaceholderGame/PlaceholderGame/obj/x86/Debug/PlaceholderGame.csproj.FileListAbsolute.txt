@@ -51,9 +51,6 @@ D:\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\C
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csprojResolveAssemblyReference.cache
-C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Placeholder_Player.xnb
-C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Tile.xnb
-C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\TileWall.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\PlaceholderGame.exe
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\PlaceholderGame.pdb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\MonoGame.Framework.dll
@@ -74,3 +71,4 @@ C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Spritesheet.xnb

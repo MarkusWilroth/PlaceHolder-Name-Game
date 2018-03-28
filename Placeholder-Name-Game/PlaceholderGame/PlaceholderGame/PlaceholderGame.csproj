@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Spritesheet.PNG" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

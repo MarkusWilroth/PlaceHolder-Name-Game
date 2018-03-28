@@ -8,21 +8,14 @@ using System.Threading.Tasks;
 
 namespace PlaceholderGame {
     class WallObjects : GameObjects {
-        Texture2D TileWall;
-        Vector2 wallPos;
-        Rectangle wallRect;
-        float scale, rotation;
-        SpriteEffects fx;
+        Texture2D spriteSheet;
+        Rectangle wallRect, sourceRect;
 
 
-        public WallObjects(Texture2D TileWall, Vector2 wallPos) : base(TileWall, wallPos) {
-            this.TileWall = TileWall;
-            this.wallPos = wallPos;
+        public WallObjects(Texture2D spriteSheet, Vector2 wallPos) : base(spriteSheet, wallPos) {
+            this.spriteSheet = spriteSheet;
+            sourceRect = new Rectangle(201, 46, 25, 25);
             wallRect = new Rectangle((int)wallPos.X, (int)wallPos.Y, 25, 25);
-            scale = 0.5f;
-            rotation = MathHelper.ToRadians(0);
-
-            fx = SpriteEffects.None;
         }
         public override void Update(GameTime gameTime) {
 
@@ -30,7 +23,7 @@ namespace PlaceholderGame {
 
 
         public override void Draw(SpriteBatch sb) {
-            sb.Draw(TileWall, wallRect, Color.White);
+            sb.Draw(spriteSheet, wallRect, sourceRect, Color.White);
         }
     }
 }

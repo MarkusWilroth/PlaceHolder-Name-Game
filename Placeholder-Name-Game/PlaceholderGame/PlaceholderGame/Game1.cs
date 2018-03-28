@@ -29,7 +29,7 @@ namespace PlaceholderGame {
         char textLetter;
         String[] printMap, printObjects;
         public int levels, currentLevel, players;
-        Texture2D ground, tileWall, picPlayer;
+        Texture2D ground, tileWall, picPlayer, spriteSheet;
         GameStates currentGS;
         KeyboardState keyState, oldKeyState;
 
@@ -63,20 +63,21 @@ namespace PlaceholderGame {
         }
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            ground = Content.Load<Texture2D>("Tile");
-            tileWall = Content.Load<Texture2D>("TileWall");
-            picPlayer = Content.Load<Texture2D>("Placeholder_Player");
+            //ground = Content.Load<Texture2D>("Tile");
+            //tileWall = Content.Load<Texture2D>("TileWall");
+            //picPlayer = Content.Load<Texture2D>("Placeholder_Player");
+            spriteSheet = Content.Load<Texture2D>("Spritesheet");
             ResetMap();
 
             groundPosList = posGiver(printMap, '-');
             foreach (Vector2 pos in groundPosList) {
-                groundO = new GroundObjects(ground, pos);
+                groundO = new GroundObjects(spriteSheet, pos);
                 gameList.Add(groundO);
             }
 
             wallPosList = posGiver(printMap, 'v');
             foreach (Vector2 pos in wallPosList) {
-                wallO = new WallObjects(tileWall, pos);
+                wallO = new WallObjects(spriteSheet, pos);
                 gameList.Add(wallO);
                 wallRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
                 wallRectList.Add(wallRect);
@@ -84,7 +85,7 @@ namespace PlaceholderGame {
 
             playerPosList = posGiver(printObjects, 's');
             foreach (Vector2 pos in playerPosList) {
-                playerO[player] = new PlayerObjects(picPlayer, pos, wallRectList);
+                playerO[player] = new PlayerObjects(spriteSheet, pos, wallRectList, player);
                 player++;
             }
             player = 0;

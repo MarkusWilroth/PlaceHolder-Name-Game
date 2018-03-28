@@ -4,8 +4,6 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/TileWall.png</File>
-    <File>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Placeholder_Player.png</File>
-    <File>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Tile.png</File>
+    <File>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Spritesheet.PNG</File>
   </SourceFiles>
 </SourceFileCollection>
