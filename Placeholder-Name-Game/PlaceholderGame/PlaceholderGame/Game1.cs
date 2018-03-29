@@ -12,7 +12,7 @@ namespace PlaceholderGame {
         Scoreboard,
     }
 
-    public class Game1 : Game {
+    public class Game1 : Game { //Vi måste komma överäns om hur klasserna ska vara uppdelade! Vart ska vapenklassen vara och hur ser den ut?
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GroundObjects groundO;
@@ -63,10 +63,7 @@ namespace PlaceholderGame {
         }
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            //ground = Content.Load<Texture2D>("Tile");
-            //tileWall = Content.Load<Texture2D>("TileWall");
-            //picPlayer = Content.Load<Texture2D>("Placeholder_Player");
-            spriteSheet = Content.Load<Texture2D>("Spritesheet");
+            spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
             ResetMap();
 
             groundPosList = posGiver(printMap, '-');
@@ -115,13 +112,11 @@ namespace PlaceholderGame {
 
                     break;
             }
-
-            
             
             base.Update(gameTime);
         }
 
-        protected override void Draw(GameTime gameTime) {
+        protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             foreach (GameObjects gameO in gameList) {
@@ -133,9 +128,9 @@ namespace PlaceholderGame {
             spriteBatch.End();
             base.Draw(gameTime);
         }
-        public void FileReader() { //Läser av filerna i c filen, ska vi ha fler banor behöver vi ändra de till arrays och ha struktur 
+        public void FileReader() { //Ska vi ha fler banor behöver vi ändra de till arrays och ha struktur 
             for (int i = 0; i < 1; i++) {
-                StreamReader fileMap = new StreamReader("c:\\basemap.txt");
+                StreamReader fileMap = new StreamReader("basemap.txt"); //Filena finns i Place... > Place... > Place... > bin > Windows > x86 > Debug
                 while (!fileMap.EndOfStream) {
                     getLine += fileMap.ReadLine();
                 }
@@ -143,7 +138,7 @@ namespace PlaceholderGame {
                 printMap[i] = getLine;
                 getLine = "";
 
-                StreamReader fileObjects = new StreamReader("c:\\objectsMap.txt");
+                StreamReader fileObjects = new StreamReader("objectsMap.txt");
                 while (!fileObjects.EndOfStream) {
                     getLine += fileObjects.ReadLine();
                 }
@@ -152,7 +147,7 @@ namespace PlaceholderGame {
                 getLine = "";
             }
         }
-        public List<Vector2> posGiver(String[] printLevel, char getLetter) {
+        public List<Vector2> posGiver(String[] printLevel, char getLetter) { //Skapar listor som ger positioner till föremål beroend på textfilen printLevel
             posList.Clear();
             for (int i = 0; i < printLevel[currentLevel].Length; i++) {
                 textLetter = printLevel[currentLevel][i];
@@ -174,7 +169,7 @@ namespace PlaceholderGame {
             
             return posList;
         }
-        public void ResetMap () {
+        public void ResetMap () { //Onödig funderar på att ta bort, vi får se hur det blir när man ska zooma in och zooma ut
             groundX = 350;
             groundY = 0;
         }
