@@ -18,14 +18,18 @@ namespace PlaceholderGame {
         GroundObjects groundO;
         GameObjects gameO;
         WallObjects wallO;
+        WeaponObjects[] weaponStats;
         PlayerObjects[] playerO;
+        Rectangle[] sourceRect;
         List<GameObjects> gameList;
-        List<Vector2> wallPosList, groundPosList, playerPosList, posList;
+        List<WeaponObjects> weaponList;
+        List<Vector2> wallPosList, groundPosList, playerPosList, posList, weaponPosList;
         List<Rectangle> wallRectList;
         Rectangle wallRect;
+        Random rnd;
         string getLine;
         Vector2 pos, wallPos, groundPos, playerPos;
-        int groundX, groundY, count, player;
+        int groundX, groundY, count, player, weaponID;
         char textLetter;
         String[] printMap, printObjects;
         public int levels, currentLevel, players;
@@ -41,15 +45,18 @@ namespace PlaceholderGame {
             players = 4; //Flyttas till menyn, bestämmer hur många spelare det är!
             levels = 1; //Hur många banfiler, asså hur många banor man man spela på
             player = 0;
-
+            rnd = new Random();
+            sourceRect = new Rectangle[3];
             printMap = new String[levels];
             printObjects = new string[levels];
             playerO = new PlayerObjects[players];
+            weaponStats = new WeaponObjects[100]; //Ska ta siffra från antalet aktiva vapen... måste kopplas från menyn
 
             gameList = new List<GameObjects>();
             wallPosList = new List<Vector2>();
             groundPosList = new List<Vector2>();
             playerPosList = new List<Vector2>();
+            weaponPosList = new List<Vector2>();
             posList = new List<Vector2>();
             wallRectList = new List<Rectangle>();
             currentLevel = 0;
@@ -85,6 +92,12 @@ namespace PlaceholderGame {
                 playerO[player] = new PlayerObjects(spriteSheet, pos, wallRectList, player);
                 player++;
             }
+
+            weaponPosList = posGiver(printObjects, 'w');
+            foreach (Vector2 pos in weaponPosList) {
+                weaponSpawn(pos);
+            }
+
             player = 0;
 
         }
@@ -172,6 +185,26 @@ namespace PlaceholderGame {
         public void ResetMap () { //Onödig funderar på att ta bort, vi får se hur det blir när man ska zooma in och zooma ut
             groundX = 350;
             groundY = 0;
+        }
+        public void weaponSpawn (Vector2 pos) {
+            int weapon = rnd.Next(0, 3);
+            switch (weapon) { //sourceRect?
+                case 0:
+                    //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
+                    weaponStats[weaponID] = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, sourceRect[weapon]);
+                    break;
+                case 1:
+                    weaponStats[weaponID] = new WeaponObjects("WaterGun", 4, 2, 1, 1, spriteSheet, pos, sourceRect[weapon]);
+                    break;
+                case 2:
+                    weaponStats[weaponID] = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos, sourceRect[weapon]);
+                    break;
+                case 3:
+                    weaponStats[weaponID] = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos, sourceRect[weapon]);
+                    break;
+            }
+            gameList.Add(weaponStats[weaponID]);
+            weaponID++;
         }
     }
 }
