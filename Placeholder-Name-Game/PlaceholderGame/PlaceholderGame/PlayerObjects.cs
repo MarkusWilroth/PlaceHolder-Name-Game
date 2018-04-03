@@ -26,7 +26,7 @@ namespace PlaceholderGame {
             this.playerPos = playerPos;
             this.wallRectList = wallRectList;
             this.player = player;
-            sourceRect = new Rectangle((25*player)+6, 2, 25,25);
+            sourceRect = new Rectangle((37*player)+6, 2, 25,25);
 
             scale = 1;
             speed = 100;
@@ -91,7 +91,7 @@ namespace PlaceholderGame {
         }
 
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
-            sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(25, 25), scale, playerFx, 1);
+            sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
         }
     }
 }
