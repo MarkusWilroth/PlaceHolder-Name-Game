@@ -18,7 +18,7 @@ namespace PlaceholderGame {
         GroundObjects groundO;
         GameObjects gameO;
         WallObjects wallO;
-        WeaponObjects[] weaponStats;
+        WeaponObjects weaponStats;
         PlayerObjects[] playerO;
         Rectangle[] sourceRect;
         List<GameObjects> gameList;
@@ -49,8 +49,7 @@ namespace PlaceholderGame {
             sourceRect = new Rectangle[3];
             printMap = new String[levels];
             printObjects = new string[levels];
-            playerO = new PlayerObjects[players];
-            weaponStats = new WeaponObjects[100]; //Ska ta siffra från antalet aktiva vapen... måste kopplas från menyn
+            playerO = new PlayerObjects[players]; //Ska ta siffra från antalet aktiva vapen... måste kopplas från menyn
 
             gameList = new List<GameObjects>();
             wallPosList = new List<Vector2>();
@@ -191,20 +190,24 @@ namespace PlaceholderGame {
             switch (weapon) { //sourceRect?
                 case 0:
                     //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
-                    weaponStats[weaponID] = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, sourceRect[weapon]);
+                    weaponStats = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos);
                     break;
                 case 1:
-                    weaponStats[weaponID] = new WeaponObjects("WaterGun", 4, 2, 1, 1, spriteSheet, pos, sourceRect[weapon]);
+                    weaponStats = new WeaponObjects("WaterGun", 4, 2, 1, 1, spriteSheet, pos);
                     break;
                 case 2:
-                    weaponStats[weaponID] = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos, sourceRect[weapon]);
+                    weaponStats = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos);
                     break;
                 case 3:
-                    weaponStats[weaponID] = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos, sourceRect[weapon]);
+                    weaponStats = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos);
                     break;
             }
-            gameList.Add(weaponStats[weaponID]);
+            gameList.Add(weaponStats);
             weaponID++;
+        }
+
+        public void WeaponSource () {
+
         }
     }
 }

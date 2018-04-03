@@ -14,7 +14,7 @@ namespace PlaceholderGame {
         Rectangle weaponRect, sourceRect;
         KeyboardState keyState, oldKeyState;
 
-        public WeaponObjects(String name, int Range, int Damage, int Durability, int AOE, Texture2D spriteSheet, Vector2 pos, Rectangle sourceRect) : base(spriteSheet, pos) {
+        public WeaponObjects(String name, int Range, int Damage, int Durability, int AOE, Texture2D spriteSheet, Vector2 pos) : base(spriteSheet, pos) {
             this.name = name;
             this.spriteSheet = spriteSheet;
             this.pos = pos;
@@ -23,7 +23,7 @@ namespace PlaceholderGame {
             this.Durability = Durability;
             this.AOE = AOE;
             weaponRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
-            sourceRect = new Rectangle();
+            sourceRect = new Rectangle(5, 144, 50, 50);
         }
 
         public override void Update(GameTime gameTime) {
