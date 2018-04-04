@@ -195,6 +195,7 @@ namespace PlaceholderGame {
                 foreach (WeaponObjects weaponStats in weaponList) {
                     isPicked = weaponStats.NewWeapon(playerPos);
                     if (isPicked) {
+                        playerO[player].EquipedWeapon(weaponStats);
                         gameList.Remove(weaponStats);
                         weaponList.Remove(weaponStats);
                         break;
@@ -210,7 +211,7 @@ namespace PlaceholderGame {
                     weaponStats = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos);
                     break;
                 case 1:
-                    weaponStats = new WeaponObjects("WaterGun", 4, 2, 1, 1, spriteSheet, pos);
+                    weaponStats = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos);
                     break;
                 case 2:
                     weaponStats = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos);

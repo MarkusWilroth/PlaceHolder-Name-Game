@@ -14,7 +14,8 @@ namespace PlaceholderGame {
         Vector2 direction, playerPos, destination;
         Rectangle playerRect, playerHitBox, playerDest, sourceRect;
         List<Rectangle> wallRectList;
-        int newDestX, newDestY, player;
+        WeaponObjects[] weaponSlot;
+        int newDestX, newDestY, player, activeWeapon, HP;
         bool hitWall, isMoving;
         float speed, scale, rotation;
         SpriteEffects playerFx;
@@ -26,7 +27,11 @@ namespace PlaceholderGame {
             this.playerPos = playerPos;
             this.wallRectList = wallRectList;
             this.player = player;
+            HP = 100;
+            activeWeapon = 0;
+
             sourceRect = new Rectangle((37*player)+6, 2, 25,25);
+            weaponSlot = new WeaponObjects[1];
 
             scale = 1;
             speed = 100;
@@ -37,9 +42,15 @@ namespace PlaceholderGame {
         public Vector2 SendPos() {
             return playerPos;
         }
+        public void EquipedWeapon(WeaponObjects weaponStats) {
+            weaponSlot[activeWeapon] = weaponStats;
+        }
 
         public override void Update(GameTime gameTime) {
             keyState = Keyboard.GetState();
+            if (keyState.IsKeyDown(Keys.RightControl) && !oldKeyState.IsKeyDown(Keys.RightControl)) {
+                weaponSlot[activeWeapon].Attack(rotation);
+            }
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
                     ChangeDirection(new Vector2(-1, 0));
