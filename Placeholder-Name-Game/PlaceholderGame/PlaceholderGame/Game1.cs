@@ -20,23 +20,27 @@ namespace PlaceholderGame {
         WallObjects wallO;
         WeaponObjects weaponStats;
         PlayerObjects[] playerO;
+
+        Vector2 pos, wallPos, groundPos, playerPos;
         Rectangle[] sourceRect;
+        Rectangle wallRect;
         List<GameObjects> gameList;
         List<WeaponObjects> weaponList;
         List<Vector2> wallPosList, groundPosList, playerPosList, posList, weaponPosList;
-        List<Rectangle> wallRectList;
-        Rectangle wallRect;
-        Random rnd;
+        List<Rectangle> wallRectList;       
+
         string getLine;
-        bool isPicked;
-        Vector2 pos, wallPos, groundPos, playerPos;
+        bool isPicked;        
         int groundX, groundY, count, player, weaponID;
-        char textLetter;
-        String[] printMap, printObjects;
         public int levels, currentLevel, players;
+        char textLetter;
+
+        String[] printMap, printObjects;        
         Texture2D ground, tileWall, picPlayer, spriteSheet;
-        GameStates currentGS;
+        
         KeyboardState keyState, oldKeyState;
+        Random rnd;
+        GameStates currentGS;
 
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
@@ -65,10 +69,12 @@ namespace PlaceholderGame {
             FileReader();
             
         }
+
         protected override void Initialize() {
             IsMouseVisible = true;
             base.Initialize();
         }
+
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
@@ -98,9 +104,7 @@ namespace PlaceholderGame {
             foreach (Vector2 pos in weaponPosList) {
                 weaponSpawn(pos);
             }
-
             player = 0;
-
         }
 
         protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates
@@ -143,6 +147,7 @@ namespace PlaceholderGame {
             spriteBatch.End();
             base.Draw(gameTime);
         }
+
         public void FileReader() { //Ska vi ha fler banor behöver vi ändra de till arrays och ha struktur 
             for (int i = 0; i < 1; i++) {
                 StreamReader fileMap = new StreamReader("basemap.txt"); //Filena finns i Place... > Place... > Place... > bin > Windows > x86 > Debug
@@ -162,6 +167,7 @@ namespace PlaceholderGame {
                 getLine = "";
             }
         }
+
         public List<Vector2> posGiver(String[] printLevel, char getLetter) { //Skapar listor som ger positioner till föremål beroend på textfilen printLevel
             posList.Clear();
             for (int i = 0; i < printLevel[currentLevel].Length; i++) {
@@ -180,14 +186,10 @@ namespace PlaceholderGame {
                 } else {
                     groundX += 25;
                 }
-            }
-            
+            }            
             return posList;
-        }
-        public void ResetMap () { //Onödig funderar på att ta bort, vi får se hur det blir när man ska zooma in och zooma ut
-            groundX = 350;
-            groundY = 0;
-        }
+        }  //Nivåerna
+
         public void PickGun() {
             playerPos = playerO[player].SendPos();
             if (keyState.IsKeyDown(Keys.Space) && !(oldKeyState.IsKeyDown(Keys.Space))) {
@@ -203,6 +205,7 @@ namespace PlaceholderGame {
                 }
             }
         }
+
         public void weaponSpawn (Vector2 pos) {
             int weapon = rnd.Next(0, 3);
             switch (weapon) { //sourceRect?
@@ -227,6 +230,10 @@ namespace PlaceholderGame {
 
         public void WeaponSource () {
             
+        }
+        public void ResetMap() { //Onödig funderar på att ta bort, vi får se hur det blir när man ska zooma in och zooma ut
+            groundX = 350;
+            groundY = 0;
         }
     }
 }

@@ -12,7 +12,6 @@ namespace PlaceholderGame {
         int range, damage, durability, AOE;
         String name;
         Rectangle weaponRect, sourceRect;
-        KeyboardState keyState, oldKeyState;
 
         public WeaponObjects(String name, int range, int damage, int durability, int AOE, Texture2D spriteSheet, Vector2 pos) : base(spriteSheet, pos) {
             this.name = name;
@@ -20,8 +19,8 @@ namespace PlaceholderGame {
             this.pos = pos;
             this.range = range;
             this.damage = damage;
-            this.durability = durability;
-            this.AOE = AOE;
+            this.durability = durability; 
+            this.AOE = AOE; 
             weaponRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
             sourceRect = new Rectangle(5, 144, 50, 50);
         }
@@ -29,11 +28,11 @@ namespace PlaceholderGame {
         public override void Update(GameTime gameTime) {
 
         }
+
         public void Attack(float direction) {
-            if (durability>0) {
+            if (durability>0) { //Fixa i hudden så att man kan se hur många skott det finns kvar
                 durability--;
-            }
-            
+            }            
         }
 
         public bool NewWeapon(Vector2 pos) {
@@ -42,7 +41,6 @@ namespace PlaceholderGame {
             }
             return false;
         }
-
 
         public override void Draw(SpriteBatch sb) {
             sb.Draw(spriteSheet, weaponRect, sourceRect, Color.White);

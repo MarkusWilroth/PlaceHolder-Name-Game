@@ -10,14 +10,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
-        Texture2D spriteSheet;
         Vector2 direction, playerPos, destination;
         Rectangle playerRect, playerHitBox, playerDest, sourceRect;
         List<Rectangle> wallRectList;
         WeaponObjects[] weaponSlot;
+
         int newDestX, newDestY, player, activeWeapon, HP;
         bool hitWall, isMoving;
         float speed, scale, rotation;
+
         SpriteEffects playerFx;
         KeyboardState keyState, oldKeyState;
         
@@ -37,14 +38,7 @@ namespace PlaceholderGame {
             speed = 100;
             playerFx = SpriteEffects.None;
             playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
-        }
-
-        public Vector2 SendPos() {
-            return playerPos;
-        }
-        public void EquipedWeapon(WeaponObjects weaponStats) {
-            weaponSlot[activeWeapon] = weaponStats;
-        }
+        }        
 
         public override void Update(GameTime gameTime) {
             keyState = Keyboard.GetState();
@@ -79,6 +73,7 @@ namespace PlaceholderGame {
             }
             oldKeyState = keyState;
         }
+
         private void ChangeDirection(Vector2 dir) {
             direction = dir;
             Vector2 newDestination = playerPos + (direction * 25);
@@ -107,6 +102,12 @@ namespace PlaceholderGame {
 
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
             sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
+        }
+        public Vector2 SendPos() {
+            return playerPos;
+        }
+        public void EquipedWeapon(WeaponObjects weaponStats) {
+            weaponSlot[activeWeapon] = weaponStats;
         }
     }
 }

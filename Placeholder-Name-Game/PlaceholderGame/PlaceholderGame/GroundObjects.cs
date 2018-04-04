@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace PlaceholderGame {
     class GroundObjects : GameObjects {
         Texture2D spireSheet;
-        Rectangle sourceRect, groundRect;
-        
+        Rectangle sourceRect, groundRect;        
 
         public GroundObjects(Texture2D spriteSheet, Vector2 groundPos) : base(spriteSheet, groundPos) {
             this.spireSheet = spriteSheet;
@@ -20,7 +19,6 @@ namespace PlaceholderGame {
         public override void Update(GameTime gameTime) {
 
         }
-
 
         public override void Draw(SpriteBatch sb) {
             sb.Draw(spireSheet, groundRect, sourceRect, Color.White);

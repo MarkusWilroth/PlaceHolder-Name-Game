@@ -11,13 +11,15 @@ namespace PlaceholderGame {
     abstract class GameObjects {
         protected Vector2 pos;
         protected Texture2D spriteSheet;
-        protected List<Vector2> posList, wallList;
-        protected char textLetter;
+        protected List<Vector2> posList, wallList;        
         protected String[] printLevel;
+
+        protected char textLetter;
         protected int groundX, groundY;
-        protected Rectangle wallRect;
-        GroundObjects groundO;
         bool hitWall;
+
+        protected Rectangle wallRect;
+        GroundObjects groundO;        
 
         public GameObjects(Texture2D spriteSheet, Vector2 pos) {
         }
@@ -26,7 +28,7 @@ namespace PlaceholderGame {
 
         public abstract void Draw(SpriteBatch sb);
 
-        protected bool HitWall(Rectangle playerDest, Rectangle wallRect) { //pos i WallList verkar tom... varför????
+        protected bool HitWall(Rectangle playerDest, Rectangle wallRect) {
             if (wallRect.Intersects(playerDest)) {
                 return true;
             } else {
