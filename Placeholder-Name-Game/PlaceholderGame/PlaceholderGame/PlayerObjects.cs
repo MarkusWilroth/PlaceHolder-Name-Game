@@ -34,6 +34,10 @@ namespace PlaceholderGame {
             playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
         }
 
+        public Vector2 SendPos() {
+            return playerPos;
+        }
+
         public override void Update(GameTime gameTime) {
             keyState = Keyboard.GetState();
             if (!isMoving) {

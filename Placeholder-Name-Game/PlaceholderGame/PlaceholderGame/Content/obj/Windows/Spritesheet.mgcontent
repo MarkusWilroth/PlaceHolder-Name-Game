@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Spritesheet.PNG</SourceFile>
-  <SourceTime>2018-04-03T10:46:57.9226966+02:00</SourceTime>
+  <SourceTime>2018-04-04T10:50:02.160274+02:00</SourceTime>
   <DestFile>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/bin/Windows/Spritesheet.xnb</DestFile>
-  <DestTime>2018-04-03T10:50:14.5968463+02:00</DestTime>
+  <DestTime>2018-04-04T10:52:11.6429837+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

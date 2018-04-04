@@ -29,6 +29,13 @@ namespace PlaceholderGame {
         public override void Update(GameTime gameTime) {
 
         }
+        public bool NewWeapon(Vector2 pos) {
+            if (this.pos == pos) {
+                return true;
+            }
+            return false;
+        }
+
 
         public override void Draw(SpriteBatch sb) {
             sb.Draw(spriteSheet, weaponRect, sourceRect, Color.White);

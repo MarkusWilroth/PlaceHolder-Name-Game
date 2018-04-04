@@ -28,6 +28,7 @@ namespace PlaceholderGame {
         Rectangle wallRect;
         Random rnd;
         string getLine;
+        bool isPicked;
         Vector2 pos, wallPos, groundPos, playerPos;
         int groundX, groundY, count, player, weaponID;
         char textLetter;
@@ -56,6 +57,7 @@ namespace PlaceholderGame {
             groundPosList = new List<Vector2>();
             playerPosList = new List<Vector2>();
             weaponPosList = new List<Vector2>();
+            weaponList = new List<WeaponObjects>();
             posList = new List<Vector2>();
             wallRectList = new List<Rectangle>();
             currentLevel = 0;
@@ -111,6 +113,7 @@ namespace PlaceholderGame {
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
                     keyState = Keyboard.GetState();
+                    PickGun();
                     if (keyState.IsKeyDown(Keys.End) && !(oldKeyState.IsKeyDown(Keys.End))) {
                         player++;
                         if (player >= players) {
@@ -185,6 +188,20 @@ namespace PlaceholderGame {
             groundX = 350;
             groundY = 0;
         }
+        public void PickGun() {
+            playerPos = playerO[player].SendPos();
+            if (keyState.IsKeyDown(Keys.Space) && !(oldKeyState.IsKeyDown(Keys.Space))) {
+
+                foreach (WeaponObjects weaponStats in weaponList) {
+                    isPicked = weaponStats.NewWeapon(playerPos);
+                    if (isPicked) {
+                        gameList.Remove(weaponStats);
+                        weaponList.Remove(weaponStats);
+                        break;
+                    }
+                }
+            }
+        }
         public void weaponSpawn (Vector2 pos) {
             int weapon = rnd.Next(0, 3);
             switch (weapon) { //sourceRect?
@@ -203,11 +220,12 @@ namespace PlaceholderGame {
                     break;
             }
             gameList.Add(weaponStats);
+            weaponList.Add(weaponStats);
             weaponID++;
         }
 
         public void WeaponSource () {
-
+            
         }
     }
 }
