@@ -74,7 +74,7 @@ namespace PlaceholderGame {
             IsMouseVisible = true;
             base.Initialize();
         }
-
+       
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
@@ -106,6 +106,7 @@ namespace PlaceholderGame {
             }
             player = 0;
         }
+
 
         protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates
             switch (currentGS) { //gameStates

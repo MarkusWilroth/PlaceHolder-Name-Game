@@ -30,9 +30,9 @@ namespace PlaceholderGame {
         }
 
         public void Attack(float direction) {
-            if (durability>0) { //Fixa i hudden så att man kan se hur många skott det finns kvar
+            if (durability > 0) { //Fixa i hudden så att man kan se hur många skott det finns kvar
                 durability--;
-            }            
+            }
         }
 
         public bool NewWeapon(Vector2 pos) {
