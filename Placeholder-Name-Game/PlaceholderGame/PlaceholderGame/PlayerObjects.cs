@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
-        Vector2 direction, playerPos, destination;
+        Vector2 direction, playerPos, destination, dir;
         Rectangle playerRect, playerHitBox, playerDest, sourceRect;
         List<Rectangle> wallRectList;
         WeaponObjects[] weaponSlot;
@@ -43,25 +43,30 @@ namespace PlaceholderGame {
         public override void Update(GameTime gameTime) {
             keyState = Keyboard.GetState();
             if (keyState.IsKeyDown(Keys.RightControl) && !oldKeyState.IsKeyDown(Keys.RightControl)) {
-                weaponSlot[activeWeapon].Attack(rotation);
+                weaponSlot[activeWeapon].Attack(dir, playerPos);
             }
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
-                    ChangeDirection(new Vector2(-1, 0));
+                    dir = new Vector2(-1, 0);
+                    //ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(90);
 
                 } else if (keyState.IsKeyDown(Keys.Up)) {
-                    ChangeDirection(new Vector2(0, -1));
+                    dir = new Vector2(0, -1);
+                    //ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-180);
 
                 } else if (keyState.IsKeyDown(Keys.Right)) {
-                    ChangeDirection(new Vector2(1, 0));
+                    dir = new Vector2(1, 0);
+                    //ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(-90);
 
                 } else if (keyState.IsKeyDown(Keys.Down)) {
-                    ChangeDirection(new Vector2(0, 1));
+                    dir = new Vector2(0, 1);
+                    //ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(0);
                 }
+                ChangeDirection(dir);
 
             } else {
                 playerPos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;

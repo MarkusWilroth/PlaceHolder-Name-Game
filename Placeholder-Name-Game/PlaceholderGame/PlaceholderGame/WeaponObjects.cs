@@ -10,11 +10,16 @@ using Microsoft.Xna.Framework.Input;
 namespace PlaceholderGame {
     class WeaponObjects : GameObjects {
         int range, damage, durability, AOE;
+        Vector2 shotPos, direction;
         String name;
-        Rectangle weaponRect, sourceRect;
+        Rectangle weaponRect, sourceRect, shotRect;
+        List<Vector2> shotsList;
+        Texture2D shot;
 
-        public WeaponObjects(String name, int range, int damage, int durability, int AOE, Texture2D spriteSheet, Vector2 pos) : base(spriteSheet, pos) {
+
+        public WeaponObjects(String name, int range, int damage, int durability, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot) : base(spriteSheet, pos) {
             this.name = name;
+            this.shot = shot;
             this.spriteSheet = spriteSheet;
             this.pos = pos;
             this.range = range;
@@ -26,12 +31,15 @@ namespace PlaceholderGame {
         }
 
         public override void Update(GameTime gameTime) {
-
+            shotPos += direction;
+            shotRect = new Rectangle((int)shotPos.X, (int)shotPos.Y, 5, 5);
         }
 
-        public void Attack(float direction) {
+        public void Attack(Vector2 direction, Vector2 shotPos) {
             if (durability > 0) { //Fixa i hudden så att man kan se hur många skott det finns kvar
                 durability--;
+                this.shotPos = shotPos;
+                this.direction = direction;
             }
         }
 
@@ -44,6 +52,8 @@ namespace PlaceholderGame {
 
         public override void Draw(SpriteBatch sb) {
             sb.Draw(spriteSheet, weaponRect, sourceRect, Color.White);
+            sb.Draw(shot, shotRect, Color.White);
+            
         }
     }
 }

@@ -36,7 +36,7 @@ namespace PlaceholderGame {
         char textLetter;
 
         String[] printMap, printObjects;        
-        Texture2D ground, tileWall, picPlayer, spriteSheet;
+        Texture2D ground, tileWall, picPlayer, spriteSheet, shot;
         
         KeyboardState keyState, oldKeyState;
         Random rnd;
@@ -78,6 +78,7 @@ namespace PlaceholderGame {
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
+            shot = Content.Load<Texture2D>("Skott");
             ResetMap();
 
             groundPosList = posGiver(printMap, '-');
@@ -212,16 +213,16 @@ namespace PlaceholderGame {
             switch (weapon) { //sourceRect?
                 case 0:
                     //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
-                    weaponStats = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos);
+                    weaponStats = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, shot);
                     break;
                 case 1:
-                    weaponStats = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos);
+                    weaponStats = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos, shot);
                     break;
                 case 2:
-                    weaponStats = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos);
+                    weaponStats = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos, shot);
                     break;
                 case 3:
-                    weaponStats = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos);
+                    weaponStats = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos, shot);
                     break;
             }
             gameList.Add(weaponStats);
