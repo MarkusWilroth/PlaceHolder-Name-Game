@@ -118,6 +118,7 @@ namespace PlaceholderGame {
                     break;
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
+                    weaponStats.Update(gameTime);
                     keyState = Keyboard.GetState();
                     PickGun();
                     if (keyState.IsKeyDown(Keys.End) && !(oldKeyState.IsKeyDown(Keys.End))) {

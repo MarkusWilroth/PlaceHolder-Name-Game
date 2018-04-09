@@ -38,7 +38,7 @@ namespace PlaceholderGame {
             speed = 100;
             playerFx = SpriteEffects.None;
             playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
-        }        
+        }
 
         public override void Update(GameTime gameTime) {
             keyState = Keyboard.GetState();
@@ -48,39 +48,39 @@ namespace PlaceholderGame {
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
                     dir = new Vector2(-1, 0);
-                    //ChangeDirection(new Vector2(-1, 0));
+                    ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(90);
 
                 } else if (keyState.IsKeyDown(Keys.Up)) {
                     dir = new Vector2(0, -1);
-                    //ChangeDirection(new Vector2(0, -1));
+                    ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-180);
 
                 } else if (keyState.IsKeyDown(Keys.Right)) {
                     dir = new Vector2(1, 0);
-                    //ChangeDirection(new Vector2(1, 0));
+                    ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(-90);
 
                 } else if (keyState.IsKeyDown(Keys.Down)) {
                     dir = new Vector2(0, 1);
-                    //ChangeDirection(new Vector2(0, 1));
+                    ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(0);
-                }
-                ChangeDirection(dir);
 
-            } else {
-                playerPos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (Vector2.Distance(playerPos, destination) < 1) {
-                    playerPos = destination;
-                    playerHitBox = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
-                    isMoving = false;
+
+                } else {
+                    playerPos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if (Vector2.Distance(playerPos, destination) < 1) {
+                        playerPos = destination;
+                        playerHitBox = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
+                        isMoving = false;
+                    }
                 }
+                oldKeyState = keyState;
             }
-            oldKeyState = keyState;
         }
 
-        private void ChangeDirection(Vector2 dir) {
-            direction = dir;
+        private void ChangeDirection(Vector2 directionA) {
+            direction = directionA;
             Vector2 newDestination = playerPos + (direction * 25);
             
             newDestX = (int)newDestination.X;
