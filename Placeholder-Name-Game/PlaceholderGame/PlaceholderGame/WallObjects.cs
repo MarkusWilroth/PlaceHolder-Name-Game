@@ -13,7 +13,7 @@ namespace PlaceholderGame {
 
         public WallObjects(Texture2D spriteSheet, Vector2 wallPos) : base(spriteSheet, wallPos) {
             this.spriteSheet = spriteSheet;
-            sourceRect = new Rectangle(201, 46, 25, 25);
+            sourceRect = new Rectangle(29, 29, 25, 25);
             wallRect = new Rectangle((int)wallPos.X, (int)wallPos.Y, 25, 25);
         }
         public override void Update(GameTime gameTime) {

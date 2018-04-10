@@ -13,7 +13,7 @@ namespace PlaceholderGame {
 
         public GroundObjects(Texture2D spriteSheet, Vector2 groundPos) : base(spriteSheet, groundPos) {
             this.spireSheet = spriteSheet;
-            sourceRect = new Rectangle(151, 46, 25, 25);
+            sourceRect = new Rectangle(89, 29, 25, 25);
             groundRect = new Rectangle((int)groundPos.X, (int)groundPos.Y, 25, 25);
         }
         public override void Update(GameTime gameTime) {
