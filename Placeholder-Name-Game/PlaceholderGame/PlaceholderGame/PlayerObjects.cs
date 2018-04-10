@@ -47,41 +47,40 @@ namespace PlaceholderGame {
             }
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
-                    //dir = new Vector2(-1, 0);
+                    dir = new Vector2(-1, 0);
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(90);
 
                 } else if (keyState.IsKeyDown(Keys.Up)) {
-                    //dir = new Vector2(0, -1);
+                    dir = new Vector2(0, -1);
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-180);
 
                 } else if (keyState.IsKeyDown(Keys.Right)) {
-                    //dir = new Vector2(1, 0);
+                    dir = new Vector2(1, 0);
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(-90);
 
                 } else if (keyState.IsKeyDown(Keys.Down)) {
-                    //dir = new Vector2(0, 1);
+                    dir = new Vector2(0, 1);
                     ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(0);
-
-
-                } else {
-                    playerPos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if (Vector2.Distance(playerPos, destination) < 1) {
-                        playerPos = destination;
-                        playerHitBox = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
-                        isMoving = false;
-                    }
                 }
+            } else {
+                playerPos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (Vector2.Distance(playerPos, destination) < 1) {
+                    playerPos = destination;
+                    playerHitBox = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
+                    isMoving = false;
+                
+            }
                 oldKeyState = keyState;
             }
         }
 
-        private void ChangeDirection(Vector2 directionA) {
-            direction = directionA;
-            Vector2 newDestination = playerPos + (direction * 25);
+        private void ChangeDirection(Vector2 direction) {
+            this.direction = direction;
+            Vector2 newDestination = playerPos + (this.direction * 25);
             
             newDestX = (int)newDestination.X;
             newDestY = (int)newDestination.Y;
@@ -94,7 +93,7 @@ namespace PlaceholderGame {
                 }
             }
             
-            Console.WriteLine("is hit walL: " + hitWall);
+            //Console.WriteLine("is hit walL: " + hitWall);
             
             if (!hitWall) {
                 destination = newDestination;

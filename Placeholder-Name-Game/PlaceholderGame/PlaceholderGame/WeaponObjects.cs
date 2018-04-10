@@ -27,7 +27,7 @@ namespace PlaceholderGame {
             this.durability = durability; 
             this.AOE = AOE; 
             weaponRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
-            sourceRect = new Rectangle(5, 144, 50, 50);
+            sourceRect = new Rectangle(0, 65, 25, 25);
         }
 
         public override void Update(GameTime gameTime) {
@@ -52,8 +52,7 @@ namespace PlaceholderGame {
 
         public override void Draw(SpriteBatch sb) {
             sb.Draw(spriteSheet, weaponRect, sourceRect, Color.White);
-            sb.Draw(shot, shotRect, Color.White);
-            
+            sb.Draw(shot, shotRect, Color.White);            
         }
     }
 }
