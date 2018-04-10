@@ -20,10 +20,13 @@ namespace PlaceholderGame {
         WallObjects wallO;
         WeaponObjects weaponStats;
         PlayerObjects[] playerO;
+        OptionsMenu optionsMenu;
 
         Vector2 pos, wallPos, groundPos, playerPos;
         Rectangle[] sourceRect;
         Rectangle wallRect;
+        Vector2 startPos, optionsPos, quitPos; //För menyn
+        Rectangle startRec, optionsRec, quitRec; //För menyn
         List<GameObjects> gameList;
         List<WeaponObjects> weaponList;
         List<Vector2> wallPosList, groundPosList, playerPosList, posList, weaponPosList;
@@ -36,7 +39,7 @@ namespace PlaceholderGame {
         char textLetter;
 
         String[] printMap, printObjects;        
-        Texture2D ground, tileWall, picPlayer, spriteSheet, shot;
+        Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu;
         
         KeyboardState keyState, oldKeyState;
         Random rnd;
@@ -77,6 +80,7 @@ namespace PlaceholderGame {
        
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            startMenu = Content.Load<Texture2D>("Startmenyn");
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
             shot = Content.Load<Texture2D>("Skott");
             ResetMap();
@@ -141,6 +145,7 @@ namespace PlaceholderGame {
         protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+            spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
             foreach (GameObjects gameO in gameList) {
                 gameO.Draw(spriteBatch);
             }

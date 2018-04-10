@@ -48,7 +48,6 @@
     <Compile Include="PlayerObjects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartMenu.cs" />
     <Compile Include="WallObjects.cs" />
     <Compile Include="WeaponObjects.cs" />
   </ItemGroup>
