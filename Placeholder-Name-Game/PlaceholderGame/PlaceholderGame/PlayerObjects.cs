@@ -31,7 +31,7 @@ namespace PlaceholderGame {
             HP = 100;
             activeWeapon = 0;
 
-            sourceRect = new Rectangle((37*player)+6, 2, 25,25);
+            sourceRect = new Rectangle((25*player)+5, 2, 25,25);
             weaponSlot = new WeaponObjects[1];
 
             scale = 1;
@@ -47,22 +47,22 @@ namespace PlaceholderGame {
             }
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
-                    dir = new Vector2(-1, 0);
+                    //dir = new Vector2(-1, 0);
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(90);
 
                 } else if (keyState.IsKeyDown(Keys.Up)) {
-                    dir = new Vector2(0, -1);
+                    //dir = new Vector2(0, -1);
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-180);
 
                 } else if (keyState.IsKeyDown(Keys.Right)) {
-                    dir = new Vector2(1, 0);
+                    //dir = new Vector2(1, 0);
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(-90);
 
                 } else if (keyState.IsKeyDown(Keys.Down)) {
-                    dir = new Vector2(0, 1);
+                    //dir = new Vector2(0, 1);
                     ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(0);
 
