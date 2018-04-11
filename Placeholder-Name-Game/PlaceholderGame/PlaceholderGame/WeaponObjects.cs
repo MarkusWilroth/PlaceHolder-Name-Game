@@ -17,21 +17,22 @@ namespace PlaceholderGame {
         Texture2D shot;
 
 
-        public WeaponObjects(String name, int range, int damage, int durability, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot) : base(spriteSheet, pos) {
+
+        public WeaponObjects(String name, int durability, int range, int damage, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot) : base(spriteSheet, pos) {
             this.name = name;
-            this.shot = shot;
-            this.spriteSheet = spriteSheet;
-            this.pos = pos;
             this.range = range;
             this.damage = damage;
-            this.durability = durability; 
-            this.AOE = AOE; 
+            this.AOE = AOE;
+            this.durability = durability;
+            this.spriteSheet = spriteSheet;
+            this.pos = pos;
+            
             weaponRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
             sourceRect = new Rectangle(0, 65, 25, 25);
         }
 
         public override void Update(GameTime gameTime) {
-            shotPos += direction;
+            shotPos += direction * 25;
             shotRect = new Rectangle((int)shotPos.X, (int)shotPos.Y, 5, 5);
         }
 
@@ -51,8 +52,7 @@ namespace PlaceholderGame {
         }
 
         public override void Draw(SpriteBatch sb) {
-            sb.Draw(spriteSheet, weaponRect, sourceRect, Color.White);
-            sb.Draw(shot, shotRect, Color.White);            
+            sb.Draw(spriteSheet, weaponRect, sourceRect, Color.White);                        
         }
     }
 }

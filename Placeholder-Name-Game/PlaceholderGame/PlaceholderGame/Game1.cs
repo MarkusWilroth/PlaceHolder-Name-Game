@@ -18,7 +18,7 @@ namespace PlaceholderGame {
         GroundObjects groundO;
         GameObjects gameO;
         WallObjects wallO;
-        WeaponObjects weaponStats;
+        WeaponObjects weaponO;
         PlayerObjects[] playerO;
         OptionsMenu optionsMenu;
 
@@ -122,7 +122,10 @@ namespace PlaceholderGame {
                     break;
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
-                    weaponStats.Update(gameTime);
+                    foreach (WeaponObjects weaponO in weaponList) {
+                        weaponO.Update(gameTime);
+                    }
+                    
                     keyState = Keyboard.GetState();
                     PickGun();
                     if (keyState.IsKeyDown(Keys.End) && !(oldKeyState.IsKeyDown(Keys.End))) {
@@ -219,20 +222,20 @@ namespace PlaceholderGame {
             switch (weapon) { //sourceRect?
                 case 0:
                     //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
-                    weaponStats = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, shot);
+                    weaponO = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, shot);
                     break;
                 case 1:
-                    weaponStats = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos, shot);
+                    weaponO = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos, shot);
                     break;
                 case 2:
-                    weaponStats = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos, shot);
+                    weaponO = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos, shot);
                     break;
                 case 3:
-                    weaponStats = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos, shot);
+                    weaponO = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos, shot);
                     break;
             }
-            gameList.Add(weaponStats);
-            weaponList.Add(weaponStats);
+            gameList.Add(weaponO);
+            weaponList.Add(weaponO);
             weaponID++;
         }
 
