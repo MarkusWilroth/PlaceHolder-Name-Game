@@ -5,22 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace PlaceholderGame {
-    class Hud {
-        int HP, ScreenHeight, ScreenWidth;
-        public SpriteFont hudFont;
-        public Vector2 HPPos;
-        public bool showHud;
 
-        public Hud() {
+    class Hud : PlayerObjects{
+        int HP;
+        Texture2D hudTex;
 
-            HP = HP;
-            ScreenHeight = 900;
-            ScreenWidth = 1600;
-            showHud = true;
-            hudFont = null;
+        public Hud(Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int player) : base(spriteSheet, playerPos, wallRectList, player){
+
         }
-            
+        
+        public void Draw(SpriteBatch sb){
+            sb.Draw(hudTex, new Vector2(0, 0), Color.White);
+        }
     }
 }
