@@ -41,6 +41,7 @@ namespace PlaceholderGame {
                 durability--;
                 this.shotPos = shotPos;
                 this.direction = direction;
+                Console.WriteLine("durability: " + durability);
             }
         }
 

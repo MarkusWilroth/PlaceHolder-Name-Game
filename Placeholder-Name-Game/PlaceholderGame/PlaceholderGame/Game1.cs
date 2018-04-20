@@ -21,6 +21,7 @@ namespace PlaceholderGame {
         WeaponObjects weaponO;
         PlayerObjects[] playerO;
         OptionsMenu optionsMenu;
+        Hud hud;
 
         Vector2 pos, wallPos, groundPos, playerPos;
         Rectangle[] sourceRect;
@@ -39,7 +40,7 @@ namespace PlaceholderGame {
         char textLetter;
 
         String[] printMap, printObjects;        
-        Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu;
+        Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu, hudTex;
         
         KeyboardState keyState, oldKeyState;
         Random rnd;
@@ -83,6 +84,7 @@ namespace PlaceholderGame {
             //startMenu = Content.Load<Texture2D>("Startmenyn");
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
             shot = Content.Load<Texture2D>("Skott");
+            hudTex = Content.Load<Texture2D>("Hud version1");
             ResetMap();
 
             groundPosList = posGiver(printMap, '-');

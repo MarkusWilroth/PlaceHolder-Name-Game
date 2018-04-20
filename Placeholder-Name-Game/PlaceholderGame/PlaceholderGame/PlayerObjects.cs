@@ -31,7 +31,7 @@ namespace PlaceholderGame {
             HP = 100;
             activeWeapon = 0;
 
-            sourceRect = new Rectangle((29 * player), 3, 25,25);
+            sourceRect = new Rectangle((30 * player), 3, 25,25);
             weaponSlot = new WeaponObjects[1];
 
             scale = 1;
