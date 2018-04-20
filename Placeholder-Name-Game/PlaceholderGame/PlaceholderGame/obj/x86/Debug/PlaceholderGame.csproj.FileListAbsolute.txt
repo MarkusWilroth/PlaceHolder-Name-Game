@@ -102,6 +102,35 @@ C:\Users\User\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\Placeh
 C:\Users\spellabbet\Desktop\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
 C:\Users\spellabbet\Desktop\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
 C:\Users\User\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Startmenyn.xnb
+<<<<<<< HEAD
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Skott.xnb
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Spritesheet.xnb
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Startmenyn.xnb
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\PlaceholderGame.exe
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\PlaceholderGame.pdb
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csprojResolveAssemblyReference.cache
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csproj.CoreCompileInputs.cache
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
+=======
 C:\Users\Axel\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
 C:\Users\Axel\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
 C:\Users\Axel\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Hud version1.xnb
@@ -157,6 +186,10 @@ C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\Plac
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Hud version1.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Skott.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Startmenyn.xnb
+=======
+>>>>>>> 4b2b83c88f89d969b2d2bd10902a6205ba483164
+>>>>>>> e269e5b9eedde11a0ceeceaf0a146e166dc16638
