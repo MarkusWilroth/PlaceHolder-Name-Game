@@ -220,20 +220,20 @@ namespace PlaceholderGame {
         }
 
         public void weaponSpawn (Vector2 pos) {
-            int weapon = rnd.Next(0, 3);
+            int weapon = rnd.Next(0, 4);
             switch (weapon) { //sourceRect?
                 case 0:
                     //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
-                    weaponO = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, shot);
+                    weaponO = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, shot, weapon);
                     break;
                 case 1:
-                    weaponO = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos, shot);
+                    weaponO = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos, shot, weapon);
                     break;
                 case 2:
-                    weaponO = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos, shot);
+                    weaponO = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos, shot, weapon);
                     break;
                 case 3:
-                    weaponO = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos, shot);
+                    weaponO = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos, shot, weapon);
                     break;
             }
             gameList.Add(weaponO);

@@ -157,3 +157,6 @@ C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\Plac
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csprojResolveAssemblyReference.cache
+C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Hud version1.xnb
+C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Skott.xnb
+C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Startmenyn.xnb
