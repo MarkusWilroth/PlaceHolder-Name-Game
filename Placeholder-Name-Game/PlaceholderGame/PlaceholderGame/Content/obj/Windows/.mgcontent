@@ -4,22 +4,9 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-<<<<<<< HEAD
     <File>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Skott.png</File>
     <File>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Startmenyn.png</File>
     <File>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Spritesheet.PNG</File>
     <File>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Hud version1.png</File>
-=======
-<<<<<<< HEAD
-    <File>C:/Users/Aneela Mariam Latifi/source/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Skott.png</File>
-    <File>C:/Users/Aneela Mariam Latifi/source/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Startmenyn.png</File>
-    <File>C:/Users/Aneela Mariam Latifi/source/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Spritesheet.PNG</File>
-=======
-    <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Skott.png</File>
-    <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Startmenyn.png</File>
-    <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Spritesheet.PNG</File>
-    <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Hud version1.png</File>
->>>>>>> 4b2b83c88f89d969b2d2bd10902a6205ba483164
->>>>>>> e269e5b9eedde11a0ceeceaf0a146e166dc16638
   </SourceFiles>
 </SourceFileCollection>

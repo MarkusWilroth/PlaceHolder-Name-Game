@@ -186,10 +186,8 @@ C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\Plac
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csprojResolveAssemblyReference.cache
-<<<<<<< HEAD
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Hud version1.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Skott.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Startmenyn.xnb
-=======
 >>>>>>> 4b2b83c88f89d969b2d2bd10902a6205ba483164
 >>>>>>> e269e5b9eedde11a0ceeceaf0a146e166dc16638

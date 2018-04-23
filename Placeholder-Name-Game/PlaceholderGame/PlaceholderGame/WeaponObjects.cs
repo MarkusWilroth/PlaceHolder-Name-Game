@@ -16,6 +16,7 @@ namespace PlaceholderGame {
         List<Vector2> shotsList;
         Texture2D shot;
         Bullet bullet;
+        List<Bullet> bulletList;
 
 
 
@@ -27,14 +28,15 @@ namespace PlaceholderGame {
             this.durability = durability;
             this.spriteSheet = spriteSheet;
             this.pos = pos;
+            bulletList = new List<Bullet>();
             
             weaponRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
             sourceRect = new Rectangle(30 * weapon, 65, 25, 25);
         }
 
         public override void Update(GameTime gameTime) {
-            shotPos += direction * 25;
-            shotRect = new Rectangle((int)shotPos.X, (int)shotPos.Y, 5, 5);
+                //bullet.Update(gameTime);
+            
         }
 
         public void Attack(Vector2 direction, Vector2 shotPos, List<Rectangle> wallRectList, int player) {
@@ -44,6 +46,7 @@ namespace PlaceholderGame {
                 this.direction = direction;
                 Console.WriteLine("durability: " + durability);
                 bullet = new Bullet(range, damage, durability, AOE, direction, shot, pos, spriteSheet, shotPos, wallRectList, player); //allt som är rött + direction
+                bulletList.Add(bullet);
             }
         }
 

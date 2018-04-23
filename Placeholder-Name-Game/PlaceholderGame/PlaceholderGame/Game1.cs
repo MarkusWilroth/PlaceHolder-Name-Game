@@ -18,6 +18,7 @@ namespace PlaceholderGame {
         GroundObjects groundO;
         GameObjects gameO;
         WallObjects wallO;
+        Bullet bulletO;
         WeaponObjects weaponO;
         PlayerObjects[] playerO;
         OptionsMenu optionsMenu;

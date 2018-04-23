@@ -24,18 +24,21 @@ namespace PlaceholderGame {
             this.direction = direction;
             //this.pos = pos;
             this.spriteSheet = spriteSheet;
+            speed = 100;
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 5, 5);
         }
 
-        public void Update() {
-            
+        public override void Update(GameTime gameTime) {
+            pos += direction * speed;
+
+            bulletRect.X = (int)pos.X;
+            bulletRect.Y = (int)pos.Y;
         }
 
         
         public override void Draw(SpriteBatch sb) {
             sb.Draw(shot, bulletRect, Color.White);
-            
         }
     }
 }
