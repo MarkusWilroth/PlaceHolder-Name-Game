@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,37 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PlaceholderGame {
-    class Bullet{
-        
-        
+    class Bullet: PlayerObjects{
+        int range, damage, durability, AOE, speed;
+        Texture2D shot, spriteSheet;
+        Vector2 pos, direction;
+        Rectangle bulletRect;
+        MouseState mouseState, oldMouseState;        
 
-        public Bullet(int range, int damage, int durability, int AOE, Texture2D shot, Vector2 pos, Texture2D spriteSheet){
-            
+        public Bullet(int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Vector2 pos, Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int player) : base (spriteSheet, playerPos, wallRectList, player)  {
+            this.range = range;
+            this.damage = damage;
+            this.durability = durability;
+            this.AOE = AOE;
+            this.shot = shot;
+            this.direction = direction;
+            //this.pos = pos;
+            this.spriteSheet = spriteSheet;
+            speed = 100;
+
+            bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 5, 5);
         }
 
-        public void Update() {
+        public override void Update(GameTime gameTime) {
+            pos += direction * speed;
 
+            bulletRect.X = (int)pos.X;
+            bulletRect.Y = (int)pos.Y;
         }
-        public void Draw(SpriteBatch sb) {
-            
+
+        
+        public override void Draw(SpriteBatch sb) {
+            sb.Draw(shot, bulletRect, Color.White);
         }
     }
 }

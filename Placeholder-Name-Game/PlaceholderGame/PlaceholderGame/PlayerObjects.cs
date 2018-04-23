@@ -10,10 +10,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
-        Vector2 direction, playerPos, destination, dir;
+        Vector2 direction, playerPos, destination, dir, mousePos;
         Rectangle playerRect, playerHitBox, playerDest, sourceRect;
         List<Rectangle> wallRectList;
         WeaponObjects[] weaponSlot;
+        Bullet bullet;
 
         int newDestX, newDestY, player, activeWeapon, HP;
         bool hitWall, isMoving;
@@ -21,6 +22,7 @@ namespace PlaceholderGame {
 
         SpriteEffects playerFx;
         KeyboardState keyState, oldKeyState;
+        MouseState mouseState, oldMouseState;
         
 
         public PlayerObjects (Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int player) : base (spriteSheet, playerPos) {
@@ -42,8 +44,11 @@ namespace PlaceholderGame {
 
         public override void Update(GameTime gameTime) {
             keyState = Keyboard.GetState();
-            if (keyState.IsKeyDown(Keys.RightControl) && !oldKeyState.IsKeyDown(Keys.RightControl)) {
-                weaponSlot[activeWeapon].Attack(dir, playerPos);
+            mouseState = Mouse.GetState();
+
+            if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
+                mousePos = new Vector2(mouseState.X, mouseState.Y);
+                weaponSlot[activeWeapon].Attack(mousePos, playerPos, wallRectList, player);
             }
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
@@ -77,6 +82,7 @@ namespace PlaceholderGame {
                 oldKeyState = keyState;
             }
         }
+        
 
         private void ChangeDirection(Vector2 direction) {
             this.direction = direction;
