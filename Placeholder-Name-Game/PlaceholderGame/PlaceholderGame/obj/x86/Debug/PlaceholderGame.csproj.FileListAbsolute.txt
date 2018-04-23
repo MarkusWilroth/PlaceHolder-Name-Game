@@ -187,3 +187,4 @@ C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\Plac
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Flugan\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csprojResolveAssemblyReference.cache
 >>>>>>> 4b2b83c88f89d969b2d2bd10902a6205ba483164
+C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Hud version1.xnb

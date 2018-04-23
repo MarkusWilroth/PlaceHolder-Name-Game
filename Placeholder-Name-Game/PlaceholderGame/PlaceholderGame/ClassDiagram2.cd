@@ -1,2 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PlaceholderGame.Bullet" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceholderGame.Game1" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgwUAMkpJAAEC4BEhgAgBIAmAEEgGCgDPIoAAkAJAA8=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceholderGame.GameObjects" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAgAIAAgAAAAAAAIAAAAAgGCACMACAAAAAAAA=</HashCode>
+      <FileName>GameObjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceholderGame.GroundObjects" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAIAAAAAAgAgAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GroundObjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceholderGame.Hud" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgBAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceholderGame.OptionsMenu" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAQAIAQhAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OptionsMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceholderGame.PlayerObjects" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAQACAAogAAAACAAABCQEAAEyADAIKBBQAIEAA=</HashCode>
+      <FileName>PlayerObjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceholderGame.Program" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceholderGame.WallObjects" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WallObjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlaceholderGame.WeaponObjects" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAMQAAAogAABAAAAQQQAMAEAAAAGAAAAAAAAAA=</HashCode>
+      <FileName>WeaponObjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="PlaceholderGame.GameStates" Collapsed="true">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAiIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

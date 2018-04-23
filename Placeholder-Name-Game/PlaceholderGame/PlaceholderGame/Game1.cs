@@ -81,7 +81,7 @@ namespace PlaceholderGame {
        
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            //startMenu = Content.Load<Texture2D>("Startmenyn");
+            startMenu = Content.Load<Texture2D>("Startmenyn");
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
             shot = Content.Load<Texture2D>("Skott");
             hudTex = Content.Load<Texture2D>("Hud version1");
@@ -150,13 +150,15 @@ namespace PlaceholderGame {
         protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            //spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
             foreach (GameObjects gameO in gameList) {
                 gameO.Draw(spriteBatch);
             }
             for (int i = 0; i < players; i++) {
                 playerO[i].Draw(spriteBatch);
             }
+            spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
+
+
             spriteBatch.End();
             base.Draw(gameTime);
         }
