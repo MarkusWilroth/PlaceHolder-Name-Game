@@ -42,7 +42,7 @@ namespace PlaceholderGame {
             playerFx = SpriteEffects.None;
             playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
 
-            hud = new Hud(spriteSheet, playerPos, wallRectList, player);
+            //hud = new Hud(spriteSheet, playerPos, wallRectList, player);
         }
 
         public override void Update(GameTime gameTime) {
@@ -115,7 +115,7 @@ namespace PlaceholderGame {
 
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
             sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
-            hud.Draw(sb);
+            //hud.Draw(sb);
         }
         public Vector2 SendPos() {
             return playerPos;
