@@ -23,11 +23,12 @@ namespace PlaceholderGame {
         PlayerObjects[] playerO;
         OptionsMenu optionsMenu;
         Hud hud;
+        MouseState mouseState;
 
         Vector2 pos, wallPos, groundPos, playerPos;
         Rectangle[] sourceRect;
         Rectangle wallRect;
-        Vector2 startPos, optionsPos, quitPos; //För menyn
+        Vector2 startPos, optionsPos, quitPos, mousePos; //För menyn
         Rectangle startRec, optionsRec, quitRec; //För menyn
         List<GameObjects> gameList;
         List<WeaponObjects> weaponList;
@@ -122,8 +123,11 @@ namespace PlaceholderGame {
         protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates
             switch (currentGS) { //gameStates
                 case GameStates.Menu:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter)){
-                        currentGS = GameStates.Game;
+                    if (mouseState.LeftButton == ButtonState.Pressed && mouseState.LeftButton == ButtonState.Released)
+                    {
+                      
+                        mousePos = new Vector2(mouseState.X, mouseState.Y);
+                        //currentGS = GameStates.Game;
                     }
                     break;
                 case GameStates.Game:
