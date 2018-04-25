@@ -42,7 +42,7 @@ namespace PlaceholderGame {
             playerFx = SpriteEffects.None;
             playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
 
-            hud = new Hud(spriteSheet, playerPos, wallRectList, player);
+            //hud = new Hud(spriteSheet, playerPos, wallRectList, player);
         }
 
         public override void Update(GameTime gameTime) {
@@ -55,22 +55,18 @@ namespace PlaceholderGame {
             }
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
-                    dir = new Vector2(-1, 0);
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(90);
 
                 } else if (keyState.IsKeyDown(Keys.Up)) {
-                    dir = new Vector2(0, -1);
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-180);
 
                 } else if (keyState.IsKeyDown(Keys.Right)) {
-                    dir = new Vector2(1, 0);
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(-90);
 
                 } else if (keyState.IsKeyDown(Keys.Down)) {
-                    dir = new Vector2(0, 1);
                     ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(0);
                 }
@@ -96,9 +92,12 @@ namespace PlaceholderGame {
             playerDest = new Rectangle(newDestX, newDestY, 25, 25);
 
             foreach (Rectangle wallRect in wallRectList) {
-                //hitWall = HitWall(playerDest, wallRect);
-                if (wallRect.Intersects(playerDest)) { 
+                if (wallRect.Intersects(playerDest)) {
+                    hitWall = true;
                     break;
+                }
+                else {
+                    hitWall = false;
                 }
             }
             
@@ -112,10 +111,13 @@ namespace PlaceholderGame {
                 isMoving = false;
             }
         }
+        public void GetHit(int damage) {
+            HP -= damage;
+        }
 
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
             sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
-            hud.Draw(sb);
+            //hud.Draw(sb);
         }
         public Vector2 SendPos() {
             return playerPos;

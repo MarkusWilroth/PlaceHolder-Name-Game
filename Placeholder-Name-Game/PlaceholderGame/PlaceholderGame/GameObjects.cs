@@ -28,12 +28,5 @@ namespace PlaceholderGame {
 
         public abstract void Draw(SpriteBatch sb);
 
-        protected bool HitWall(Rectangle playerDest, Rectangle wallRect) {
-            if (wallRect.Intersects(playerDest)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
     }
 }
