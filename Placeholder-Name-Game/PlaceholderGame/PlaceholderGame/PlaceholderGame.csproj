@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="Content\Hud version1.png" />
     <Content Include="Content\Spritesheet.PNG" />
+    <Content Include="Content\Startmenyn.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
