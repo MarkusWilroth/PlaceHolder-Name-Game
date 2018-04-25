@@ -161,7 +161,7 @@ namespace PlaceholderGame {
             for (int i = 0; i < players; i++) {
                 playerO[i].Draw(spriteBatch);
             }
-           spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
+           //spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
 
             spriteBatch.End();
             base.Draw(gameTime);
