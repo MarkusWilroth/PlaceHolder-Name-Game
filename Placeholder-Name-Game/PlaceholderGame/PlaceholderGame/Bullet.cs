@@ -12,8 +12,9 @@ namespace PlaceholderGame {
         int range, damage, durability, AOE, speed;
         Texture2D shot, spriteSheet;
         Vector2 pos, direction;
-        Rectangle bulletRect;
-        MouseState mouseState, oldMouseState;        
+        Rectangle bulletRect, playerRect;
+        MouseState mouseState, oldMouseStat;
+        PlayerObjects playerO;        
 
         public Bullet(int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Vector2 pos, Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int player) : base (spriteSheet, playerPos, wallRectList, player)  {
             this.range = range;
@@ -34,6 +35,15 @@ namespace PlaceholderGame {
 
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;
+        }
+
+        public bool HitPlayer(Vector2 playerPos) {
+            playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
+            if (bulletRect.Intersects(playerRect)) {
+                playerO.GetHit(damage);
+                return true;
+            }
+            return false;
         }
 
         

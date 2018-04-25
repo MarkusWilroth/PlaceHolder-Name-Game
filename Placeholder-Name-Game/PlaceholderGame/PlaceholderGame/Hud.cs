@@ -22,24 +22,23 @@ namespace PlaceholderGame {
         public Hud(Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int player) : base(spriteSheet, playerPos, wallRectList, player){
 
         }
-        
-        public override void Draw(SpriteBatch spriteBatch){
-            
-            spriteBatch.Draw(hudTex, new Vector2(0, 0), Color.White);
-        }
 
-        public void Initialize(float screenWidth, float screenHeight, Texture2D hudTex){
+        //public void Initialize(float screenWidth, float screenHeight, Texture2D hudTex){
 
-            bgHeight = screenHeight;
-            bgWidth = screenWidth *(screenHeight/hudTex.Height);
-            this.hudTex = hudTex;
+        //    bgHeight = screenHeight;
+        //    bgWidth = screenWidth *(screenHeight/hudTex.Height);
+        //    this.hudTex = hudTex;
 
-            for (int i = 0; i < hudPos.Length; i++)
-                hudPos[i].X = i * bgWidth;
-        }
+        //    for (int i = 0; i < hudPos.Length; i++)
+        //        hudPos[i].X = i * bgWidth;
+        //}
 
         public void Update(GameTime game){
 
+        }
+
+        public override void Draw(SpriteBatch spriteBatch) {
+            spriteBatch.Draw(hudTex, new Vector2(0, 0), Color.White);
         }
     }
 }

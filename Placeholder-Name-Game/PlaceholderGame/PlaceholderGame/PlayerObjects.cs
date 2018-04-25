@@ -55,22 +55,18 @@ namespace PlaceholderGame {
             }
             if (!isMoving) {
                 if (keyState.IsKeyDown(Keys.Left)) {
-                    dir = new Vector2(-1, 0);
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(90);
 
                 } else if (keyState.IsKeyDown(Keys.Up)) {
-                    dir = new Vector2(0, -1);
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-180);
 
                 } else if (keyState.IsKeyDown(Keys.Right)) {
-                    dir = new Vector2(1, 0);
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(-90);
 
                 } else if (keyState.IsKeyDown(Keys.Down)) {
-                    dir = new Vector2(0, 1);
                     ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(0);
                 }
@@ -96,9 +92,12 @@ namespace PlaceholderGame {
             playerDest = new Rectangle(newDestX, newDestY, 25, 25);
 
             foreach (Rectangle wallRect in wallRectList) {
-                //hitWall = HitWall(playerDest, wallRect);
-                if (wallRect.Intersects(playerDest)) { 
+                if (wallRect.Intersects(playerDest)) {
+                    hitWall = true;
                     break;
+                }
+                else {
+                    hitWall = false;
                 }
             }
             
@@ -111,6 +110,9 @@ namespace PlaceholderGame {
             if (hitWall) {
                 isMoving = false;
             }
+        }
+        public void GetHit(int damage) {
+            HP -= damage;
         }
 
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
