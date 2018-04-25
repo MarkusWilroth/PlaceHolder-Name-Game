@@ -93,8 +93,8 @@ namespace PlaceholderGame {
             playerDest = new Rectangle(newDestX, newDestY, 25, 25);
 
             foreach (Rectangle wallRect in wallRectList) {
-                hitWall = HitWall(playerDest, wallRect);
-                if (hitWall) {
+                //hitWall = HitWall(playerDest, wallRect);
+                if (wallRect.Intersects(playerDest)) { 
                     break;
                 }
             }
