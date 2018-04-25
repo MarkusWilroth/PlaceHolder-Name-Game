@@ -23,8 +23,9 @@ namespace PlaceholderGame {
 
         }
         
-        public void Draw(SpriteBatch sb){
-            sb.Draw(hudTex, new Vector2(0, 0), Color.White);
+        public void Draw(SpriteBatch spriteBatch){
+            
+            spriteBatch.Draw(hudTex, new Vector2(0, 0), Color.White);
         }
 
         public void Initialize(float screenWidth, float screenHeight, Texture2D hudTex){

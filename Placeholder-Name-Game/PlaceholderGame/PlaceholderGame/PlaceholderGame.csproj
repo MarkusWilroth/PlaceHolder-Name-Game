@@ -61,7 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Hud version1.png" />
+    <Content Include="Content\Hud Version 3.png" />
     <Content Include="Content\Spritesheet.PNG" />
     <Content Include="Content\Startmenyn.png" />
     <Content Include="Icon.ico" />
