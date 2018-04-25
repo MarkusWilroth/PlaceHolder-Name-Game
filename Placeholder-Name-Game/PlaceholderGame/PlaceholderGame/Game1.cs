@@ -35,7 +35,7 @@ namespace PlaceholderGame {
         List<Rectangle> wallRectList;       
 
         string getLine;
-        bool isPicked, menuStart;        
+        bool isPicked, showMenu;        
         int groundX, groundY, count, player, weaponID;
         public int levels, currentLevel, players;
         char textLetter;
@@ -88,6 +88,8 @@ namespace PlaceholderGame {
             hudTex = Content.Load<Texture2D>("Hud version1");
             ResetMap();
             startRec = new Rectangle(695, 432, 199, 49);
+            optionsRec = new Rectangle(697, 503, 199, 49);
+            quitRec = new Rectangle(698, 577, 199, 49);
 
             groundPosList = posGiver(printMap, '-');
             foreach (Vector2 pos in groundPosList) {
@@ -159,7 +161,7 @@ namespace PlaceholderGame {
             for (int i = 0; i < players; i++) {
                 playerO[i].Draw(spriteBatch);
             }
-           // spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
+           spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
 
             spriteBatch.End();
             base.Draw(gameTime);
