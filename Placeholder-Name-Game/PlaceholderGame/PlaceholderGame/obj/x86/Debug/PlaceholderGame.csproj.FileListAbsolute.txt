@@ -25,3 +25,5 @@ C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csprojResolveAssemblyReference.cache
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
+C:\Users\Axel\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
+C:\Users\Axel\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb

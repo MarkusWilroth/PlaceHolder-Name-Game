@@ -85,7 +85,7 @@ namespace PlaceholderGame {
             startMenu = Content.Load<Texture2D>("Startmenyn"); //För menyn
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
             shot = Content.Load<Texture2D>("Skott");
-            hudTex = Content.Load<Texture2D>("Hud version1");
+            hudTex = Content.Load<Texture2D>("Hud version 3");
             ResetMap();
             startRec = new Rectangle(695, 432, 199, 49);
             optionsRec = new Rectangle(697, 503, 199, 49);
