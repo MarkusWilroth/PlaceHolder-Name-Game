@@ -89,7 +89,7 @@ namespace PlaceholderGame {
             shot = Content.Load<Texture2D>("Skott");
             hudTex = Content.Load<Texture2D>("Hud version 3");
             ResetMap();
-            startRec = new Rectangle(695, 432, 199, 49);
+            startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
 
@@ -125,23 +125,18 @@ namespace PlaceholderGame {
             mouseState = Mouse.GetState();
             switch (currentGS) { //gameStates
                 case GameStates.Menu:
-                    
                     mousePos = new Rectangle(mouseState.X, mouseState.Y, 5, 5);
-                    if (mouseState.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released)
-                    {
-                        //if (startRec.Intersects(mousePos))
-                        //{
-                        //    //currentGS = GameStates.Game;
-                        //    //showMenu = false;
-                        //}                      
+                    if (mouseState.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released) {
+                        if (startRec.Intersects(mousePos)) {
+                            currentGS = GameStates.Game;
+                        }
                     }
-                        break;
+                    break;
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
                     foreach (WeaponObjects weaponO in weaponList) {
                         weaponO.Update(gameTime);
                     }
-                    
                     keyState = Keyboard.GetState();
                     PickGun();
                     if (keyState.IsKeyDown(Keys.End) && !(oldKeyState.IsKeyDown(Keys.End))) {
@@ -154,7 +149,6 @@ namespace PlaceholderGame {
                     oldKeyState = keyState;
                     break;
                 case GameStates.Scoreboard:
-
                     break;
             }
             oldMouse = mouseState;
@@ -164,19 +158,21 @@ namespace PlaceholderGame {
         protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-
-            foreach (GameObjects gameO in gameList) {
-                gameO.Draw(spriteBatch);
+            switch (currentGS) {
+                case GameStates.Menu:
+                    spriteBatch.Draw(startMenu, Vector2.Zero, Color.White);
+                    break;
+                case GameStates.Game:
+                    foreach (GameObjects gameO in gameList) {
+                        gameO.Draw(spriteBatch);
+                    }
+                    for (int i = 0; i < players; i++) {
+                        playerO[i].Draw(spriteBatch);
+                    }
+                    break;
+                case GameStates.Scoreboard:
+                    break;
             }
-            for (int i = 0; i < players; i++) {
-                playerO[i].Draw(spriteBatch);
-            }
-            if (showMenu)
-            {
-                spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
-            }
-            
-
             spriteBatch.End();
             base.Draw(gameTime);
         }
