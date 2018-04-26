@@ -23,13 +23,13 @@ namespace PlaceholderGame {
         PlayerObjects[] playerO;
         OptionsMenu optionsMenu;
         Hud hud;
-        MouseState mouseState;
+        MouseState mouseState, oldMouse;
 
         Vector2 pos, wallPos, groundPos, playerPos;
         Rectangle[] sourceRect;
         Rectangle wallRect;
-        Vector2 startPos, optionsPos, quitPos, mousePos; //För menyn
-        Rectangle startRec, optionsRec, quitRec; //För menyn
+        Vector2 startPos, optionsPos, quitPos; //För menyn
+        Rectangle startRec, optionsRec, quitRec, mousePos; //För menyn
         List<GameObjects> gameList;
         List<WeaponObjects> weaponList;
         List<Vector2> wallPosList, groundPosList, playerPosList, posList, weaponPosList;
@@ -73,6 +73,7 @@ namespace PlaceholderGame {
             currentLevel = 0;
             count = 0;
             FileReader();
+            showMenu = true;
             
         }
 
@@ -121,10 +122,23 @@ namespace PlaceholderGame {
 
 
         protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates
+            mouseState = Mouse.GetState();
             switch (currentGS) { //gameStates
                 case GameStates.Menu:
+<<<<<<< HEAD
                     if (Keyboard.GetState().IsKeyDown(Keys.Enter)) {
                         currentGS = GameStates.Game;
+=======
+                    
+                    mousePos = new Rectangle(mouseState.X, mouseState.Y, 5, 5);
+                    if (mouseState.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released)
+                    {
+                        //if (startRec.Intersects(mousePos))
+                        //{
+                        //    //currentGS = GameStates.Game;
+                        //    //showMenu = false;
+                        //}                      
+>>>>>>> 752b0e0ad649824bc743f08e4db69b25314291ea
                     }
                         break;
                 case GameStates.Game:
@@ -148,7 +162,7 @@ namespace PlaceholderGame {
 
                     break;
             }
-            
+            oldMouse = mouseState;
             base.Update(gameTime);
         }
 
@@ -162,8 +176,12 @@ namespace PlaceholderGame {
             for (int i = 0; i < players; i++) {
                 playerO[i].Draw(spriteBatch);
             }
-            //spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
+            if (showMenu)
+            {
+                spriteBatch.Draw(startMenu, Vector2.Zero, Color.White); //Menyn
+            }
             
+
             spriteBatch.End();
             base.Draw(gameTime);
         }
