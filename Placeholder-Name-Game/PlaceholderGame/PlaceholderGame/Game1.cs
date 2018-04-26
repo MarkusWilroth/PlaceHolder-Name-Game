@@ -123,13 +123,10 @@ namespace PlaceholderGame {
         protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates
             switch (currentGS) { //gameStates
                 case GameStates.Menu:
-                    if (mouseState.LeftButton == ButtonState.Pressed && mouseState.LeftButton == ButtonState.Released)
-                    {
-                      
-                        mousePos = new Vector2(mouseState.X, mouseState.Y);
-                        //currentGS = GameStates.Game;
+                    if (Keyboard.GetState().IsKeyDown(Keys.Enter)) {
+                        currentGS = GameStates.Game;
                     }
-                    break;
+                        break;
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
                     foreach (WeaponObjects weaponO in weaponList) {
