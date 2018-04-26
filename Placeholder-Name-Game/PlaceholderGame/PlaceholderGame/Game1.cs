@@ -125,10 +125,6 @@ namespace PlaceholderGame {
             mouseState = Mouse.GetState();
             switch (currentGS) { //gameStates
                 case GameStates.Menu:
-<<<<<<< HEAD
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter)) {
-                        currentGS = GameStates.Game;
-=======
                     
                     mousePos = new Rectangle(mouseState.X, mouseState.Y, 5, 5);
                     if (mouseState.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released)
@@ -138,7 +134,6 @@ namespace PlaceholderGame {
                         //    //currentGS = GameStates.Game;
                         //    //showMenu = false;
                         //}                      
->>>>>>> 752b0e0ad649824bc743f08e4db69b25314291ea
                     }
                         break;
                 case GameStates.Game:

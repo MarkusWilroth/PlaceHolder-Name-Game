@@ -4,16 +4,9 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-<<<<<<< HEAD
     <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Skott.png</File>
     <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Startmenyn.png</File>
     <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Spritesheet.PNG</File>
     <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Hud Version 3.png</File>
-=======
-    <File>C:/Users/Ema/Desktop/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Skott.png</File>
-    <File>C:/Users/Ema/Desktop/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Startmenyn.png</File>
-    <File>C:/Users/Ema/Desktop/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Spritesheet.PNG</File>
-    <File>C:/Users/Ema/Desktop/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Hud Version 3.png</File>
->>>>>>> 752b0e0ad649824bc743f08e4db69b25314291ea
   </SourceFiles>
 </SourceFileCollection>
