@@ -8,29 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PlaceholderGame {
-    class Bullet: PlayerObjects{
+    class Bullet: WeaponObjects{
         int range, damage, durability, AOE, speed;
         Texture2D shot, spriteSheet;
         Vector2 pos, direction;
         Rectangle bulletRect, playerRect;
         MouseState mouseState, oldMouseStat;
-        PlayerObjects playerO;        
+        PlayerObjects playerO;
+        WeaponObjects weaponO;
 
-        public Bullet(int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Vector2 pos, Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int player) : base (spriteSheet, playerPos, wallRectList, player)  {
+        public Bullet(String name, int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Texture2D spriteSheet, Vector2 pos, List<Rectangle> wallRectList, int player, int weapon) 
+            : base (name, durability, range, damage, AOE, spriteSheet, pos, shot, weapon)  {
             this.range = range;
             this.damage = damage;
             this.durability = durability;
             this.AOE = AOE;
             this.shot = shot;
             this.direction = direction;
-            //this.pos = pos;
+            this.pos = pos;
             this.spriteSheet = spriteSheet;
             speed = 100;
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 5, 5);
         }
 
-        public override void Update(GameTime gameTime) {
+        public  void Update(GameTime gameTime) {
             pos += direction * speed;
 
             bulletRect.X = (int)pos.X;
@@ -47,7 +49,7 @@ namespace PlaceholderGame {
         }
 
         
-        public override void Draw(SpriteBatch sb) {
+        public void Draw(SpriteBatch sb) {
             sb.Draw(shot, bulletRect, Color.White);
         }
     }

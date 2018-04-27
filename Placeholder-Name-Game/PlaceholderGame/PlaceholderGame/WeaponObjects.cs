@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class WeaponObjects : GameObjects {
-        int range, damage, durability, AOE;
+        int range, damage, durability, AOE, weapon;
         Vector2 shotPos, direction;
         String name;
         Rectangle weaponRect, sourceRect, shotRect;
@@ -28,6 +28,7 @@ namespace PlaceholderGame {
             this.durability = durability;
             this.spriteSheet = spriteSheet;
             this.pos = pos;
+            this.weapon = weapon;
             bulletList = new List<Bullet>();
             
             weaponRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
@@ -45,7 +46,7 @@ namespace PlaceholderGame {
                 this.shotPos = shotPos;
                 this.direction = direction;
                 Console.WriteLine("durability: " + durability);
-                bullet = new Bullet(range, damage, durability, AOE, direction, shot, pos, spriteSheet, shotPos, wallRectList, player); //allt som är rött + direction
+                bullet = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon); //allt som är rött + direction
                 bulletList.Add(bullet);
             }
         }
