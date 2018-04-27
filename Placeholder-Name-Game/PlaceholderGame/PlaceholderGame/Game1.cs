@@ -127,10 +127,17 @@ namespace PlaceholderGame {
                 case GameStates.Menu:
                     mousePos = new Rectangle(mouseState.X, mouseState.Y, 5, 5);
                     if (mouseState.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released) {
-                        if (startRec.Intersects(mousePos)) {
+                        if (startRec.Intersects(mousePos))
+                        {
                             currentGS = GameStates.Game;
+                            
+                        }
+
+                        if (quitRec.Intersects(mousePos)) {
+                            Exit();
                         }
                     }
+
                     break;
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
@@ -152,6 +159,8 @@ namespace PlaceholderGame {
                     break;
             }
             oldMouse = mouseState;
+
+
             base.Update(gameTime);
         }
 
