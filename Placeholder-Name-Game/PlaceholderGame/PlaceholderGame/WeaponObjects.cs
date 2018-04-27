@@ -17,8 +17,7 @@ namespace PlaceholderGame {
         Texture2D shot;
         Bullet bullet;
         List<Bullet> bulletList;
-
-
+        bool isFired;
 
         public WeaponObjects(String name, int durability, int range, int damage, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot, int weapon) : base(spriteSheet, pos) {
             this.name = name;
@@ -29,15 +28,16 @@ namespace PlaceholderGame {
             this.spriteSheet = spriteSheet;
             this.pos = pos;
             this.weapon = weapon;
+            isFired = false;
             bulletList = new List<Bullet>();
-            
+
             weaponRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
             sourceRect = new Rectangle(30 * weapon, 65, 25, 25);
         }
 
         public override void Update(GameTime gameTime) {
-                //bullet.Update(gameTime);
-            
+            //bullet.Update(gameTime);
+
         }
 
         public void Attack(Vector2 direction, Vector2 shotPos, List<Rectangle> wallRectList, int player) {
@@ -48,6 +48,7 @@ namespace PlaceholderGame {
                 Console.WriteLine("durability: " + durability);
                 bullet = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon); //allt som är rött + direction
                 bulletList.Add(bullet);
+                isFired = true;
             }
         }
 
@@ -56,6 +57,16 @@ namespace PlaceholderGame {
                 return true;
             }
             return false;
+        }
+
+        public List<Bullet> GetBulletList() {
+            if (isFired) {
+                return bulletList;
+            }
+            else {
+                return null;
+            }
+            
         }
 
         public override void Draw(SpriteBatch sb) {

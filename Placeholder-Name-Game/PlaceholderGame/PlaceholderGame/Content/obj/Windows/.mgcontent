@@ -4,16 +4,9 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-<<<<<<< HEAD
     <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Skott.png</File>
     <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Startmenyn.png</File>
     <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Spritesheet.PNG</File>
     <File>C:/Users/User/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Hud Version 3.png</File>
-=======
-    <File>C:/Users/Aneela Mariam Latifi/source/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Skott.png</File>
-    <File>C:/Users/Aneela Mariam Latifi/source/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Startmenyn.png</File>
-    <File>C:/Users/Aneela Mariam Latifi/source/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Spritesheet.PNG</File>
-    <File>C:/Users/Aneela Mariam Latifi/source/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Hud Version 3.png</File>
->>>>>>> 0c8a7c5a02ccf784f426989a1c4a3880aadc5889
   </SourceFiles>
 </SourceFileCollection>

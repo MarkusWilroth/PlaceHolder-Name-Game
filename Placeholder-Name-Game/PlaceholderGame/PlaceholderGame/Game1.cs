@@ -33,7 +33,8 @@ namespace PlaceholderGame {
         List<GameObjects> gameList;
         List<WeaponObjects> weaponList;
         List<Vector2> wallPosList, groundPosList, playerPosList, posList, weaponPosList;
-        List<Rectangle> wallRectList;       
+        List<Rectangle> wallRectList;
+        List<Bullet> bulletList;
 
         string getLine;
         bool isPicked, showMenu;        
@@ -68,6 +69,7 @@ namespace PlaceholderGame {
             playerPosList = new List<Vector2>();
             weaponPosList = new List<Vector2>();
             weaponList = new List<WeaponObjects>();
+            bulletList = new List<Bullet>();
             posList = new List<Vector2>();
             wallRectList = new List<Rectangle>();
             currentLevel = 0;
@@ -129,20 +131,21 @@ namespace PlaceholderGame {
                     if (mouseState.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released) {
                         if (startRec.Intersects(mousePos))
                         {
-                            currentGS = GameStates.Game;
-                            
+                            currentGS = GameStates.Game;                            
                         }
-
                         if (quitRec.Intersects(mousePos)) {
                             Exit();
                         }
                     }
-
                     break;
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
                     foreach (WeaponObjects weaponO in weaponList) {
                         weaponO.Update(gameTime);
+                        bulletList = bulletO.GetBulletList();
+                    }
+                    foreach (Bullet bullet in bulletList) {
+                        bulletO.Update(gameTime);
                     }
                     keyState = Keyboard.GetState();
                     PickGun();
@@ -163,6 +166,8 @@ namespace PlaceholderGame {
 
             base.Update(gameTime);
         }
+
+
 
         protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
             GraphicsDevice.Clear(Color.CornflowerBlue);

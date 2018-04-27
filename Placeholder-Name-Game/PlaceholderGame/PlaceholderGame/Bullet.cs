@@ -32,7 +32,7 @@ namespace PlaceholderGame {
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 5, 5);
         }
 
-        public  void Update(GameTime gameTime) {
+        public void Update(GameTime gameTime) {
             pos += direction * speed;
 
             bulletRect.X = (int)pos.X;
