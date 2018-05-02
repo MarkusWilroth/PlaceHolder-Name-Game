@@ -27,9 +27,8 @@ namespace PlaceholderGame {
 
         Vector2 pos, wallPos, groundPos, playerPos;
         Rectangle[] sourceRect;
-        Rectangle wallRect;
         Vector2 startPos, optionsPos, quitPos; //För menyn
-        Rectangle startRec, optionsRec, quitRec, mousePos; //För menyn
+        Rectangle startRec, optionsRec, quitRec, mousePos, wallRect, playerRect; //För menyn
         List<GameObjects> gameList;
         List<WeaponObjects> weaponList;
         List<Vector2> wallPosList, groundPosList, playerPosList, posList, weaponPosList;
@@ -142,7 +141,10 @@ namespace PlaceholderGame {
                     playerO[player].Update(gameTime);
                     foreach (WeaponObjects weaponO in weaponList) {
                         weaponO.Update(gameTime);
-                        bulletList = bulletO.GetBulletList();
+                        if (weaponO.isFired) {
+                            bulletList = bulletO.GetBulletList();
+                        }
+
                     }
                     foreach (Bullet bullet in bulletList) {
                         bulletO.Update(gameTime);
@@ -167,6 +169,17 @@ namespace PlaceholderGame {
             base.Update(gameTime);
         }
 
+        public void HitPlayer(Rectangle bulletRect, int damage) {
+            for (int i = 0; i < players; i++) {
+                playerRect = playerO[i].GetRect();
+                if (bulletRect.Intersects(playerRect)) {
+                    playerO[i].GetHit(damage);
+                    break;
+                }
+            }
+            
+        }
+
 
 
         protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
@@ -179,6 +192,9 @@ namespace PlaceholderGame {
                 case GameStates.Game:
                     foreach (GameObjects gameO in gameList) {
                         gameO.Draw(spriteBatch);
+                    }
+                    foreach (Bullet bullet in bulletList) {
+                        bulletO.Draw(spriteBatch);
                     }
                     for (int i = 0; i < players; i++) {
                         playerO[i].Draw(spriteBatch);

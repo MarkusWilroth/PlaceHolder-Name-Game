@@ -9,15 +9,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class WeaponObjects : GameObjects {
-        int range, damage, durability, AOE, weapon;
+        int range, damage, durability, AOE, weapon, speed;
         Vector2 shotPos, direction;
         String name;
-        Rectangle weaponRect, sourceRect, shotRect;
+        Rectangle weaponRect, sourceRect, bulletRect;
         List<Vector2> shotsList;
         Texture2D shot;
         Bullet bullet;
+        Game1 game;
         List<Bullet> bulletList;
-        bool isFired;
+        public bool isFired;
 
         public WeaponObjects(String name, int durability, int range, int damage, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot, int weapon) : base(spriteSheet, pos) {
             this.name = name;
@@ -28,6 +29,8 @@ namespace PlaceholderGame {
             this.spriteSheet = spriteSheet;
             this.pos = pos;
             this.weapon = weapon;
+            this.shot = shot;
+            speed = 100;
             isFired = false;
             bulletList = new List<Bullet>();
 
@@ -36,19 +39,24 @@ namespace PlaceholderGame {
         }
 
         public override void Update(GameTime gameTime) {
-            //bullet.Update(gameTime);
-
+            pos += direction * speed;
+            bulletRect.X = (int)pos.X;
+            bulletRect.Y = (int)pos.Y;
+            game.HitPlayer(bulletRect, damage);
         }
+        
 
         public void Attack(Vector2 direction, Vector2 shotPos, List<Rectangle> wallRectList, int player) {
             if (durability > 0) { //Fixa i hudden så att man kan se hur många skott det finns kvar
                 durability--;
+                bulletRect = new Rectangle((int)shotPos.X, (int)shotPos.Y, 5, 5);
                 this.shotPos = shotPos;
                 this.direction = direction;
                 Console.WriteLine("durability: " + durability);
-                bullet = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon); //allt som är rött + direction
-                bulletList.Add(bullet);
-                isFired = true;
+                
+                //bullet = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon); //allt som är rött + direction
+                //bulletList.Add(bullet);
+                //isFired = true;
             }
         }
 
@@ -60,17 +68,12 @@ namespace PlaceholderGame {
         }
 
         public List<Bullet> GetBulletList() {
-            if (isFired) {
-                return bulletList;
-            }
-            else {
-                return null;
-            }
-            
+            return bulletList;
         }
 
         public override void Draw(SpriteBatch sb) {
-            sb.Draw(spriteSheet, weaponRect, sourceRect, Color.White);                        
+            sb.Draw(spriteSheet, weaponRect, sourceRect, Color.White);
+            sb.Draw(shot, bulletRect, Color.White);
         }
     }
 }
