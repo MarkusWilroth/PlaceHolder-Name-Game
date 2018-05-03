@@ -39,10 +39,10 @@ namespace PlaceholderGame {
         }
 
         public override void Update(GameTime gameTime) {
-            pos += direction * speed;
-            bulletRect.X = (int)pos.X;
-            bulletRect.Y = (int)pos.Y;
-            game.HitPlayer(bulletRect, damage);
+            //pos += direction * speed;
+            //bulletRect.X = (int)pos.X;
+            //bulletRect.Y = (int)pos.Y;
+            //game.HitPlayer(bulletRect, damage);
         }
         
 

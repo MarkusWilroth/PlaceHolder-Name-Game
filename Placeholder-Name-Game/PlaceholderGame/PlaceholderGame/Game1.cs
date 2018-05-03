@@ -142,7 +142,7 @@ namespace PlaceholderGame {
                     foreach (WeaponObjects weaponO in weaponList) {
                         weaponO.Update(gameTime);
                         if (weaponO.isFired) {
-                            bulletList = bulletO.GetBulletList();
+                            bulletList = weaponO.GetBulletList();
                         }
 
                     }

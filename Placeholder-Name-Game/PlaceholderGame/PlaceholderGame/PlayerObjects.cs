@@ -39,7 +39,7 @@ namespace PlaceholderGame {
             weaponSlot = new WeaponObjects[2];
 
             scale = 1;
-            speed = 100;
+            speed = 500;
             playerFx = SpriteEffects.None;
             playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
 
