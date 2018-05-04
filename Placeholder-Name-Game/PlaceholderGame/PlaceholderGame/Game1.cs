@@ -141,17 +141,15 @@ namespace PlaceholderGame {
                     playerO[player].Update(gameTime);
                     foreach (WeaponObjects weaponO in weaponList) {
                         weaponO.Update(gameTime);
-                        if (weaponO.isFired) {
-                            bulletList = weaponO.GetBulletList();
-                        }
-
+                        //bulletList = weaponO.GetBulletList();
+                        //foreach (Bullet bullet in bulletList) {
+                        //    bullet.Update(gameTime);
+                        //}
                     }
-                    foreach (Bullet bullet in bulletList) {
-                        bulletO.Update(gameTime);
-                    }
+                    
                     keyState = Keyboard.GetState();
                     PickGun();
-                    if (keyState.IsKeyDown(Keys.End) && !(oldKeyState.IsKeyDown(Keys.End))) {
+                    if (keyState.IsKeyDown(Keys.Tab) && !(oldKeyState.IsKeyDown(Keys.Tab))) {
                         player++;
                         if (player >= players) {
                             player = 0;
@@ -276,10 +274,10 @@ namespace PlaceholderGame {
                     weaponO = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos, shot, weapon);
                     break;
                 case 2:
-                    weaponO = new WeaponObjects("LaserSword", 1, 4, 3, 1, spriteSheet, pos, shot, weapon);
+                    weaponO = new WeaponObjects("LaserSword", 2, 4, 3, 1, spriteSheet, pos, shot, weapon);
                     break;
                 case 3:
-                    weaponO = new WeaponObjects("BaseballBat", 1, 3, 5, 1, spriteSheet, pos, shot, weapon);
+                    weaponO = new WeaponObjects("BaseballBat", 2, 3, 5, 1, spriteSheet, pos, shot, weapon);
                     break;
             }
             gameList.Add(weaponO);

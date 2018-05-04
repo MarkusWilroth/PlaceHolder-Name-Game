@@ -46,6 +46,7 @@
     <Compile Include="GameObjects.cs" />
     <Compile Include="GroundObjects.cs" />
     <Compile Include="Hud.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="OptionsMenu.cs" />
     <Compile Include="PlayerObjects.cs" />
     <Compile Include="Program.cs" />

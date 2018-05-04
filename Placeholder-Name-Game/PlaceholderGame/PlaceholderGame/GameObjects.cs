@@ -19,9 +19,17 @@ namespace PlaceholderGame {
         bool hitWall;
 
         protected Rectangle wallRect;
-        GroundObjects groundO;        
+        GroundObjects groundO;
+        PlayerObjects[] playerO;
+        WeaponObjects weaponO;
+
 
         public GameObjects(Texture2D spriteSheet, Vector2 pos) {
+        }
+        public void Damage() {
+            for (int i = 0; i < 4; i++) {
+                //playerO[i].
+            }
         }
 
         public abstract void Update(GameTime gameTime);

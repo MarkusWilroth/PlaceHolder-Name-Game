@@ -39,10 +39,10 @@ namespace PlaceholderGame {
         }
 
         public override void Update(GameTime gameTime) {
-            //pos += direction * speed;
-            //bulletRect.X = (int)pos.X;
-            //bulletRect.Y = (int)pos.Y;
-            //game.HitPlayer(bulletRect, damage);
+            pos += direction * speed;
+            bulletRect.X = (int)pos.X;
+            bulletRect.Y = (int)pos.Y;
+            game.HitPlayer(bulletRect, damage);
         }
         
 
@@ -53,8 +53,8 @@ namespace PlaceholderGame {
                 this.shotPos = shotPos;
                 this.direction = direction;
                 Console.WriteLine("durability: " + durability);
-                
-                //bullet = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon); //allt som är rött + direction
+
+                //bullet = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon); 
                 //bulletList.Add(bullet);
                 //isFired = true;
             }

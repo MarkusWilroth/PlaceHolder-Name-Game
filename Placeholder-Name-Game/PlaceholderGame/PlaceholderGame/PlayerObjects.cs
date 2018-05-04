@@ -39,7 +39,7 @@ namespace PlaceholderGame {
             weaponSlot = new WeaponObjects[2];
 
             scale = 1;
-            speed = 500;
+            speed = 100;
             playerFx = SpriteEffects.None;
             playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
 
@@ -57,21 +57,22 @@ namespace PlaceholderGame {
                 }
             }
             SwitchWeapon();
+            //Console.WriteLine("Namn på vapen: "+weaponSlot[activeWeapon].name
 
             if (!isMoving) {
-                if (keyState.IsKeyDown(Keys.Left)) {
+                if (keyState.IsKeyDown(Keys.A)) {
                     ChangeDirection(new Vector2(-1, 0));
                     rotation = MathHelper.ToRadians(90);
 
-                } else if (keyState.IsKeyDown(Keys.Up)) {
+                } else if (keyState.IsKeyDown(Keys.W)) {
                     ChangeDirection(new Vector2(0, -1));
                     rotation = MathHelper.ToRadians(-180);
 
-                } else if (keyState.IsKeyDown(Keys.Right)) {
+                } else if (keyState.IsKeyDown(Keys.D)) {
                     ChangeDirection(new Vector2(1, 0));
                     rotation = MathHelper.ToRadians(-90);
 
-                } else if (keyState.IsKeyDown(Keys.Down)) {
+                } else if (keyState.IsKeyDown(Keys.S)) {
                     ChangeDirection(new Vector2(0, 1));
                     rotation = MathHelper.ToRadians(0);
                 }
