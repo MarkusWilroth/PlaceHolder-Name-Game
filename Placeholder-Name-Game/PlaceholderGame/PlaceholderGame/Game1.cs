@@ -191,7 +191,7 @@ namespace PlaceholderGame {
                     foreach (GameObjects gameO in gameList) {
                         gameO.Draw(spriteBatch);
                     }
-                    foreach (Bullet bullet in bulletList) {
+                    foreach (Bullet bulletO in bulletList) {
                         bulletO.Draw(spriteBatch);
                     }
                     for (int i = 0; i < players; i++) {
@@ -224,6 +224,10 @@ namespace PlaceholderGame {
                 getLine = "";
             }
         }
+        public void CreateBullet(String name, int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Texture2D spriteSheet, Vector2 pos, List<Rectangle> wallRectList, int player, int weapon) {
+            bulletO = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon);
+            bulletList.Add(bulletO);
+        }
 
         public List<Vector2> posGiver(String[] printLevel, char getLetter) { //Skapar listor som ger positioner till föremål beroend på textfilen printLevel
             posList.Clear();
@@ -251,12 +255,12 @@ namespace PlaceholderGame {
             playerPos = playerO[player].SendPos();
             if (keyState.IsKeyDown(Keys.Space) && !(oldKeyState.IsKeyDown(Keys.Space))) {
 
-                foreach (WeaponObjects weaponStats in weaponList) {
-                    isPicked = weaponStats.NewWeapon(playerPos);
+                foreach (WeaponObjects weaponO in weaponList) {
+                    isPicked = weaponO.NewWeapon(playerPos);
                     if (isPicked) {
-                        playerO[player].EquipedWeapon(weaponStats);
-                        gameList.Remove(weaponStats);
-                        weaponList.Remove(weaponStats);
+                        playerO[player].EquipedWeapon(weaponO);
+                        gameList.Remove(weaponO);
+                        weaponList.Remove(weaponO);
                         break;
                     }
                 }
@@ -268,16 +272,16 @@ namespace PlaceholderGame {
             switch (weapon) { //sourceRect?
                 case 0:
                     //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
-                    weaponO = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, shot, weapon);
+                    weaponO = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 1:
-                    weaponO = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos, shot, weapon);
+                    weaponO = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 2:
-                    weaponO = new WeaponObjects("LaserSword", 2, 4, 3, 1, spriteSheet, pos, shot, weapon);
+                    weaponO = new WeaponObjects("LaserSword", 2, 4, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 3:
-                    weaponO = new WeaponObjects("BaseballBat", 2, 3, 5, 1, spriteSheet, pos, shot, weapon);
+                    weaponO = new WeaponObjects("BaseballBat", 2, 3, 5, 1, spriteSheet, pos, shot, weapon, this);
                     break;
             }
             gameList.Add(weaponO);
