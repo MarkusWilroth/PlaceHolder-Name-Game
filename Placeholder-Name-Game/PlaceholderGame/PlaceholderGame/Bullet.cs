@@ -27,13 +27,13 @@ namespace PlaceholderGame {
             this.direction = direction;
             this.pos = pos;
             this.spriteSheet = spriteSheet;
-            speed = 100;
+            speed = 1;
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 5, 5);
         }
 
         public override void Update(GameTime gameTime) {
-            pos += direction * speed;
+            pos += direction * 0.1f;
 
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;

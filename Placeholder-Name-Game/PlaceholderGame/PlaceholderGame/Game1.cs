@@ -142,9 +142,9 @@ namespace PlaceholderGame {
                     foreach (WeaponObjects weaponO in weaponList) {
                         weaponO.Update(gameTime);
                         //bulletList = weaponO.GetBulletList();
-                        //foreach (Bullet bullet in bulletList) {
-                        //    bullet.Update(gameTime);
-                        //}
+                        foreach (Bullet bulletO in bulletList) {
+                            bulletO.Update(gameTime);
+                        }
                     }
                     
                     keyState = Keyboard.GetState();

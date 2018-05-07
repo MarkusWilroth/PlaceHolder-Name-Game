@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
-        Vector2 direction, playerPos, destination, dir, mousePos;
+        Vector2 direction, shotDir, distance, playerPos, destination, dir, mousePos;
         Rectangle playerRect, playerHitBox, playerDest, sourceRect;
         List<Rectangle> wallRectList;
         WeaponObjects[] weaponSlot;
@@ -51,9 +51,17 @@ namespace PlaceholderGame {
             mouseState = Mouse.GetState();
 
             if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
+                mousePos = new Vector2(mouseState.X, mouseState.Y);
+                distance.X = mousePos.X - playerPos.X;
+                distance.Y = mousePos.Y - playerPos.Y;
+                rotation = (float)Math.Atan2(distance.Y, distance.X) + (float)Math.PI / 2;
+                //position += velocity;
+
+                shotDir = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
+                //entityMgr.CreateBullet(new Vector2(position.X, position.Y), 10f, 10, direction);
                 if (!(weaponSlot[activeWeapon] == null)) {
-                    mousePos = new Vector2(mouseState.X, mouseState.Y);
-                    weaponSlot[activeWeapon].Attack(mousePos, playerPos, wallRectList, player);
+                    
+                    weaponSlot[activeWeapon].Attack(shotDir, playerPos, wallRectList, player);
                 }
             }
             SwitchWeapon();
