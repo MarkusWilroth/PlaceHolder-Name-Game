@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PlaceholderGame {
     class Bullet: GameObjects{
-        int range, damage, durability, AOE, speed;
+        int range, damage, durability, AOE, speed, timer, shotTime;
         Texture2D shot, spriteSheet;
         Vector2 pos, direction;
         Rectangle bulletRect, playerRect;
@@ -27,14 +27,18 @@ namespace PlaceholderGame {
             this.direction = direction;
             this.pos = pos;
             this.spriteSheet = spriteSheet;
+            shotTime = 1;
             speed = 1;
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 5, 5);
         }
 
         public override void Update(GameTime gameTime) {
-            pos += direction * 0.1f;
-
+            //timer += gameTime.ElapsedGameTime.Seconds;            
+            if(gameTime.ElapsedGameTime.Seconds <= range * shotTime) {
+                pos += direction * 0.05f;
+            }
+            //Console.WriteLine("Timer: " + timer);
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;
         }
