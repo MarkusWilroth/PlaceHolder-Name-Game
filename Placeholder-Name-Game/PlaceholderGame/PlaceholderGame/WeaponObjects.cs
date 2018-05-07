@@ -20,7 +20,7 @@ namespace PlaceholderGame {
         List<Bullet> bulletList;
         public bool isFired;
 
-        public WeaponObjects(String name, int durability, int range, int damage, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot, int weapon) : base(spriteSheet, pos) {
+        public WeaponObjects(String name, int durability, int range, int damage, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot, int weapon, Game1 game) : base(spriteSheet, pos) {
             this.name = name;
             this.range = range;
             this.damage = damage;
@@ -30,6 +30,7 @@ namespace PlaceholderGame {
             this.pos = pos;
             this.weapon = weapon;
             this.shot = shot;
+            this.game = game;
             speed = 100;
             isFired = false;
             bulletList = new List<Bullet>();
@@ -42,7 +43,7 @@ namespace PlaceholderGame {
             pos += direction * speed;
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;
-            game.HitPlayer(bulletRect, damage);
+            //game.HitPlayer(bulletRect, damage);
         }
         
 
@@ -54,6 +55,7 @@ namespace PlaceholderGame {
                 this.direction = direction;
                 Console.WriteLine("durability: " + durability);
 
+                game.CreateBullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, shotPos, wallRectList, player, weapon);
                 //bullet = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon); 
                 //bulletList.Add(bullet);
                 //isFired = true;

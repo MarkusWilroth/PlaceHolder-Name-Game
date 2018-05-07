@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PlaceholderGame {
-    class Bullet: WeaponObjects{
+    class Bullet: GameObjects{
         int range, damage, durability, AOE, speed;
         Texture2D shot, spriteSheet;
         Vector2 pos, direction;
@@ -18,7 +18,7 @@ namespace PlaceholderGame {
         WeaponObjects weaponO;
 
         public Bullet(String name, int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Texture2D spriteSheet, Vector2 pos, List<Rectangle> wallRectList, int player, int weapon) 
-            : base (name, durability, range, damage, AOE, spriteSheet, pos, shot, weapon)  {
+            : base (spriteSheet, pos)  {
             this.range = range;
             this.damage = damage;
             this.durability = durability;
