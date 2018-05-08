@@ -20,13 +20,15 @@ namespace PlaceholderGame {
         float bgHeight;
 
         public Hud(Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int player) : base(spriteSheet, playerPos, wallRectList, player){
-
+            this.HP = HP;
+            this.hudTex = hudTex;
+            this.hudPos = hudPos;
         }
 
-        //public void Initialize(float screenWidth, float screenHeight, Texture2D hudTex){
+        //public void Initialize(float screenWidth, float screenHeight, Texture2D hudTex) {
 
         //    bgHeight = screenHeight;
-        //    bgWidth = screenWidth *(screenHeight/hudTex.Height);
+        //    bgWidth = screenWidth * (screenHeight / hudTex.Height);
         //    this.hudTex = hudTex;
 
         //    for (int i = 0; i < hudPos.Length; i++)

@@ -13,7 +13,7 @@ namespace PlaceholderGame {
 
         public GroundObjects(Texture2D spriteSheet, Vector2 groundPos) : base(spriteSheet, groundPos) {
             this.spireSheet = spriteSheet;
-            sourceRect = new Rectangle(150, 30, 25, 25);
+            sourceRect = new Rectangle(150, 30, 20, 20);
             groundRect = new Rectangle((int)groundPos.X, (int)groundPos.Y, 25, 25);
         }
         public override void Update(GameTime gameTime) {
@@ -21,7 +21,7 @@ namespace PlaceholderGame {
         }
 
         public override void Draw(SpriteBatch sb) {
-            sb.Draw(spireSheet, groundRect, sourceRect, Color.White);
+            //sb.Draw(spireSheet, groundRect, sourceRect, Color.White);
         }
     }
 }

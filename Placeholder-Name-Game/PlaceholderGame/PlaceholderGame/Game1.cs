@@ -36,7 +36,7 @@ namespace PlaceholderGame {
         List<Bullet> bulletList;
 
         string getLine;
-        bool isPicked, showMenu;        
+        bool isPicked, showMenu, isBulletDead;        
         int groundX, groundY, count, player, weaponID;
         public int levels, currentLevel, players;
         char textLetter;
@@ -144,6 +144,11 @@ namespace PlaceholderGame {
                         //bulletList = weaponO.GetBulletList();
                         foreach (Bullet bulletO in bulletList) {
                             bulletO.Update(gameTime);
+                            isBulletDead = bulletO.KillBullet();
+                            if (isBulletDead) {
+                                bulletList.Remove(bulletO);
+                                break;
+                            }
                         }
                     }
                     
@@ -181,13 +186,14 @@ namespace PlaceholderGame {
 
 
         protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DimGray);
             spriteBatch.Begin();
             switch (currentGS) {
                 case GameStates.Menu:
                     spriteBatch.Draw(startMenu, Vector2.Zero, Color.White);
                     break;
                 case GameStates.Game:
+                    //hud.Draw(spriteBatch);
                     foreach (GameObjects gameO in gameList) {
                         gameO.Draw(spriteBatch);
                     }
@@ -225,8 +231,11 @@ namespace PlaceholderGame {
             }
         }
         public void CreateBullet(String name, int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Texture2D spriteSheet, Vector2 pos, List<Rectangle> wallRectList, int player, int weapon) {
-            bulletO = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon);
+            bulletO = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon, this);
             bulletList.Add(bulletO);
+        }
+        public void KillBullet() {
+            bulletList.Clear();   //Ska vi har vapen som skjuter mer än ett skott måste vi ändra detta!
         }
 
         public List<Vector2> posGiver(String[] printLevel, char getLetter) { //Skapar listor som ger positioner till föremål beroend på textfilen printLevel
@@ -272,16 +281,16 @@ namespace PlaceholderGame {
             switch (weapon) { //sourceRect?
                 case 0:
                     //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
-                    weaponO = new WeaponObjects("BananaGun", 3, 2, 2, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("BananaGun", 3, 5, 2, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 1:
-                    weaponO = new WeaponObjects("WaterGun", 4, 2, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("WaterGun", 4, 8, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 2:
-                    weaponO = new WeaponObjects("LaserSword", 2, 4, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("LaserSword", 2, 1, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 3:
-                    weaponO = new WeaponObjects("BaseballBat", 2, 3, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("BaseballBat", 2, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
                     break;
             }
             gameList.Add(weaponO);
