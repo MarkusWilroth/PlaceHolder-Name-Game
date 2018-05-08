@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework.Input;
 namespace PlaceholderGame {
     class WeaponObjects : GameObjects {
         int range, damage, durability, AOE, weapon, speed;
+        public bool isFired;
+
         Vector2 shotPos, direction;
         String name;
         Rectangle weaponRect, sourceRect, bulletRect;
@@ -17,8 +19,7 @@ namespace PlaceholderGame {
         Texture2D shot;
         Bullet bullet;
         Game1 game;
-        List<Bullet> bulletList;
-        public bool isFired;
+        List<Bullet> bulletList;        
 
         public WeaponObjects(String name, int durability, int range, int damage, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot, int weapon, Game1 game) : base(spriteSheet, pos) {
             this.name = name;
@@ -48,7 +49,6 @@ namespace PlaceholderGame {
         public int ReturnWeapon() {
             return weapon;
         }
-        
 
         public void Attack(Vector2 direction, Vector2 shotPos, List<Rectangle> wallRectList, int player) {
             if (durability > 0) { //Fixa i hudden så att man kan se hur många skott det finns kvar

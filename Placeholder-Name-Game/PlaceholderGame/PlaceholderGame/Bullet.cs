@@ -11,6 +11,7 @@ namespace PlaceholderGame {
     class Bullet: GameObjects{
         int range, damage, durability, AOE, speed, timer, shotTime, weapon;
         bool isBulletDead;
+
         Texture2D spriteSheet;
         Vector2 pos, direction;
         Rectangle bulletRect, playerRect, sourceRect;

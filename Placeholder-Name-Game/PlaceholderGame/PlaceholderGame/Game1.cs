@@ -286,20 +286,32 @@ namespace PlaceholderGame {
         }
 
         public void weaponSpawn (Vector2 pos) {
-            int weapon = rnd.Next(0, 4);
+            int weapon = rnd.Next(0, 8);
             switch (weapon) { //sourceRect?
                 case 0:
                     //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
-                    weaponO = new WeaponObjects("BananaGun", 3, 5, 2, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("BananaGun", 3, 5, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 1:
-                    weaponO = new WeaponObjects("WaterGun", 4, 8, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("WaterGun", 4, 8, 5, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 2:
-                    weaponO = new WeaponObjects("LaserSword", 2, 2, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("LaserSword", 3, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 3:
-                    weaponO = new WeaponObjects("BaseballBat", 2, 2, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("BaseballBat", 3, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    break;
+                case 4:
+                    weaponO = new WeaponObjects("SlingShot", 4, 5, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    break;
+                case 5:
+                    weaponO = new WeaponObjects("LaserRifle", 2, 10, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    break;
+                case 6:
+                    weaponO = new WeaponObjects("PickleGun", 3, 6, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    break;
+                case 7:
+                    weaponO = new WeaponObjects("ChickenClub", 3, 1, 6, 1, spriteSheet, pos, shot, weapon, this);
                     break;
             }
             gameList.Add(weaponO);

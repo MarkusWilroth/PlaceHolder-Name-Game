@@ -18,7 +18,7 @@ namespace PlaceholderGame {
         Hud hud;
 
         int newDestX, newDestY, player, activeWeapon, equipedWeapons, HP, weapon, count;
-        bool hitWall, isMoving, isDone;
+        bool hitWall, isMoving, isDone, haveShot;
         float speed, scale, rotation;
 
         SpriteEffects playerFx;
@@ -33,6 +33,7 @@ namespace PlaceholderGame {
             this.player = player;
             HP = 20;
             isDone = false;
+            haveShot = false;
             activeWeapon = 0;
             equipedWeapons = 0;
             
@@ -55,17 +56,17 @@ namespace PlaceholderGame {
             distance.Y = mousePos.Y - playerPos.Y;
 
             rotation = (float)Math.Atan2(distance.Y, distance.X) + (float)Math.PI / 2;
-            if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
+            if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released && haveShot == false) {
                 shotDir = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
                 if (!(weaponSlot[activeWeapon] == null)) {
                     weaponSlot[activeWeapon].Attack(shotDir, playerPos, wallRectList, player);
                     count = 10;
+                    haveShot = true;
                 }
             }
             SwitchWeapon();
 
-            if (!isDone) {
-                
+            if (!isDone) {                
 
                 if (!isMoving) {
                     if (keyState.IsKeyDown(Keys.A)) {
@@ -94,13 +95,6 @@ namespace PlaceholderGame {
             oldKeyState = keyState;
             oldMouseState = mouseState;
         }
-        //public bool DeadPlayer() {
-        //    Console.WriteLine("HP2 " + HP);
-        //    if(HP <= 0) {
-        //        return true;
-        //    }
-        //    return false;
-        //}
 
         public bool Counter() {
             if(count >= 10) {
@@ -108,6 +102,7 @@ namespace PlaceholderGame {
                 if (keyState.IsKeyDown(Keys.Enter)){
                     isDone = false;
                     count = 0;
+                    haveShot = false;
                     return true;
                 }
                 return false;                
