@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace PlaceholderGame {
     class Bullet: GameObjects{
-        int range, damage, durability, AOE, speed, timer, shotTime;
+        int range, damage, durability, AOE, speed, timer, shotTime, weapon;
         bool isBulletDead;
-        Texture2D shot, spriteSheet;
+        Texture2D spriteSheet;
         Vector2 pos, direction;
-        Rectangle bulletRect, playerRect;
+        Rectangle bulletRect, playerRect, sourceRect;
         MouseState mouseState, oldMouseStat;
         PlayerObjects playerO;
         WeaponObjects weaponO;
@@ -27,7 +27,7 @@ namespace PlaceholderGame {
             this.damage = damage;
             this.durability = durability;
             this.AOE = AOE;
-            this.shot = shot;
+            this.weapon = weapon;
             this.direction = direction;
             this.pos = pos;
             this.spriteSheet = spriteSheet;
@@ -53,6 +53,7 @@ namespace PlaceholderGame {
 
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;
+            sourceRect = new Rectangle(30 * weapon, 120, 25, 25);
 
             foreach (Rectangle wallRect in wallRectList) {
                 if (bulletRect.Intersects(wallRect)) {
@@ -64,20 +65,9 @@ namespace PlaceholderGame {
         public bool KillBullet() {
             return isBulletDead;
         }
-
-        //public bool HitPlayer(Vector2 playerPos) {
-        //    playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
-        //    if (bulletRect.Intersects(playerRect)) {
-        //        playerO.GetHit(damage);
-        //        isBulletDead = true;
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
         
         public override void Draw(SpriteBatch sb) {
-            sb.Draw(shot, bulletRect, Color.White);
+            sb.Draw(spriteSheet, bulletRect, sourceRect, Color.White);
         }
     }
 }

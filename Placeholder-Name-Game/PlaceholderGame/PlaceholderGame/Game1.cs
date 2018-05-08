@@ -36,7 +36,7 @@ namespace PlaceholderGame {
         List<Bullet> bulletList;
 
         string getLine;
-        bool isPicked, showMenu, isBulletDead;
+        bool isPicked, showMenu, isBulletDead, turnCounter;
         bool[] isPlayerDead;
         int groundX, groundY, count, player, weaponID;
         public int levels, currentLevel, players;
@@ -157,16 +157,16 @@ namespace PlaceholderGame {
                     
                     keyState = Keyboard.GetState();
                     PickGun();
-                    if (keyState.IsKeyDown(Keys.Tab) && !(oldKeyState.IsKeyDown(Keys.Tab))) {
+                    turnCounter = playerO[player].Counter();
+                    if (turnCounter) {                        
                         do {
                             player++;
                             if (player >= players) {
                                 player = 0;
                             }
                         } while (isPlayerDead[player]);
-
-
-                        Console.WriteLine("Players turn: " + player);
+                        turnCounter = false;
+                        Console.WriteLine("Players turn: " + player);                                                     
                     }
                     oldKeyState = keyState;
                     break;
@@ -190,8 +190,6 @@ namespace PlaceholderGame {
             return false;
             
         }
-
-
 
         protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
             GraphicsDevice.Clear(Color.DimGray);
@@ -298,10 +296,10 @@ namespace PlaceholderGame {
                     weaponO = new WeaponObjects("WaterGun", 4, 8, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 2:
-                    weaponO = new WeaponObjects("LaserSword", 2, 1, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("LaserSword", 2, 2, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 3:
-                    weaponO = new WeaponObjects("BaseballBat", 2, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("BaseballBat", 2, 2, 5, 1, spriteSheet, pos, shot, weapon, this);
                     break;
             }
             gameList.Add(weaponO);

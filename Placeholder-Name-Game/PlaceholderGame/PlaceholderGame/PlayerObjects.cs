@@ -17,8 +17,8 @@ namespace PlaceholderGame {
         Bullet bullet;
         Hud hud;
 
-        int newDestX, newDestY, player, activeWeapon, equipedWeapons, HP, weapon;
-        bool hitWall, isMoving;
+        int newDestX, newDestY, player, activeWeapon, equipedWeapons, HP, weapon, count;
+        bool hitWall, isMoving, isDone;
         float speed, scale, rotation;
 
         SpriteEffects playerFx;
@@ -32,13 +32,14 @@ namespace PlaceholderGame {
             this.wallRectList = wallRectList;
             this.player = player;
             HP = 20;
+            isDone = false;
             activeWeapon = 0;
             equipedWeapons = 0;
             
             sourceRect = new Rectangle((30 * player), 3, 25,25);
             weaponSlot = new WeaponObjects[2];
 
-            scale = 1;
+            scale = 1;            
             speed = 100;
             playerFx = SpriteEffects.None;
             playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
@@ -49,58 +50,67 @@ namespace PlaceholderGame {
         public override void Update(GameTime gameTime) {
             keyState = Keyboard.GetState();
             mouseState = Mouse.GetState();
+            mousePos = new Vector2(mouseState.X, mouseState.Y);
+            distance.X = mousePos.X - playerPos.X;
+            distance.Y = mousePos.Y - playerPos.Y;
 
+            rotation = (float)Math.Atan2(distance.Y, distance.X) + (float)Math.PI / 2;
             if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
-                mousePos = new Vector2(mouseState.X, mouseState.Y);
-                distance.X = mousePos.X - playerPos.X;
-                distance.Y = mousePos.Y - playerPos.Y;
-                rotation = (float)Math.Atan2(distance.Y, distance.X) + (float)Math.PI / 2;
-                //position += velocity;
-
                 shotDir = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
-                //entityMgr.CreateBullet(new Vector2(position.X, position.Y), 10f, 10, direction);
                 if (!(weaponSlot[activeWeapon] == null)) {
-                    
                     weaponSlot[activeWeapon].Attack(shotDir, playerPos, wallRectList, player);
+                    count = 10;
                 }
             }
             SwitchWeapon();
-            //Console.WriteLine("Namn på vapen: "+weaponSlot[activeWeapon].name
 
-            if (!isMoving) {
-                if (keyState.IsKeyDown(Keys.A)) {
-                    ChangeDirection(new Vector2(-1, 0));
-                    rotation = MathHelper.ToRadians(90);
+            if (!isDone) {
+                
 
-                } else if (keyState.IsKeyDown(Keys.W)) {
-                    ChangeDirection(new Vector2(0, -1));
-                    rotation = MathHelper.ToRadians(-180);
+                if (!isMoving) {
+                    if (keyState.IsKeyDown(Keys.A)) {
+                        ChangeDirection(new Vector2(-1, 0));
 
-                } else if (keyState.IsKeyDown(Keys.D)) {
-                    ChangeDirection(new Vector2(1, 0));
-                    rotation = MathHelper.ToRadians(-90);
+                    } else if (keyState.IsKeyDown(Keys.W)) {
+                        ChangeDirection(new Vector2(0, -1));
 
-                } else if (keyState.IsKeyDown(Keys.S)) {
-                    ChangeDirection(new Vector2(0, 1));
-                    rotation = MathHelper.ToRadians(0);
+                    } else if (keyState.IsKeyDown(Keys.D)) {
+                        ChangeDirection(new Vector2(1, 0));
+
+                    } else if (keyState.IsKeyDown(Keys.S)) {
+                        ChangeDirection(new Vector2(0, 1));
+                    }
+                } else {
+                    playerPos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if (Vector2.Distance(playerPos, destination) < 1) {
+                        playerPos = destination;
+                        count++;
+                        playerHitBox = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
+                        isMoving = false;
+                    }
                 }
-            } else {
-                playerPos += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (Vector2.Distance(playerPos, destination) < 1) {
-                    playerPos = destination;
-                    playerHitBox = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
-                    isMoving = false;
-
-                }
-
             }
+           
             oldKeyState = keyState;
             oldMouseState = mouseState;
         }
-        public bool DeadPlayer() {
-            Console.WriteLine("HP2 " + HP);
-            if(HP <= 0) {
-                return true;
+        //public bool DeadPlayer() {
+        //    Console.WriteLine("HP2 " + HP);
+        //    if(HP <= 0) {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
+        public bool Counter() {
+            if(count >= 10) {
+                isDone = true;
+                if (keyState.IsKeyDown(Keys.Enter)){
+                    isDone = false;
+                    count = 0;
+                    return true;
+                }
+                return false;                
             }
             return false;
         }
