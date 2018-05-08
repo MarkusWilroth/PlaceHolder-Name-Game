@@ -11,13 +11,13 @@ using Microsoft.Xna.Framework.Input;
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
         Vector2 direction, shotDir, distance, playerPos, destination, dir, mousePos;
-        Rectangle playerRect, playerHitBox, playerDest, sourceRect;
+        Rectangle playerRect, playerHitBox, playerDest, sourceRect, sourceWeaponRect;
         List<Rectangle> wallRectList;
         WeaponObjects[] weaponSlot;
         Bullet bullet;
         Hud hud;
 
-        int newDestX, newDestY, player, activeWeapon, equipedWeapons, HP;
+        int newDestX, newDestY, player, activeWeapon, equipedWeapons, HP, weapon;
         bool hitWall, isMoving;
         float speed, scale, rotation;
 
@@ -34,7 +34,7 @@ namespace PlaceholderGame {
             HP = 20;
             activeWeapon = 0;
             equipedWeapons = 0;
-
+            
             sourceRect = new Rectangle((30 * player), 3, 25,25);
             weaponSlot = new WeaponObjects[2];
 
@@ -108,11 +108,16 @@ namespace PlaceholderGame {
         private void SwitchWeapon() {
             if (keyState.IsKeyDown(Keys.F1)) {
                 activeWeapon = 0;
+                
             }
             if (keyState.IsKeyDown(Keys.F2)) {
                 activeWeapon = 1;
             }
-            
+
+            if (!(weaponSlot[activeWeapon] == null)) {
+                weapon = weaponSlot[activeWeapon].ReturnWeapon();
+                sourceWeaponRect = new Rectangle(30 * weapon, 90, 25, 25);
+            }
         }
         
 
@@ -157,6 +162,7 @@ namespace PlaceholderGame {
 
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
             sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
+            sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceWeaponRect, Color.White, rotation + 3.1415f, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
             //hud.Draw(sb);
         }
 
@@ -165,7 +171,8 @@ namespace PlaceholderGame {
         }
 
         public void EquipedWeapon(WeaponObjects weaponStats) {
-                weaponSlot[activeWeapon] = weaponStats;
+            weaponSlot[activeWeapon] = weaponStats;
+            
         }
     }
 }

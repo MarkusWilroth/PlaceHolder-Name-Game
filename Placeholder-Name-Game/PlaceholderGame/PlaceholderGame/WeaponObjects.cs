@@ -45,6 +45,9 @@ namespace PlaceholderGame {
             bulletRect.Y = (int)pos.Y;
             //game.HitPlayer(bulletRect, damage);
         }
+        public int ReturnWeapon() {
+            return weapon;
+        }
         
 
         public void Attack(Vector2 direction, Vector2 shotPos, List<Rectangle> wallRectList, int player) {
