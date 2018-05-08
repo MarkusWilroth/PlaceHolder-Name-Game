@@ -158,13 +158,12 @@ namespace PlaceholderGame {
                     keyState = Keyboard.GetState();
                     PickGun();
                     if (keyState.IsKeyDown(Keys.Tab) && !(oldKeyState.IsKeyDown(Keys.Tab))) {
-                        player++;
                         do {
                             player++;
                             if (player >= players) {
                                 player = 0;
                             }
-                        } while (!isPlayerDead[player]);
+                        } while (isPlayerDead[player]);
 
 
                         Console.WriteLine("Players turn: " + player);
