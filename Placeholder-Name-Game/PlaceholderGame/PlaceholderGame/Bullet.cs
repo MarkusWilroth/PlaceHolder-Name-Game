@@ -18,6 +18,7 @@ namespace PlaceholderGame {
         PlayerObjects playerO;
         WeaponObjects weaponO;
         Game1 game;
+        List<Rectangle> wallRectList;
 
 
         public Bullet(String name, int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Texture2D spriteSheet, Vector2 pos, List<Rectangle> wallRectList, int player, int weapon, Game1 game) 
@@ -31,6 +32,7 @@ namespace PlaceholderGame {
             this.pos = pos;
             this.spriteSheet = spriteSheet;
             this.game = game;
+            this.wallRectList = wallRectList;
             isBulletDead = false;
             shotTime = 180;
             speed = 1;
@@ -40,11 +42,10 @@ namespace PlaceholderGame {
         }
 
         public override void Update(GameTime gameTime) {
-            //timer += gameTime.ElapsedGameTime.Seconds;            
-            if(timer <= range * shotTime) {
+            isBulletDead = game.HitPlayer(bulletRect, damage);
+            if (timer <= range * shotTime) {
                 pos += direction * 0.2f;
                 timer++;
-                //Console.WriteLine("Direction: " + direction);
             }
             else {
                 isBulletDead = true;
@@ -52,19 +53,27 @@ namespace PlaceholderGame {
 
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;
+
+            foreach (Rectangle wallRect in wallRectList) {
+                if (bulletRect.Intersects(wallRect)) {
+                    isBulletDead = true;
+                }
+            }
+            
         }
         public bool KillBullet() {
             return isBulletDead;
         }
 
-        public bool HitPlayer(Vector2 playerPos) {
-            playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
-            if (bulletRect.Intersects(playerRect)) {
-                playerO.GetHit(damage);
-                return true;
-            }
-            return false;
-        }
+        //public bool HitPlayer(Vector2 playerPos) {
+        //    playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
+        //    if (bulletRect.Intersects(playerRect)) {
+        //        playerO.GetHit(damage);
+        //        isBulletDead = true;
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
         
         public override void Draw(SpriteBatch sb) {

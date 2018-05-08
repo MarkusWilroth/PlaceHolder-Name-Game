@@ -36,7 +36,8 @@ namespace PlaceholderGame {
         List<Bullet> bulletList;
 
         string getLine;
-        bool isPicked, showMenu, isBulletDead;        
+        bool isPicked, showMenu, isBulletDead;
+        bool[] isPlayerDead;
         int groundX, groundY, count, player, weaponID;
         public int levels, currentLevel, players;
         char textLetter;
@@ -59,6 +60,7 @@ namespace PlaceholderGame {
             rnd = new Random();
             sourceRect = new Rectangle[3];
             printMap = new String[levels];
+            isPlayerDead = new bool[] { false, false, false, false };
             printObjects = new string[levels];
             playerO = new PlayerObjects[players]; //Ska ta siffra från antalet aktiva vapen... måste kopplas från menyn
 
@@ -139,6 +141,7 @@ namespace PlaceholderGame {
                     break;
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
+                    
                     foreach (WeaponObjects weaponO in weaponList) {
                         weaponO.Update(gameTime);
                         //bulletList = weaponO.GetBulletList();
@@ -156,9 +159,14 @@ namespace PlaceholderGame {
                     PickGun();
                     if (keyState.IsKeyDown(Keys.Tab) && !(oldKeyState.IsKeyDown(Keys.Tab))) {
                         player++;
-                        if (player >= players) {
-                            player = 0;
-                        }
+                        do {
+                            player++;
+                            if (player >= players) {
+                                player = 0;
+                            }
+                        } while (!isPlayerDead[player]);
+
+
                         Console.WriteLine("Players turn: " + player);
                     }
                     oldKeyState = keyState;
@@ -172,14 +180,15 @@ namespace PlaceholderGame {
             base.Update(gameTime);
         }
 
-        public void HitPlayer(Rectangle bulletRect, int damage) {
+        public bool HitPlayer(Rectangle bulletRect, int damage) {
             for (int i = 0; i < players; i++) {
                 playerRect = playerO[i].GetRect();
                 if (bulletRect.Intersects(playerRect)) {
-                    playerO[i].GetHit(damage);
-                    break;
+                    isPlayerDead[i] = playerO[i].GetHit(damage);
+                    return true;
                 }
             }
+            return false;
             
         }
 
@@ -201,7 +210,10 @@ namespace PlaceholderGame {
                         bulletO.Draw(spriteBatch);
                     }
                     for (int i = 0; i < players; i++) {
-                        playerO[i].Draw(spriteBatch);
+                        if(!isPlayerDead[i]) {
+                            playerO[i].Draw(spriteBatch);
+                        }
+                        
                     }
                     break;
                 case GameStates.Scoreboard:

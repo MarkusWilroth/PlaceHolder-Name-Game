@@ -31,7 +31,7 @@ namespace PlaceholderGame {
             this.playerPos = playerPos;
             this.wallRectList = wallRectList;
             this.player = player;
-            HP = 100;
+            HP = 20;
             activeWeapon = 0;
             equipedWeapons = 0;
 
@@ -97,6 +97,13 @@ namespace PlaceholderGame {
             oldKeyState = keyState;
             oldMouseState = mouseState;
         }
+        public bool DeadPlayer() {
+            Console.WriteLine("HP2 " + HP);
+            if(HP <= 0) {
+                return true;
+            }
+            return false;
+        }
 
         private void SwitchWeapon() {
             if (keyState.IsKeyDown(Keys.F1)) {
@@ -137,8 +144,12 @@ namespace PlaceholderGame {
                 isMoving = false;
             }
         }
-        public void GetHit(int damage) {
+        public bool GetHit(int damage) {
             HP -= damage;
+            if(HP <= 0) {
+                return true;
+            }
+            return false;
         }
         public Rectangle GetRect() {
             return playerRect;
