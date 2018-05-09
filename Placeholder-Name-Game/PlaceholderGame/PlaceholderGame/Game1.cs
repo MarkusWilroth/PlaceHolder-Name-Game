@@ -58,6 +58,7 @@ namespace PlaceholderGame {
             players = 4; //Flyttas till menyn, bestämmer hur många spelare det är!
             levels = 1; //Hur många banfiler, asså hur många banor man man spela på
             player = 0;
+            amountWeapon = 8;
             rnd = new Random();
             sourceRect = new Rectangle[3];
             printMap = new String[levels];
@@ -303,11 +304,11 @@ namespace PlaceholderGame {
                     weaponO = new WeaponObjects("WaterGun", 4, 8, 5, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 2:
-                    weaponO = new WeaponObjects("LaserSword", 3, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
-                    break;
-                case 3:
                     weaponO = new WeaponObjects("BaseballBat", 3, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
                     break;
+                case 3:
+                    weaponO = new WeaponObjects("LaserSword", 3, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    break;                
                 case 4:
                     weaponO = new WeaponObjects("SlingShot", 4, 5, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;

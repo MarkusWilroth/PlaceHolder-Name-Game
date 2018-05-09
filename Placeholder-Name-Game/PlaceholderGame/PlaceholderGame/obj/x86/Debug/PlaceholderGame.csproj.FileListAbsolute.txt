@@ -112,3 +112,5 @@ C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\PlaceHolder-Name-Game
 C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csproj.CoreCompileInputs.cache
 C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
 C:\Users\Aneela Mariam Latifi\source\PlaceHolder-Name-Game\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
+C:\Users\User\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\OptionMeny.xnb
+C:\Users\User\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\PauseMeny.xnb

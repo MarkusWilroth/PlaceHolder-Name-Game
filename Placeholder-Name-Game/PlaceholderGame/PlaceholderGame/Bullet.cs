@@ -40,6 +40,7 @@ namespace PlaceholderGame {
             timer = 0;
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 5, 5);
+            sourceRect = new Rectangle(25 * weapon, 118, 25, 25);
         }
 
         public override void Update(GameTime gameTime) {
@@ -54,7 +55,7 @@ namespace PlaceholderGame {
 
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;
-            sourceRect = new Rectangle(30 * weapon, 120, 25, 25);
+            
 
             foreach (Rectangle wallRect in wallRectList) {
                 if (bulletRect.Intersects(wallRect)) {
