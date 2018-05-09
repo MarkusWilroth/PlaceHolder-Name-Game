@@ -17,7 +17,6 @@ namespace PlaceholderGame {
 
         Rectangle returnRec, twoPlayerRec, threePlayerRec, fourPlayerRec;
         Rectangle bananaRec, waterGunRec, laserSwordRec, baseBallBatRec;
-        Texture2D optionsTex;
 
         public OptionsMenu(int nrPlayers, int nrWeapons, int seeWeapons) {
             this.nrPlayers = nrPlayers;

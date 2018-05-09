@@ -44,6 +44,7 @@ namespace PlaceholderGame {
 
         String[] printMap, printObjects;        
         Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu, hudTex;
+        Texture2D pausTex, opTex;
         
         KeyboardState keyState, oldKeyState;
         Random rnd;
@@ -91,6 +92,8 @@ namespace PlaceholderGame {
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
             shot = Content.Load<Texture2D>("Skott");
             hudTex = Content.Load<Texture2D>("Hud version 3");
+            pausTex = Content.Load<Texture2D>(@"PauseMeny");
+            opTex = Content.Load<Texture2D>(@"OptionMeny");
             ResetMap();
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
