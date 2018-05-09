@@ -11,15 +11,15 @@ namespace PlaceholderGame {
 
         //Antal spelare, antalet vapen, se alla vapen
 
-        int nrPlayers;
-        int nrWeapons;
-        int seeWeapons;
+        int nrPlayers,nrWeapons;
+        bool[] seeWeapons;
+        Texture2D optionTex;
 
         Rectangle returnRec, twoPlayerRec, threePlayerRec, fourPlayerRec;
         Rectangle bananaRec, waterGunRec, laserSwordRec, baseBallBatRec;
         Rectangle soundRec;
 
-        public OptionsMenu(int nrPlayers, int nrWeapons, int seeWeapons) {
+        public OptionsMenu(int nrPlayers, int nrWeapons, bool[] seeWeapons) {
             this.nrPlayers = nrPlayers;
             this.nrWeapons = nrWeapons;
             this.seeWeapons = seeWeapons;
@@ -39,11 +39,23 @@ namespace PlaceholderGame {
         }
 
         public void Update() {
-            
-
+            //Beroende på vilken ruta man klickar på ska rätt bool[i] blir false/true
+            //If (playerRect1.Intersects(mousePos)... players = 2;
+            //If (bananaRect.Intesect(mousePos)... bool[0] = false;
+            //for (int i = 0; i < 3; i++) {
+            //    if()
+            //}
+            //If (returnRect.Intersect(mousePos)... Game1 
+        }
+        public bool[] ReturnWeapon() {
+            return seeWeapons;
+        }
+        public int ReturnPlayers() {
+            return nrPlayers;
         }
 
-        public void Draw() {
+        public void Draw(SpriteBatch spriteBatch) {
+            spriteBatch.Draw(optionTex, new Vector2(0,0) ,null, Color.White);
 
         }
 

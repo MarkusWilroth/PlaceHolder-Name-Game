@@ -37,14 +37,14 @@ namespace PlaceholderGame {
 
         string getLine;
         bool isPicked, showMenu, isBulletDead, turnCounter;
-        bool[] isPlayerDead;
-        int groundX, groundY, count, player, weaponID;
+        bool[] isPlayerDead, seeWeapons;
+        int groundX, groundY, count, player, weaponID, amountWeapon;
         public int levels, currentLevel, players;
         char textLetter;
 
         String[] printMap, printObjects;        
         Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu, hudTex;
-        Texture2D pausTex, opTex;
+        Texture2D pausTex, optionTex;
         
         KeyboardState keyState, oldKeyState;
         Random rnd;
@@ -62,6 +62,7 @@ namespace PlaceholderGame {
             sourceRect = new Rectangle[3];
             printMap = new String[levels];
             isPlayerDead = new bool[] { false, false, false, false };
+            seeWeapons = new bool[] {true, true, true, true, true, true, true, true };
             printObjects = new string[levels];
             playerO = new PlayerObjects[players]; //Ska ta siffra från antalet aktiva vapen... måste kopplas från menyn
 
@@ -93,7 +94,7 @@ namespace PlaceholderGame {
             shot = Content.Load<Texture2D>("Skott");
             hudTex = Content.Load<Texture2D>("Hud version 3");
             pausTex = Content.Load<Texture2D>(@"PauseMeny");
-            opTex = Content.Load<Texture2D>(@"OptionMeny");
+            optionTex = Content.Load<Texture2D>(@"OptionMeny");
             ResetMap();
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
@@ -139,6 +140,9 @@ namespace PlaceholderGame {
                         }
                         if (quitRec.Intersects(mousePos)) {
                             Exit();
+                        }
+                        if (optionsRec.Intersects(mousePos)) {
+                            optionsMenu = new OptionsMenu(players, amountWeapon, seeWeapons); 
                         }
                     }
                     break;
@@ -289,7 +293,7 @@ namespace PlaceholderGame {
         }
 
         public void weaponSpawn (Vector2 pos) {
-            int weapon = rnd.Next(0, 8);
+            int weapon = rnd.Next(0, amountWeapon);
             switch (weapon) { //sourceRect?
                 case 0:
                     //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
