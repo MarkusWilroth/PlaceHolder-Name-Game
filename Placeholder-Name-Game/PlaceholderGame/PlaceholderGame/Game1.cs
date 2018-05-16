@@ -53,7 +53,7 @@ namespace PlaceholderGame {
         public Game1() {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferWidth = 1600;
+            graphics.PreferredBackBufferWidth = 1625;
             graphics.PreferredBackBufferHeight = 900;
             players = 4; //Flyttas till menyn, bestämmer hur många spelare det är!
             levels = 1; //Hur många banfiler, asså hur många banor man man spela på
@@ -100,6 +100,8 @@ namespace PlaceholderGame {
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
+
+            hud = new Hud(hudTex, spriteSheet, players);
 
             groundPosList = posGiver(printMap, '-');
             foreach (Vector2 pos in groundPosList) {
@@ -207,7 +209,7 @@ namespace PlaceholderGame {
                     spriteBatch.Draw(startMenu, Vector2.Zero, Color.White);
                     break;
                 case GameStates.Game:
-                    //hud.Draw(spriteBatch);
+                    
                     foreach (GameObjects gameO in gameList) {
                         gameO.Draw(spriteBatch);
                     }
@@ -220,6 +222,7 @@ namespace PlaceholderGame {
                         }
                         
                     }
+                    hud.Draw(spriteBatch);
                     break;
                 case GameStates.Scoreboard:
                     break;
@@ -292,6 +295,9 @@ namespace PlaceholderGame {
                 }
             }
         }
+        //public int GetHP(int player) {
+        //    return 
+        //}
 
         public void weaponSpawn (Vector2 pos) {
             int weapon = rnd.Next(0, amountWeapon);

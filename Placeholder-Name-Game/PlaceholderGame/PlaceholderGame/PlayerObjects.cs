@@ -43,7 +43,7 @@ namespace PlaceholderGame {
             scale = 1;            
             speed = 100;
             playerFx = SpriteEffects.None;
-            //playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
+            playerHitBox = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
 
             //hud = new Hud(spriteSheet, playerPos, wallRectList, player);
         }
@@ -95,9 +95,12 @@ namespace PlaceholderGame {
             oldKeyState = keyState;
             oldMouseState = mouseState;
         }
+        public int GetHP() {
+            return HP;
+        }
 
         public bool Counter() {
-            if(count >= 40) {
+            if(count >= 10) {
                 isDone = true;
                 if (keyState.IsKeyDown(Keys.Enter)){
                     isDone = false;
