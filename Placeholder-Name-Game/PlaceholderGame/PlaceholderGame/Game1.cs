@@ -296,7 +296,7 @@ namespace PlaceholderGame {
             }
         }
         //public int GetHP(int player) {
-        //    return 
+        //    return playerO.
         //}
 
         public void weaponSpawn (Vector2 pos) {

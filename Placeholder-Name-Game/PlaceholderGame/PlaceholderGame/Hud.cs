@@ -43,13 +43,12 @@ namespace PlaceholderGame {
                 if (i < 2) {
                     sourcePlayer[i] = new Rectangle(0 + 105*i, 150, 100, 100);
                     playerPicPos[i] = new Rectangle(80 + 1315 * i, 30, 120, 120);
-                    redBox[i] = new Rectangle(290 + 1025 * i, 40, 50, 50);
-                    //HPPos[i] = new Rectangle(280, 50, 50, 50);
+                    HPPos[i] = new Rectangle(290 + 1025 * i, 40, 50, 50);
                 }
                 else {
                     sourcePlayer[i] = new Rectangle(0 + 105 * i, 150, 100, 100);
-                    redBox[i] = new Rectangle(280 + 1035 * (i - 2), 520, 50, 50);
                     playerPicPos[i] = new Rectangle(80 + 1315 * (i-2), 514, 120, 120);
+                    HPPos[i] = new Rectangle(280 + 1035 * (i - 2), 520, 50, 50);
                 }
 
             } 
@@ -67,7 +66,7 @@ namespace PlaceholderGame {
 
         public void Update(GameTime game){
             for (int i = 0; i < players; i++) {
-                //HP[i] = playerO[i].GetHP
+                HP[i] = playerO[i].GetHP();
             }
         }
 
