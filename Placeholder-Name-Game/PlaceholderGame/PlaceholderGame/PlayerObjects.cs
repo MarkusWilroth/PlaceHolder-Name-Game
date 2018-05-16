@@ -43,7 +43,7 @@ namespace PlaceholderGame {
             scale = 1;            
             speed = 100;
             playerFx = SpriteEffects.None;
-            playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
+            //playerRect = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
 
             //hud = new Hud(spriteSheet, playerPos, wallRectList, player);
         }
@@ -97,7 +97,7 @@ namespace PlaceholderGame {
         }
 
         public bool Counter() {
-            if(count >= 10) {
+            if(count >= 40) {
                 isDone = true;
                 if (keyState.IsKeyDown(Keys.Enter)){
                     isDone = false;
@@ -162,7 +162,7 @@ namespace PlaceholderGame {
             return false;
         }
         public Rectangle GetRect() {
-            return playerRect;
+            return playerHitBox;
         }
 
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?

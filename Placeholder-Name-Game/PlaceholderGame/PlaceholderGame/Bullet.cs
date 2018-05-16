@@ -55,13 +55,14 @@ namespace PlaceholderGame {
 
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;
-            
 
+            
             foreach (Rectangle wallRect in wallRectList) {
                 if (bulletRect.Intersects(wallRect)) {
                     isBulletDead = true;
                 }
             }
+          
             
         }
         public bool KillBullet() {
