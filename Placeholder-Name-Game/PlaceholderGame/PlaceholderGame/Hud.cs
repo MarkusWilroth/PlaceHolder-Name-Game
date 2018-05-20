@@ -42,12 +42,12 @@ namespace PlaceholderGame {
             for (int i = 0; i < players; i++) {
                 if (i < 2) {
                     sourcePlayer[i] = new Rectangle(0 + 105*i, 150, 100, 100);
-                    playerPicPos[i] = new Rectangle(80 + 1315 * i, 30, 120, 120);
+                    playerPicPos[i] = new Rectangle(80 + 1340 * i, 30, 120, 120);
                     HPPos[i] = new Rectangle(290 + 1025 * i, 40, 50, 50);
                 }
                 else {
-                    sourcePlayer[i] = new Rectangle(0 + 105 * i, 150, 100, 100);
-                    playerPicPos[i] = new Rectangle(80 + 1315 * (i-2), 514, 120, 120);
+                    sourcePlayer[i] = new Rectangle(0 + 108 * i, 150, 100, 100);
+                    playerPicPos[i] = new Rectangle(90 + 1340 * (i-2), 512, 120, 120);
                     HPPos[i] = new Rectangle(280 + 1035 * (i - 2), 520, 50, 50);
                 }
 

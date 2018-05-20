@@ -40,7 +40,8 @@ namespace PlaceholderGame {
             timer = 0;
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 15, 15);
-            sourceRect = new Rectangle(25 * weapon, 118, 25, 25);
+            //sourceRect = new Rectangle(25 * weapon, 117, 25, 25);
+            sourceRect = new Rectangle(0, 117, 25, 25);
         }
 
         public override void Update(GameTime gameTime) {

@@ -93,7 +93,7 @@ namespace PlaceholderGame {
             startMenu = Content.Load<Texture2D>("Startmenyn"); //För menyn
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
             shot = Content.Load<Texture2D>("Skott");
-            hudTex = Content.Load<Texture2D>("Hud version 3");
+            hudTex = Content.Load<Texture2D>("Hud");
             pausTex = Content.Load<Texture2D>(@"PauseMeny");
             optionTex = Content.Load<Texture2D>(@"OptionMeny");
             ResetMap();
@@ -295,8 +295,9 @@ namespace PlaceholderGame {
                 }
             }
         }
-        //public int GetHP(int player) {
-        //    return playerO.
+        //public int GetHP(int player, int HP)
+        //{
+        //    //return playerO.GetHP;
         //}
 
         public void weaponSpawn (Vector2 pos) {
