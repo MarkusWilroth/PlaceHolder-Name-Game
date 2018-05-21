@@ -28,17 +28,18 @@ namespace PlaceholderGame {
         Vector2 pos, wallPos, groundPos, playerPos;
         Rectangle[] sourceRect;
         Vector2 startPos, optionsPos, quitPos; //För menyn
-        Rectangle startRec, optionsRec, quitRec, mousePos, wallRect, playerRect; //För menyn
+        Rectangle startRec, optionsRec, quitRec, mousePos, wallRect, playerRect, sourceWeapon; //För menyn
         List<GameObjects> gameList;
         List<WeaponObjects> weaponList;
         List<Vector2> wallPosList, groundPosList, playerPosList, posList, weaponPosList;
         List<Rectangle> wallRectList;
         List<Bullet> bulletList;
+        SpriteFont spriteFont;
 
         string getLine;
         bool isPicked, showMenu, isBulletDead, turnCounter;
         bool[] isPlayerDead, seeWeapons;
-        int groundX, groundY, count, player, weaponID, amountWeapon;
+        int groundX, groundY, count, player, weaponID, amountWeapon, HP, ammo;
         public int levels, currentLevel, players;
         char textLetter;
 
@@ -96,6 +97,7 @@ namespace PlaceholderGame {
             hudTex = Content.Load<Texture2D>("Hud");
             pausTex = Content.Load<Texture2D>(@"PauseMeny");
             optionTex = Content.Load<Texture2D>(@"OptionMeny");
+            spriteFont = Content.Load<SpriteFont>("spriteFont");
             ResetMap();
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
@@ -151,7 +153,7 @@ namespace PlaceholderGame {
                     break;
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
-                    
+                    hud.Update(this);
                     foreach (WeaponObjects weaponO in weaponList) {
                         weaponO.Update(gameTime);
                         //bulletList = weaponO.GetBulletList();
@@ -222,13 +224,27 @@ namespace PlaceholderGame {
                         }
                         
                     }
-                    hud.Draw(spriteBatch);
+
+                    hud.Draw(spriteBatch, spriteFont);
                     break;
                 case GameStates.Scoreboard:
                     break;
             }
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+        public int GetHP(int i) {
+            HP = playerO[i].GetHP();
+            return HP;
+        }
+
+        public int GetAmmo(int i) {
+            ammo = playerO[i].GetSendAmmo();
+            return ammo;
+        }
+        public Rectangle GetWeapon(int i, int weapon) {
+            sourceWeapon = playerO[i].GetSendWeapon(weapon);
+            return sourceWeapon;
         }
 
         public void FileReader() { //Ska vi ha fler banor behöver vi ändra de till arrays och ha struktur 
@@ -295,10 +311,6 @@ namespace PlaceholderGame {
                 }
             }
         }
-        //public int GetHP(int player, int HP)
-        //{
-        //    //return playerO.GetHP;
-        //}
 
         public void weaponSpawn (Vector2 pos) {
             int weapon = rnd.Next(0, amountWeapon);

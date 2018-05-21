@@ -116,3 +116,4 @@ C:\Users\User\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\Placeh
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\OptionMeny.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\PauseMeny.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Hud.xnb
+C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\spriteFont.xnb

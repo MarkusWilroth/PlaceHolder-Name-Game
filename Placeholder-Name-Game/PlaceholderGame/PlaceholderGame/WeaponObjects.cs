@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class WeaponObjects : GameObjects {
-        int range, damage, durability, AOE, weapon, speed;
+        int range, damage, ammo, AOE, weapon, speed;
         public bool isFired;
 
         Vector2 shotPos, direction;
@@ -26,7 +26,7 @@ namespace PlaceholderGame {
             this.range = range;
             this.damage = damage;
             this.AOE = AOE;
-            this.durability = durability;
+            this.ammo = durability;
             this.spriteSheet = spriteSheet;
             this.pos = pos;
             this.weapon = weapon;
@@ -38,6 +38,12 @@ namespace PlaceholderGame {
 
             weaponRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
             sourceRect = new Rectangle(30 * weapon, 65, 25, 25);
+        }
+        public int SendAmmo() {
+            return ammo;
+        }
+        public Rectangle SendSourceRect() {
+            return sourceRect;
         }
 
         public override void Update(GameTime gameTime) {
@@ -51,14 +57,14 @@ namespace PlaceholderGame {
         }
 
         public void Attack(Vector2 direction, Vector2 shotPos, List<Rectangle> wallRectList, int player) {
-            if (durability > 0) { //Fixa i hudden så att man kan se hur många skott det finns kvar
-                durability--;
+            if (ammo > 0) { //Fixa i hudden så att man kan se hur många skott det finns kvar
+                ammo--;
                 bulletRect = new Rectangle((int)shotPos.X, (int)shotPos.Y, 5, 5);
                 this.shotPos = shotPos;
                 this.direction = direction;
-                Console.WriteLine("durability: " + durability);
+                Console.WriteLine("durability: " + ammo);
 
-                game.CreateBullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, shotPos, wallRectList, player, weapon);
+                game.CreateBullet(name, range, damage, ammo, AOE, direction, shot, spriteSheet, shotPos, wallRectList, player, weapon);
                 //bullet = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon); 
                 //bulletList.Add(bullet);
                 //isFired = true;

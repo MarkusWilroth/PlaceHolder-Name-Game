@@ -11,13 +11,13 @@ using Microsoft.Xna.Framework.Input;
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
         Vector2 direction, shotDir, distance, playerPos, destination, dir, mousePos;
-        Rectangle playerRect, playerHitBox, playerDest, sourceRect, sourceWeaponRect;
+        Rectangle playerHitBox, playerDest, sourceRect, sourceWeaponRect, sourceWeapon;
         List<Rectangle> wallRectList;
         WeaponObjects[] weaponSlot;
         Bullet bullet;
         Hud hud;
 
-        int newDestX, newDestY, player, activeWeapon, equipedWeapons, HP, weapon, count;
+        int newDestX, newDestY, player, activeWeapon, equipedWeapons, HP, weapon, count, ammo;
         bool hitWall, isMoving, isDone, haveShot;
         float speed, scale, rotation;
 
@@ -44,8 +44,6 @@ namespace PlaceholderGame {
             speed = 100;
             playerFx = SpriteEffects.None;
             playerHitBox = new Rectangle((int)playerPos.X, (int)playerPos.Y, 25, 25);
-
-            //hud = new Hud(spriteSheet, playerPos, wallRectList, player);
         }
 
         public override void Update(GameTime gameTime) {
@@ -56,9 +54,11 @@ namespace PlaceholderGame {
             distance.Y = mousePos.Y - playerPos.Y;
 
             rotation = (float)Math.Atan2(distance.Y, distance.X) + (float)Math.PI / 2;
-            if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released && haveShot == false) {
-                shotDir = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
-                if (!(weaponSlot[activeWeapon] == null)) {
+            if (!(weaponSlot[activeWeapon] == null)) {
+                ammo = weaponSlot[activeWeapon].SendAmmo();
+                if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released && haveShot == false && ammo > 0) {
+                    shotDir = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
+
                     weaponSlot[activeWeapon].Attack(shotDir, playerPos, wallRectList, player);
                     count = 10;
                     haveShot = true;
@@ -97,6 +97,16 @@ namespace PlaceholderGame {
         }
         public int GetHP() {
             return HP;
+        }
+        public Rectangle GetSendWeapon(int activeWeapon) {
+            if (!(weaponSlot[activeWeapon] == null))
+            sourceWeapon = weaponSlot[activeWeapon].SendSourceRect();
+            return sourceWeapon;
+        }
+
+        public int GetSendAmmo() {
+            
+            return ammo;
         }
 
         public bool Counter() {
