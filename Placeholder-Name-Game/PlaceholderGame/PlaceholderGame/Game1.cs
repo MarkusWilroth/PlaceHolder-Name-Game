@@ -189,10 +189,10 @@ namespace PlaceholderGame {
             base.Update(gameTime);
         }
 
-        public bool HitPlayer(Rectangle bulletRect, int damage) {
+        public bool HitPlayer(Rectangle bulletRect, int damage, int player) {
             for (int i = 0; i < players; i++) {
                 playerRect = playerO[i].GetRect();
-                if (bulletRect.Intersects(playerRect)) {
+                if (bulletRect.Intersects(playerRect) && !(i==player)) {
                     isPlayerDead[i] = playerO[i].GetHit(damage);
                     return true;
                 }

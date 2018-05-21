@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PlaceholderGame {
     class Bullet: GameObjects{
-        int range, damage, durability, AOE, speed, timer, shotTime, weapon;
+        int range, damage, durability, AOE, speed, timer, shotTime, weapon, player;
         bool isBulletDead;
 
         Texture2D spriteSheet;
@@ -33,6 +33,7 @@ namespace PlaceholderGame {
             this.pos = pos;
             this.spriteSheet = spriteSheet;
             this.game = game;
+            this.player = player;
             this.wallRectList = wallRectList;
             isBulletDead = false;
             shotTime = 180;
@@ -41,11 +42,11 @@ namespace PlaceholderGame {
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 15, 15);
             //sourceRect = new Rectangle(25 * weapon, 117, 25, 25);
-            sourceRect = new Rectangle(0, 117, 25, 25);
+            sourceRect = new Rectangle(25* weapon, 117, 25, 25);
         }
 
         public override void Update(GameTime gameTime) {
-            isBulletDead = game.HitPlayer(bulletRect, damage);
+            isBulletDead = game.HitPlayer(bulletRect, damage, player);
             if (timer <= range * shotTime) {
                 pos += direction * 0.2f;
                 timer++;

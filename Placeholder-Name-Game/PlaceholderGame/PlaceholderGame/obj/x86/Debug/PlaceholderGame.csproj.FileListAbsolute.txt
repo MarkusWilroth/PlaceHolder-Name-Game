@@ -29,7 +29,6 @@ C:\Users\User\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\Placeh
 C:\Users\User\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
-C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Hud Version 3.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Skott.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Spritesheet.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Startmenyn.xnb
@@ -117,4 +116,3 @@ C:\Users\User\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\Placeh
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\OptionMeny.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\PauseMeny.xnb
 C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Hud.xnb
-C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csproj.CoreCompileInputs.cache
