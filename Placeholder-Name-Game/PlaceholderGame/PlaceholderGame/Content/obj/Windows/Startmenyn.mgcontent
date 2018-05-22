@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Axel/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Startmenyn.png</SourceFile>
-  <SourceTime>2018-05-21T15:37:11.0423016+02:00</SourceTime>
-  <DestFile>C:/Users/Axel/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/bin/Windows/Startmenyn.xnb</DestFile>
-  <DestTime>2018-05-21T15:38:14.9285236+02:00</DestTime>
+  <SourceFile>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Startmenyn.png</SourceFile>
+  <SourceTime>2018-05-22T09:46:26.295525+02:00</SourceTime>
+  <DestFile>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/bin/Windows/Startmenyn.xnb</DestFile>
+  <DestTime>2018-05-22T09:49:48.4884822+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

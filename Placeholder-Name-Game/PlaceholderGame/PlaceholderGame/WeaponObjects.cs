@@ -21,12 +21,12 @@ namespace PlaceholderGame {
         Game1 game;
         List<Bullet> bulletList;        
 
-        public WeaponObjects(String name, int durability, int range, int damage, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot, int weapon, Game1 game) : base(spriteSheet, pos) {
+        public WeaponObjects(String name, int ammo, int range, int damage, int AOE, Texture2D spriteSheet, Vector2 pos, Texture2D shot, int weapon, Game1 game) : base(spriteSheet, pos) {
             this.name = name;
             this.range = range;
             this.damage = damage;
             this.AOE = AOE;
-            this.ammo = durability;
+            this.ammo = ammo;
             this.spriteSheet = spriteSheet;
             this.pos = pos;
             this.weapon = weapon;

@@ -21,7 +21,7 @@ namespace PlaceholderGame {
         }
 
         public override void Draw(SpriteBatch sb) {
-            sb.Draw(spriteSheet, wallRect, sourceRect, Color.White);
+            //sb.Draw(spriteSheet, wallRect, sourceRect, Color.White);
         }
     }
 }

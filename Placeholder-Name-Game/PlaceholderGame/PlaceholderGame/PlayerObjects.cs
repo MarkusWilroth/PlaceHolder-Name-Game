@@ -147,15 +147,15 @@ namespace PlaceholderGame {
             newDestY = (int)newDestination.Y;
             playerDest = new Rectangle(newDestX, newDestY, 25, 25);
 
-            foreach (Rectangle wallRect in wallRectList) {
-                if (wallRect.Intersects(playerDest)) {
-                    hitWall = true;
-                    break;
-                }
-                else {
-                    hitWall = false;
-                }
-            }
+            //foreach (Rectangle wallRect in wallRectList) {
+            //    if (wallRect.Intersects(playerDest)) {
+            //        hitWall = true;
+            //        break;
+            //    }
+            //    else {
+            //        hitWall = false;
+            //    }
+            //}
             
             //Console.WriteLine("is hit walL: " + hitWall);
             
