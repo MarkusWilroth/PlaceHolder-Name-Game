@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Controls.png" />
     <Content Include="Content\Hud.png" />
     <Content Include="Content\OptionMeny.png" />
     <Content Include="Content\PauseMeny.png" />
