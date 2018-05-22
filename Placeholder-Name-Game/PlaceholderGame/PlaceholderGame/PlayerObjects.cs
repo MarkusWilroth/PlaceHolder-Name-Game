@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
         Vector2 direction, shotDir, distance, playerPos, destination, dir, mousePos;
-        Rectangle playerHitBox, playerDest, sourceRect, sourceWeaponRect, sourceWeapon;
+        Rectangle playerHitBox, playerDest, sourceRect, sourceWeaponRect, sourceWeapon, nullRect;
         List<Rectangle> wallRectList;
         WeaponObjects[] weaponSlot;
         Bullet bullet;
@@ -39,6 +39,7 @@ namespace PlaceholderGame {
             
             sourceRect = new Rectangle((30 * player), 3, 25,25);
             weaponSlot = new WeaponObjects[2];
+            nullRect = new Rectangle(10000, 10000, 10, 10);
 
             scale = 1;            
             speed = 100;
@@ -99,9 +100,12 @@ namespace PlaceholderGame {
             return HP;
         }
         public Rectangle GetSendWeapon(int activeWeapon) {
-            if (!(weaponSlot[activeWeapon] == null))
-            sourceWeapon = weaponSlot[activeWeapon].SendSourceRect();
-            return sourceWeapon;
+            if (!(weaponSlot[activeWeapon] == null)) {
+                sourceWeapon = weaponSlot[activeWeapon].SendSourceRect();
+                return sourceWeapon;
+            }
+            return nullRect;
+            
         }
 
         public int GetSendAmmo() {

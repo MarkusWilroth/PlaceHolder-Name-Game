@@ -44,25 +44,24 @@ namespace PlaceholderGame {
             //Beroende på vilken ruta man klickar på ska rätt bool[i] blir false/true
             //If (bananaRect.Intesect(mousePos)... bool[0] = false;
             //for (int i = 0; i < 3; i++) {
-            //    if()
             //}
-            //If (returnRect.Intersect(mousePos)... Game1
             mouseState = Mouse.GetState();
             mouseRectPos = new Rectangle ((int)mouseState.X, (int)mouseState.Y, 5, 5);
+            if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
+                if (twoPlayerRec.Contains(mouseRectPos)) {
+                    nrPlayers = 2;
+                }
+                if (threePlayerRec.Contains(mouseRectPos)) {
+                    nrPlayers = 3;
+                }
 
-            if (twoPlayerRec.Contains(mouseRectPos) && mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
-                nrPlayers = 2;
-            }
-            if (threePlayerRec.Contains(mouseRectPos) && mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) { 
-                nrPlayers = 3;
-            }
+                if (fourPlayerRec.Contains(mouseRectPos)) {
+                    nrPlayers = 4;
+                }
 
-            if (fourPlayerRec.Contains(mouseRectPos) && mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
-                nrPlayers = 4;
-            }
-
-            if (returnRec.Intersects(mouseRectPos) && mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
-                game.LeaveOptions(nrPlayers);
+                if (returnRec.Intersects(mouseRectPos)) {
+                    game.LeaveOptions(nrPlayers);
+                }
             }
             oldMouseState = mouseState;
         }

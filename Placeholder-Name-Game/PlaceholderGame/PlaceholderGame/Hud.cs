@@ -55,6 +55,8 @@ namespace PlaceholderGame {
                 }
                 HPText[i] = "";
                 ammoText[i] = "";
+                sourceActiveWeapon1[i] = new Rectangle(10000, 10000, 10, 10);
+                sourceActiveWeapon2[i] = new Rectangle(10000, 10000, 10, 10);
             } 
         }
 

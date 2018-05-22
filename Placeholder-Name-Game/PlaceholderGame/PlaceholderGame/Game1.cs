@@ -24,6 +24,7 @@ namespace PlaceholderGame {
         WeaponObjects weaponO;
         PlayerObjects[] playerO;
         OptionsMenu optionsMenu;
+        PauseMenu pauseMenu;
         Hud hud;
         MouseState mouseState, oldMouse;
 
@@ -46,7 +47,7 @@ namespace PlaceholderGame {
         char textLetter;
 
         String[] printMap, printObjects;        
-        Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu, hudTex;
+        Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu, hudTex, pauseTex;
         Texture2D pausTex, optionTex;
         
         KeyboardState keyState, oldKeyState;
@@ -81,6 +82,7 @@ namespace PlaceholderGame {
             wallRectList = new List<Rectangle>();
             currentLevel = 0;
             count = 0;
+            
             FileReader();
             showMenu = false;
             
@@ -100,10 +102,13 @@ namespace PlaceholderGame {
             pausTex = Content.Load<Texture2D>(@"PauseMeny");
             optionTex = Content.Load<Texture2D>(@"OptionMeny");
             spriteFont = Content.Load<SpriteFont>("spriteFont");
+            pauseTex = Content.Load<Texture2D>("PauseMeny");
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
             optionsMenu = new OptionsMenu(optionTex, nrPlayers, nrWeapons, seeWeapons);
+            
+            pauseMenu = new PauseMenu(pauseTex);
 
             hud = new Hud(hudTex, spriteSheet, players);
 
@@ -132,6 +137,7 @@ namespace PlaceholderGame {
                 weaponSpawn(pos);
             }
             player = 0;
+            currentGS = GameStates.Menu;
         }
 
 
@@ -186,7 +192,13 @@ namespace PlaceholderGame {
                         turnCounter = false;
                         Console.WriteLine("Players turn: " + player);                                                     
                     }
+                    if (keyState.IsKeyDown(Keys.Escape)){
+                        currentGS = GameStates.PauseMenu;
+                    }
                     oldKeyState = keyState;
+                    break;
+                case GameStates.PauseMenu:
+                    pauseMenu.Update(this);
                     break;
                 case GameStates.Scoreboard:
                     break;
@@ -238,17 +250,27 @@ namespace PlaceholderGame {
                             playerO[i].Draw(spriteBatch);
                         }
                         
-                    }
-
+                    }      
                     hud.Draw(spriteBatch, spriteFont);
                     break;
+                case GameStates.PauseMenu:
+                    pauseMenu.Draw(spriteBatch);
+                    break;
+
                 case GameStates.Scoreboard:
                     break;
             }
             spriteBatch.End();
             base.Draw(gameTime);
         }
-
+        public void LeavePauseMenu() {
+            currentGS = GameStates.Game;
+        }
+        public void RestartGame() {
+            weaponPosList.Clear();
+            gameList.Clear();
+            LoadContent();            
+        }
         public int GetHP(int i) {
             HP = playerO[i].GetHP();
             return HP;
