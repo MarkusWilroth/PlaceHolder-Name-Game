@@ -14,10 +14,9 @@ namespace PlaceholderGame {
         Game1 game;
         int nrPlayers,nrWeapons;
         bool[] seeWeapons;
-        Vector2 mousePos;
         Texture2D optionTex;
         MouseState mouseState, oldMouseState;
-        Rectangle returnRec, twoPlayerRec, threePlayerRec, fourPlayerRec;
+        Rectangle returnRec, twoPlayerRec, threePlayerRec, fourPlayerRec, mouseRectPos;
         Rectangle bananaRec, waterGunRec, laserSwordRec, baseBallBatRec;
         Rectangle soundRec;
 
@@ -27,21 +26,21 @@ namespace PlaceholderGame {
             this.seeWeapons = seeWeapons;
             this.optionTex = optionTex;
 
-            this.returnRec = new Rectangle(701,832, 198, 46);
-            this.twoPlayerRec = new Rectangle(714, 733, 49, 49);
-            this.threePlayerRec = new Rectangle(776, 733, 49, 49);
-            this.fourPlayerRec = new Rectangle(839, 733, 49, 49);
+            returnRec = new Rectangle(700,786, 200, 46);
+            twoPlayerRec = new Rectangle(714, 733, 49, 49);
+            threePlayerRec = new Rectangle(776, 733, 49, 49);
+            fourPlayerRec = new Rectangle(839, 733, 49, 49);
 
-            this.bananaRec = new Rectangle(727, 259, 49, 49);
-            this.waterGunRec = new Rectangle(835, 259, 49, 49);
-            this.laserSwordRec = new Rectangle(726, 332, 49, 49);
-            this.baseBallBatRec = new Rectangle(835, 334, 49, 49);
+            bananaRec = new Rectangle(727, 259, 49, 49);
+            waterGunRec = new Rectangle(835, 259, 49, 49);
+            laserSwordRec = new Rectangle(726, 332, 49, 49);
+            baseBallBatRec = new Rectangle(835, 334, 49, 49);
 
             soundRec = new Rectangle(786, 564, 49, 49);
 
         }
 
-        public void Update() {
+        public void Update(Game1 game) {
             //Beroende på vilken ruta man klickar på ska rätt bool[i] blir false/true
             //If (bananaRect.Intesect(mousePos)... bool[0] = false;
             //for (int i = 0; i < 3; i++) {
@@ -49,23 +48,25 @@ namespace PlaceholderGame {
             //}
             //If (returnRect.Intersect(mousePos)... Game1
             mouseState = Mouse.GetState();
-            mousePos = new Vector2(mousePos.X, mousePos.Y);
+            mouseRectPos = new Rectangle ((int)mouseState.X, (int)mouseState.Y, 5, 5);
 
-            if (twoPlayerRec.Contains(mousePos)) {
+            if (twoPlayerRec.Contains(mouseRectPos) && mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
                 nrPlayers = 2;
             }
-            if (threePlayerRec.Contains(mousePos)) {
+            if (threePlayerRec.Contains(mouseRectPos) && mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) { 
                 nrPlayers = 3;
             }
 
-            if (fourPlayerRec.Contains(mousePos)) {
+            if (fourPlayerRec.Contains(mouseRectPos) && mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
                 nrPlayers = 4;
             }
 
-            if (returnRec.Contains(mousePos)) {
-                game.HideMenu();
+            if (returnRec.Intersects(mouseRectPos) && mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
+                game.LeaveOptions(nrPlayers);
             }
+            oldMouseState = mouseState;
         }
+
         public bool[] ReturnWeapon() {
             return seeWeapons;
         }

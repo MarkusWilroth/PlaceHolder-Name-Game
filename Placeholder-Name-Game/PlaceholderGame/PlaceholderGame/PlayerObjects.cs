@@ -31,7 +31,7 @@ namespace PlaceholderGame {
             this.playerPos = playerPos;
             this.wallRectList = wallRectList;
             this.player = player;
-            HP = 20;
+            HP = 2;
             isDone = false;
             haveShot = false;
             activeWeapon = 0;

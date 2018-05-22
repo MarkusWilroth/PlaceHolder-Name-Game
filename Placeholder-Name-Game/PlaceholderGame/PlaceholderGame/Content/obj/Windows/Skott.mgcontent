@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Aneela Mariam Latifi/SpelUtveckling/SystemUtveckling/Projekt/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Skott.png</SourceFile>
-  <SourceTime>2018-05-22T12:16:17.2593384+02:00</SourceTime>
-  <DestFile>C:/Users/Aneela Mariam Latifi/SpelUtveckling/SystemUtveckling/Projekt/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/bin/Windows/Skott.xnb</DestFile>
-  <DestTime>2018-05-22T12:30:26.6258357+02:00</DestTime>
+  <SourceFile>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/Skott.png</SourceFile>
+  <SourceTime>2018-05-22T17:48:42.0481954+02:00</SourceTime>
+  <DestFile>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/bin/Windows/Skott.xnb</DestFile>
+  <DestTime>2018-05-22T17:57:03.0160679+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

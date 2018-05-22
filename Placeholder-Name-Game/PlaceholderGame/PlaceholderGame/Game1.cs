@@ -100,7 +100,6 @@ namespace PlaceholderGame {
             pausTex = Content.Load<Texture2D>(@"PauseMeny");
             optionTex = Content.Load<Texture2D>(@"OptionMeny");
             spriteFont = Content.Load<SpriteFont>("spriteFont");
-            ResetMap();
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
@@ -150,13 +149,13 @@ namespace PlaceholderGame {
                             Exit();
                         }
                         if (optionsRec.Intersects(mousePos)) {
-                            currentGS = OptionsMenu;
+                            currentGS = GameStates.OptionMenu;
                         }
                     }
                     break;
 
                 case GameStates.OptionMenu:
-                    optionsMenu.Update();
+                    optionsMenu.Update(this);
                     break;
 
                 case GameStates.Game:
@@ -164,7 +163,6 @@ namespace PlaceholderGame {
                     hud.Update(this);
                     foreach (WeaponObjects weaponO in weaponList) {
                         weaponO.Update(gameTime);
-                        //bulletList = weaponO.GetBulletList();
                         foreach (Bullet bulletO in bulletList) {
                             bulletO.Update(gameTime);
                             isBulletDead = bulletO.KillBullet();
@@ -210,6 +208,10 @@ namespace PlaceholderGame {
             return false;
             
         }
+        public void LeaveOptions(int players) {
+            this.players = players;
+            currentGS = GameStates.Menu;
+        }
 
         protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
             GraphicsDevice.Clear(Color.DimGray);
@@ -217,10 +219,12 @@ namespace PlaceholderGame {
             switch (currentGS) {
                 case GameStates.Menu:
                     spriteBatch.Draw(startMenu, Vector2.Zero, Color.White);
-                    if (showMenu) {
-                        optionsMenu.Draw(spriteBatch);
-                    }
                     break;
+
+                case GameStates.OptionMenu:
+                    optionsMenu.Draw(spriteBatch);
+                    break;
+
                 case GameStates.Game:
                     
                     foreach (GameObjects gameO in gameList) {
@@ -244,14 +248,7 @@ namespace PlaceholderGame {
             spriteBatch.End();
             base.Draw(gameTime);
         }
-        public bool ShowMenu() {
-            showMenu = true;
-            return showMenu;
-        }
-        public bool HideMenu() {
-            showMenu = false;
-            return showMenu;
-        }
+
         public int GetHP(int i) {
             HP = playerO[i].GetHP();
             return HP;
@@ -363,14 +360,6 @@ namespace PlaceholderGame {
             gameList.Add(weaponO);
             weaponList.Add(weaponO);
             weaponID++;
-        }
-
-        public void WeaponSource () {
-            
-        }
-        public void ResetMap() { //Onödig funderar på att ta bort, vi får se hur det blir när man ska zooma in och zooma ut
-            groundX = 350;
-            groundY = 0;
         }
     }
 }

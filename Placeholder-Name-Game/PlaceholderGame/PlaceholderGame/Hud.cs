@@ -75,10 +75,15 @@ namespace PlaceholderGame {
             for (int i = 0; i < players; i++) {
                 spriteBatch.DrawString(spriteFont, HPText[i], new Vector2(HPPos[i].X, HPPos[i].Y), Color.White);
                 spriteBatch.DrawString(spriteFont, ammoText[i], new Vector2(HPPos[i].X, HPPos[i].Y + 40), Color.White);
-                spriteBatch.Draw(spriteSheet, playerPicPos[i], sourcePlayer[i], Color.White);
                 spriteBatch.Draw(spriteSheet, activeWeapon1Pos[i], sourceActiveWeapon1[i], Color.White);
                 spriteBatch.Draw(spriteSheet, activeWeapon2Pos[i], sourceActiveWeapon2[i], Color.White);
                 spriteBatch.Draw(spriteSheet, redBox[i], new Rectangle(150, 30, 20, 20), Color.Red);
+                if (HP[i] <= 0) {
+                    spriteBatch.Draw(spriteSheet, playerPicPos[i], sourcePlayer[i], Color.Black);
+                }
+                else {
+                    spriteBatch.Draw(spriteSheet, playerPicPos[i], sourcePlayer[i], Color.White);
+                }
             }
         }
     }
