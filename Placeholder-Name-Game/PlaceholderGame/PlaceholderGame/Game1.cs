@@ -8,7 +8,9 @@ using System.IO;
 namespace PlaceholderGame {
     enum GameStates {
         Menu,
+        OptionMenu,
         Game,
+        PauseMenu,
         Scoreboard,
     }
 
@@ -148,11 +150,15 @@ namespace PlaceholderGame {
                             Exit();
                         }
                         if (optionsRec.Intersects(mousePos)) {
-                            showMenu = true;
-                            optionsMenu = new OptionsMenu(optionTex,players, amountWeapon, seeWeapons); 
+                            currentGS = OptionsMenu;
                         }
                     }
                     break;
+
+                case GameStates.OptionMenu:
+                    optionsMenu.Update();
+                    break;
+
                 case GameStates.Game:
                     playerO[player].Update(gameTime);
                     hud.Update(this);
@@ -237,6 +243,14 @@ namespace PlaceholderGame {
             }
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+        public bool ShowMenu() {
+            showMenu = true;
+            return showMenu;
+        }
+        public bool HideMenu() {
+            showMenu = false;
+            return showMenu;
         }
         public int GetHP(int i) {
             HP = playerO[i].GetHP();

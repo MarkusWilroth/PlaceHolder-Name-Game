@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,12 @@ namespace PlaceholderGame {
     class OptionsMenu {
 
         //Antal spelare, antalet vapen, se alla vapen
-
+        Game1 game;
         int nrPlayers,nrWeapons;
         bool[] seeWeapons;
+        Vector2 mousePos;
         Texture2D optionTex;
-
+        MouseState mouseState, oldMouseState;
         Rectangle returnRec, twoPlayerRec, threePlayerRec, fourPlayerRec;
         Rectangle bananaRec, waterGunRec, laserSwordRec, baseBallBatRec;
         Rectangle soundRec;
@@ -41,12 +43,28 @@ namespace PlaceholderGame {
 
         public void Update() {
             //Beroende på vilken ruta man klickar på ska rätt bool[i] blir false/true
-            //If (playerRect1.Intersects(mousePos)... players = 2;
             //If (bananaRect.Intesect(mousePos)... bool[0] = false;
             //for (int i = 0; i < 3; i++) {
             //    if()
             //}
-            //If (returnRect.Intersect(mousePos)... Game1 
+            //If (returnRect.Intersect(mousePos)... Game1
+            mouseState = Mouse.GetState();
+            mousePos = new Vector2(mousePos.X, mousePos.Y);
+
+            if (twoPlayerRec.Contains(mousePos)) {
+                nrPlayers = 2;
+            }
+            if (threePlayerRec.Contains(mousePos)) {
+                nrPlayers = 3;
+            }
+
+            if (fourPlayerRec.Contains(mousePos)) {
+                nrPlayers = 4;
+            }
+
+            if (returnRec.Contains(mousePos)) {
+                game.HideMenu();
+            }
         }
         public bool[] ReturnWeapon() {
             return seeWeapons;
