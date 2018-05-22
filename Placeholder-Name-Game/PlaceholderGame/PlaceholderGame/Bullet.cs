@@ -41,7 +41,7 @@ namespace PlaceholderGame {
             timer = 0;
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
-            sourceRect = new Rectangle((25 * weapon) + 5, 117, 25, 25);
+            sourceRect = new Rectangle((30 * weapon) + 5, 117, 25, 25);
         }
 
         public override void Update(GameTime gameTime) {
@@ -57,14 +57,14 @@ namespace PlaceholderGame {
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;
 
-            
-            //foreach (Rectangle wallRect in wallRectList) {
-            //    if (bulletRect.Intersects(wallRect)) {
-            //        isBulletDead = true;
-            //    }
-            //}
-          
-            
+
+            foreach (Rectangle wallRect in wallRectList) {
+                if (bulletRect.Intersects(wallRect)) {
+                    isBulletDead = true;
+                }
+            }
+
+
         }
         public bool KillBullet() {
             return isBulletDead;
