@@ -73,6 +73,13 @@
 /processorParam:TextureFormat=Color
 /build:Hud.png
 
+#begin spriteFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:spriteFont.spritefont
+
 #begin SpriteSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -84,11 +91,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:SpriteSheet.png
-
-#begin spriteFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:spriteFont.spritefont
 
