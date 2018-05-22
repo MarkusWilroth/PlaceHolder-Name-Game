@@ -49,8 +49,8 @@ namespace PlaceholderGame {
                 else {
                     sourcePlayer[i] = new Rectangle(0 + 108 * i, 150, 100, 100);
                     playerPicPos[i] = new Rectangle(90 + 1340 * (i-2), 512, 120, 120);
-                    activeWeapon1Pos[i] = new Rectangle(78 + 1340 * i, 673, 50, 50);
-                    activeWeapon2Pos[i] = new Rectangle(159 + 1340 * i, 673, 50, 50);
+                    activeWeapon1Pos[i] = new Rectangle(78 + 1340 * (i-2), 673, 50, 50);
+                    activeWeapon2Pos[i] = new Rectangle(159 + 1340 * (i-2), 673, 50, 50);
                     HPPos[i] = new Rectangle(290 + 1070 * (i - 2), 545, 50, 50);
                 }
                 HPText[i] = "";
@@ -80,6 +80,7 @@ namespace PlaceholderGame {
                 spriteBatch.Draw(spriteSheet, activeWeapon1Pos[i], sourceActiveWeapon1[i], Color.White);
                 spriteBatch.Draw(spriteSheet, activeWeapon2Pos[i], sourceActiveWeapon2[i], Color.White);
                 spriteBatch.Draw(spriteSheet, redBox[i], new Rectangle(150, 30, 20, 20), Color.Red);
+
                 if (HP[i] <= 0) {
                     spriteBatch.Draw(spriteSheet, playerPicPos[i], sourcePlayer[i], Color.Black);
                 }

@@ -178,3 +178,4 @@ C:\Users\Aneela Mariam Latifi\SpelUtveckling\SystemUtveckling\Projekt\PlaceHolde
 C:\Users\Aneela Mariam Latifi\SpelUtveckling\SystemUtveckling\Projekt\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.csproj.CoreCompileInputs.cache
 C:\Users\Aneela Mariam Latifi\SpelUtveckling\SystemUtveckling\Projekt\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.exe
 C:\Users\Aneela Mariam Latifi\SpelUtveckling\SystemUtveckling\Projekt\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\obj\x86\Debug\PlaceholderGame.pdb
+C:\Users\spellabbet\PlaceHolder-Name-Game\Placeholder-Name-Game\PlaceholderGame\PlaceholderGame\bin\Windows\x86\Debug\Content\Controls.xnb

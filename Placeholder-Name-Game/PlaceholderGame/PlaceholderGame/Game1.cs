@@ -47,7 +47,7 @@ namespace PlaceholderGame {
         char textLetter;
 
         String[] printMap, printObjects;        
-        Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu, hudTex, pauseTex;
+        Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu, hudTex, pauseTex, controlsTex;
         Texture2D pausTex, optionTex;
         
         KeyboardState keyState, oldKeyState;
@@ -103,12 +103,13 @@ namespace PlaceholderGame {
             optionTex = Content.Load<Texture2D>(@"OptionMeny");
             spriteFont = Content.Load<SpriteFont>("spriteFont");
             pauseTex = Content.Load<Texture2D>("PauseMeny");
+            controlsTex = Content.Load<Texture2D>("Controls");
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
             optionsMenu = new OptionsMenu(optionTex, nrPlayers, nrWeapons, seeWeapons);
             
-            pauseMenu = new PauseMenu(pauseTex);
+            pauseMenu = new PauseMenu(pauseTex, controlsTex);
 
             hud = new Hud(hudTex, spriteSheet, players);
 
@@ -143,6 +144,7 @@ namespace PlaceholderGame {
 
         protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates
             mouseState = Mouse.GetState();
+            keyState = Keyboard.GetState();
             switch (currentGS) { //gameStates
                 case GameStates.Menu:
                     mousePos = new Rectangle(mouseState.X, mouseState.Y, 5, 5);
@@ -179,7 +181,7 @@ namespace PlaceholderGame {
                         }
                     }
                     
-                    keyState = Keyboard.GetState();
+                    
                     PickGun();
                     turnCounter = playerO[player].Counter();
                     if (turnCounter) {                        
@@ -195,14 +197,15 @@ namespace PlaceholderGame {
                     if (keyState.IsKeyDown(Keys.Escape)){
                         currentGS = GameStates.PauseMenu;
                     }
-                    oldKeyState = keyState;
+                    
                     break;
                 case GameStates.PauseMenu:
-                    pauseMenu.Update(this);
+                    pauseMenu.Update(this, keyState, oldKeyState);
                     break;
                 case GameStates.Scoreboard:
                     break;
             }
+            oldKeyState = keyState;
             oldMouse = mouseState;
 
 
