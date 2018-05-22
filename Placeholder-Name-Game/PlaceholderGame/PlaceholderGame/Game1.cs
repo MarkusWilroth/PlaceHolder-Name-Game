@@ -39,7 +39,7 @@ namespace PlaceholderGame {
         string getLine;
         bool isPicked, showMenu, isBulletDead, turnCounter;
         bool[] isPlayerDead, seeWeapons;
-        int groundX, groundY, count, player, weaponID, amountWeapon, HP, ammo;
+        int groundX, groundY, count, player, weaponID, amountWeapon, HP, ammo, nrPlayers, nrWeapons;
         public int levels, currentLevel, players;
         char textLetter;
 
@@ -80,7 +80,7 @@ namespace PlaceholderGame {
             currentLevel = 0;
             count = 0;
             FileReader();
-            showMenu = true;
+            showMenu = false;
             
         }
 
@@ -102,6 +102,7 @@ namespace PlaceholderGame {
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
+            optionsMenu = new OptionsMenu(optionTex, nrPlayers, nrWeapons, seeWeapons);
 
             hud = new Hud(hudTex, spriteSheet, players);
 
@@ -147,7 +148,8 @@ namespace PlaceholderGame {
                             Exit();
                         }
                         if (optionsRec.Intersects(mousePos)) {
-                            optionsMenu = new OptionsMenu(players, amountWeapon, seeWeapons); 
+                            showMenu = true;
+                            optionsMenu = new OptionsMenu(optionTex,players, amountWeapon, seeWeapons); 
                         }
                     }
                     break;
@@ -209,6 +211,9 @@ namespace PlaceholderGame {
             switch (currentGS) {
                 case GameStates.Menu:
                     spriteBatch.Draw(startMenu, Vector2.Zero, Color.White);
+                    if (showMenu) {
+                        optionsMenu.Draw(spriteBatch);
+                    }
                     break;
                 case GameStates.Game:
                     

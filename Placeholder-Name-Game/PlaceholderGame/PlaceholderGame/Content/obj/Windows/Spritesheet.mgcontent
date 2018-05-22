@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/SpriteSheet.png</SourceFile>
-  <SourceTime>2018-05-22T11:28:46.2175962+02:00</SourceTime>
-  <DestFile>C:/Users/spellabbet/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/bin/Windows/SpriteSheet.xnb</DestFile>
-  <DestTime>2018-05-22T11:32:08.7999604+02:00</DestTime>
+  <SourceFile>C:/Users/Aneela Mariam Latifi/SpelUtveckling/SystemUtveckling/Projekt/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/SpriteSheet.png</SourceFile>
+  <SourceTime>2018-05-22T12:16:17.2623141+02:00</SourceTime>
+  <DestFile>C:/Users/Aneela Mariam Latifi/SpelUtveckling/SystemUtveckling/Projekt/PlaceHolder-Name-Game/Placeholder-Name-Game/PlaceholderGame/PlaceholderGame/Content/bin/Windows/SpriteSheet.xnb</DestFile>
+  <DestTime>2018-05-22T12:30:27.9794107+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

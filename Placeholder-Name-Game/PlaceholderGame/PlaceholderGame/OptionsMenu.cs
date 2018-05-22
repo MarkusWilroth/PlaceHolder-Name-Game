@@ -19,10 +19,11 @@ namespace PlaceholderGame {
         Rectangle bananaRec, waterGunRec, laserSwordRec, baseBallBatRec;
         Rectangle soundRec;
 
-        public OptionsMenu(int nrPlayers, int nrWeapons, bool[] seeWeapons) {
+        public OptionsMenu(Texture2D optionTex ,int nrPlayers, int nrWeapons, bool[] seeWeapons) {
             this.nrPlayers = nrPlayers;
             this.nrWeapons = nrWeapons;
             this.seeWeapons = seeWeapons;
+            this.optionTex = optionTex;
 
             this.returnRec = new Rectangle(701,832, 198, 46);
             this.twoPlayerRec = new Rectangle(714, 733, 49, 49);
@@ -55,7 +56,7 @@ namespace PlaceholderGame {
         }
 
         public void Draw(SpriteBatch spriteBatch) {
-            spriteBatch.Draw(optionTex, new Vector2(0,0) ,null, Color.White);
+            spriteBatch.Draw(optionTex, new Vector2(0,0) , Color.White);
 
         }
 
