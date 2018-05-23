@@ -8,7 +8,7 @@ namespace PlaceholderGame {
 
         public GroundObjects(Texture2D spriteSheet, Vector2 groundPos) : base(spriteSheet, groundPos) {
             this.spriteSheet = spriteSheet;
-            sourceBloodRect = new Rectangle(150, 30, 20, 20);
+            sourceBloodRect = new Rectangle(62, 297, 6, 5);
             groundRect = new Rectangle((int)groundPos.X, (int)groundPos.Y, 25, 25);
         }
 
@@ -26,7 +26,6 @@ namespace PlaceholderGame {
             if(isBlood) {
                 sb.Draw(spriteSheet, groundRect, sourceBloodRect, Color.White);
             }
-            
         }
     }
 }

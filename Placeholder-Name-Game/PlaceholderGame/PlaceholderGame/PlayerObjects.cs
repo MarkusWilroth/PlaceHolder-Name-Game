@@ -93,7 +93,7 @@ namespace PlaceholderGame {
             oldMouseState = mouseState;
         }
 
-        #region Give Values
+        #region Give and Send Values
         public int GetHP() {
             return HP;
         }
