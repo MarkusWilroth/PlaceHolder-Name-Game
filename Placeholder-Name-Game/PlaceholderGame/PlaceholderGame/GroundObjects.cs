@@ -24,7 +24,7 @@ namespace PlaceholderGame {
 
         public override void Draw(SpriteBatch sb) {
             if(isBlood) {
-                sb.Draw(spriteSheet, groundRect, sourceBloodRect, Color.White);
+                sb.Draw(spriteSheet, groundRect, sourceBloodRect, Color.Red);
             }
         }
     }

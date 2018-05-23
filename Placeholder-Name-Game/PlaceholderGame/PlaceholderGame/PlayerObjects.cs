@@ -63,8 +63,7 @@ namespace PlaceholderGame {
             }
             SwitchWeapon();
 
-            if (!isDone) {                
-
+            if (!isDone) {   
                 if (!isMoving) {
                     if (keyState.IsKeyDown(Keys.A)) {
                         ChangeDirection(new Vector2(-1, 0));
@@ -88,7 +87,7 @@ namespace PlaceholderGame {
                     }
                 }
             }
-           
+
             oldKeyState = keyState;
             oldMouseState = mouseState;
         }
@@ -127,17 +126,15 @@ namespace PlaceholderGame {
         #endregion
 
         public bool Counter() {
-            if(count >= 10) {
+            if (count >= 10) {
                 isDone = true;
-                if (keyState.IsKeyDown(Keys.Enter)){
+                if (keyState.IsKeyDown(Keys.Enter)) {
                     isDone = false;
                     count = 0;
                     haveShot = false;
                     return true;
-                }
-                return false;                
-            }
-            return false;
+                }return false;                
+            }return false;
         }
 
         private void SwitchWeapon() {
