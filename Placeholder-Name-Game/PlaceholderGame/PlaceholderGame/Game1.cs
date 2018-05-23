@@ -31,18 +31,19 @@ namespace PlaceholderGame {
         Vector2 pos, wallPos, groundPos, playerPos;
         Rectangle[] sourceRect;
         Vector2 startPos, optionsPos, quitPos; //För menyn
-        Rectangle startRec, optionsRec, quitRec, mousePos, wallRect, playerRect, sourceWeapon; //För menyn
+        Rectangle startRec, optionsRec, quitRec, mousePos, wallRect, groundRect, playerRect, sourceWeapon; //För menyn
         List<GameObjects> gameList;
+        List<GroundObjects> groundList;
         List<WeaponObjects> weaponList;
         List<Vector2> wallPosList, groundPosList, playerPosList, posList, weaponPosList;
         List<Rectangle> wallRectList;
         List<Bullet> bulletList;
         SpriteFont spriteFont;
 
-        string getLine;
+        string getLine, winnerText;
         bool isPicked, showMenu, isBulletDead, turnCounter;
         bool[] isPlayerDead, seeWeapons;
-        int groundX, groundY, count, player, weaponID, amountWeapon, HP, ammo, nrPlayers, nrWeapons;
+        int groundX, groundY, count, player, weaponID, amountWeapon, HP, ammo, deadPlayers;
         public int levels, currentLevel, players;
         char textLetter;
 
@@ -67,7 +68,6 @@ namespace PlaceholderGame {
             printMap = new String[levels];
             seeWeapons = new bool[] {true, true, true, true, true, true, true, true };
             printObjects = new string[levels];
-             //Ska ta siffra från antalet aktiva vapen... måste kopplas från menyn
 
             gameList = new List<GameObjects>();
             wallPosList = new List<Vector2>();
@@ -78,6 +78,7 @@ namespace PlaceholderGame {
             bulletList = new List<Bullet>();
             posList = new List<Vector2>();
             wallRectList = new List<Rectangle>();
+            groundList = new List<GroundObjects>();
             currentLevel = 0;
             
             FileReader();
@@ -104,18 +105,24 @@ namespace PlaceholderGame {
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
-            optionsMenu = new OptionsMenu(optionTex, nrPlayers, nrWeapons, seeWeapons);
+            optionsMenu = new OptionsMenu(optionTex, players, amountWeapon, seeWeapons);
             playerO = new PlayerObjects[players];
-            isPlayerDead = new bool[] { false, false, false, false };
+            isPlayerDead = new bool[] { true, true, true, true };
+            deadPlayers = 1;
+            winnerText = "";
 
             pauseMenu = new PauseMenu(pauseTex, controlsTex);
 
             hud = new Hud(hudTex, spriteSheet, players);
+            for (int i = 0; i < players; i++) {
+                isPlayerDead[i] = false;
+            }
 
             groundPosList = posGiver(printMap, '-');
             foreach (Vector2 pos in groundPosList) {
                 groundO = new GroundObjects(spriteSheet, pos);
                 gameList.Add(groundO);
+                groundList.Add(groundO);
             }
 
             wallPosList = posGiver(printMap, 'v');
@@ -196,6 +203,17 @@ namespace PlaceholderGame {
                         turnCounter = false;
                         Console.WriteLine("Players turn: " + player);                                                     
                     }
+                    for (int i = 0; i < players; i++) {
+                        if(isPlayerDead[i]) {
+                            deadPlayers++;
+                        }
+                    }
+                    if(deadPlayers >= players) {
+                        currentGS = GameStates.Scoreboard;
+                    }
+                    else {
+                        deadPlayers = 1;
+                    }
                     if (keyState.IsKeyDown(Keys.Escape)){
                         currentGS = GameStates.PauseMenu;
                     }
@@ -205,6 +223,11 @@ namespace PlaceholderGame {
                     pauseMenu.Update(this, keyState, oldKeyState);
                     break;
                 case GameStates.Scoreboard:
+                    for (int i = 0; i < players; i++) {
+                        if (!isPlayerDead[i]) {
+                            winnerText = "And the winner is Player" + (i+1)+ " !!!!!";
+                        }
+                    }
                     break;
             }
             oldKeyState = keyState;
@@ -219,6 +242,10 @@ namespace PlaceholderGame {
                 playerRect = playerO[i].GetRect();
                 if (bulletRect.Intersects(playerRect) && !(i==player)) {
                     isPlayerDead[i] = playerO[i].GetHit(damage);
+
+                    foreach (GroundObjects groundO in groundList) {
+                        groundO.GetBlood(playerRect);
+                    }
                     return true;
                 }
             }
@@ -263,6 +290,9 @@ namespace PlaceholderGame {
                     break;
 
                 case GameStates.Scoreboard:
+                    spriteBatch.DrawString(spriteFont, winnerText, new Vector2(775,435), Color.GhostWhite);
+
+
                     break;
             }
             spriteBatch.End();
@@ -283,7 +313,6 @@ namespace PlaceholderGame {
                 return HP;
             }
             return 0;
-            
         }
 
         public int GetAmmo(int i) {
@@ -379,7 +408,7 @@ namespace PlaceholderGame {
                     weaponO = new WeaponObjects("SlingShot", 4, 5, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 5:
-                    weaponO = new WeaponObjects("LaserRifle", 2, 10, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("LaserRifle", 4, 10, 2, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 6:
                     weaponO = new WeaponObjects("PickleGun", 3, 6, 3, 1, spriteSheet, pos, shot, weapon, this);

@@ -29,7 +29,7 @@ namespace PlaceholderGame {
             this.playerPos = playerPos;
             this.wallRectList = wallRectList;
             this.player = player;
-            HP = 2;
+            HP = 20;
             isDone = false;
             haveShot = false;
             activeWeapon = 0;
@@ -56,9 +56,8 @@ namespace PlaceholderGame {
                 ammo = weaponSlot[activeWeapon].SendAmmo();
                 if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released && haveShot == false && ammo > 0) {
                     shotDir = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
-
                     weaponSlot[activeWeapon].Attack(shotDir, playerPos, wallRectList, player);
-                    count = 10;
+                    count = 5;
                     haveShot = true;
                 }
             }
@@ -176,7 +175,7 @@ namespace PlaceholderGame {
             return playerHitBox;
         }
 
-        public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
+        public override void Draw(SpriteBatch sb) { 
             sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
             sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceWeaponRect, Color.White, rotation + 3.1415f, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
         }
