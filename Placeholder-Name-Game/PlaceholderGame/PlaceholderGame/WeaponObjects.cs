@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class WeaponObjects : GameObjects {
@@ -15,9 +11,7 @@ namespace PlaceholderGame {
         Vector2 shotPos, direction;
         String name;
         Rectangle weaponRect, sourceRect, bulletRect;
-        List<Vector2> shotsList;
         Texture2D shot;
-        Bullet bullet;
         Game1 game;
         List<Bullet> bulletList;        
 
@@ -39,35 +33,41 @@ namespace PlaceholderGame {
             weaponRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
             sourceRect = new Rectangle(30 * weapon, 65, 25, 25);
         }
+
+        #region Give Values
+
         public int SendAmmo() {
             return ammo;
         }
+
         public Rectangle SendSourceRect() {
             return sourceRect;
         }
+
+        public int ReturnWeapon() {
+            return weapon;
+        }
+
+        public List<Bullet> GetBulletList() {
+            return bulletList;
+        }
+
+        #endregion
 
         public override void Update(GameTime gameTime) {
             pos += direction * speed;
             bulletRect.X = (int)pos.X;
             bulletRect.Y = (int)pos.Y;
-            //game.HitPlayer(bulletRect, damage);
-        }
-        public int ReturnWeapon() {
-            return weapon;
         }
 
         public void Attack(Vector2 direction, Vector2 shotPos, List<Rectangle> wallRectList, int player) {
-            if (ammo > 0) { //Fixa i hudden så att man kan se hur många skott det finns kvar
+            if (ammo > 0) {
                 ammo--;
                 bulletRect = new Rectangle((int)shotPos.X, (int)shotPos.Y, 5, 5);
                 this.shotPos = shotPos;
                 this.direction = direction;
-                Console.WriteLine("durability: " + ammo);
 
                 game.CreateBullet(name, range, damage, ammo, AOE, direction, shot, spriteSheet, shotPos, wallRectList, player, weapon);
-                //bullet = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon); 
-                //bulletList.Add(bullet);
-                //isFired = true;
             }
         }
 
@@ -76,10 +76,6 @@ namespace PlaceholderGame {
                 return true;
             }
             return false;
-        }
-
-        public List<Bullet> GetBulletList() {
-            return bulletList;
         }
 
         public override void Draw(SpriteBatch sb) {

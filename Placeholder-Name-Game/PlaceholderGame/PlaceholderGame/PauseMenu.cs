@@ -1,15 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlaceholderGame {
     class PauseMenu {
-        Game1 game;
         Texture2D pauseTex, controlsTex;
         Rectangle continueRec, controlsRec, restartRec, quitRec, mouseRecPos;
         MouseState mouseState, oldMouseState;
@@ -20,6 +14,10 @@ namespace PlaceholderGame {
             this.pauseTex = pauseTex;
             this.controlsTex = controlsTex;
 
+            CreateVariables();
+        }
+
+        private void CreateVariables() {
             continueRec = new Rectangle(620, 335, 360, 90);
             controlsRec = new Rectangle(620, 477, 360, 90);
             restartRec = new Rectangle(620, 615, 360, 90);
@@ -43,13 +41,11 @@ namespace PlaceholderGame {
 
                     if (restartRec.Intersects(mouseRecPos)) {
                         game.RestartGame();
-
                     }
 
                     if (quitRec.Intersects(mouseRecPos)) {
                         game.Exit();
                     }
-
                 }
             }
             
@@ -58,8 +54,6 @@ namespace PlaceholderGame {
             }
             oldMouseState = mouseState;
         }
-
-
 
         public void Draw(SpriteBatch spriteBatch) {
             spriteBatch.Draw(pauseTex, Vector2.Zero, Color.White);

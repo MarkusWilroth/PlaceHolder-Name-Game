@@ -1,23 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlaceholderGame {
     class Bullet: GameObjects{
-        int range, damage, durability, AOE, speed, timer, shotTime, weapon, player;
-        bool isBulletDead;
+        int range, damage, durability, AOE, timer, shotTime, weapon, player;
+        float speed;
+        bool isBulletDead;        
         
-        Texture2D spriteSheet;
-        Vector2 pos, direction;
-        Rectangle bulletRect, playerRect, sourceRect;
-        MouseState mouseState, oldMouseStat;
-        PlayerObjects playerO;
-        WeaponObjects weaponO;
+        Vector2 direction;
+        Rectangle bulletRect, sourceRect;
         Game1 game;
         List<Rectangle> wallRectList;
 
@@ -37,17 +30,17 @@ namespace PlaceholderGame {
             this.wallRectList = wallRectList;
             isBulletDead = false;
             shotTime = 180;
-            speed = 1;
+            speed = 0.2f;
             timer = 0;
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 15, 15);
             sourceRect = new Rectangle((30 * weapon) + 5, 117, 25, 25);
         }
 
-        public override void Update(GameTime gameTime) {
+        public override void Update(GameTime gameTime) { //Ha rotation på bullets här
             isBulletDead = game.HitPlayer(bulletRect, damage, player);
             if (timer <= range * shotTime) {
-                pos += direction * 0.2f;
+                pos += direction * speed;
                 timer++;
             }
             else {
@@ -63,9 +56,8 @@ namespace PlaceholderGame {
                     isBulletDead = true;
                 }
             }
-
-
         }
+
         public bool KillBullet() {
             return isBulletDead;
         }

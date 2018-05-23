@@ -10,19 +10,18 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlaceholderGame {
     class PlayerObjects : GameObjects {
-        Vector2 direction, shotDir, distance, playerPos, destination, dir, mousePos;
+        Vector2 direction, shotDir, distance, playerPos, destination, mousePos;
         Rectangle playerHitBox, playerDest, sourceRect, sourceWeaponRect, sourceWeapon, nullRect;
         List<Rectangle> wallRectList;
         WeaponObjects[] weaponSlot;
+        KeyboardState keyState, oldKeyState;
+        MouseState mouseState, oldMouseState;
 
         int newDestX, newDestY, player, activeWeapon, HP, weapon, count, ammo;
         bool hitWall, isMoving, isDone, haveShot;
         float speed, scale, rotation;
 
         SpriteEffects playerFx;
-        KeyboardState keyState, oldKeyState;
-        MouseState mouseState, oldMouseState;
-        
 
         public PlayerObjects (Texture2D spriteSheet, Vector2 playerPos, List<Rectangle> wallRectList, int player) : base (spriteSheet, playerPos) {
             this.spriteSheet = spriteSheet;
@@ -59,6 +58,7 @@ namespace PlaceholderGame {
                     weaponSlot[activeWeapon].Attack(shotDir, playerPos, wallRectList, player);
                     count = 5;
                     haveShot = true;
+                    isDone = false;
                 }
             }
             SwitchWeapon();
@@ -92,6 +92,8 @@ namespace PlaceholderGame {
             oldKeyState = keyState;
             oldMouseState = mouseState;
         }
+
+        #region Give Values
         public int GetHP() {
             return HP;
         }
@@ -100,14 +102,29 @@ namespace PlaceholderGame {
                 sourceWeapon = weaponSlot[activeWeapon].SendSourceRect();
                 return sourceWeapon;
             }
-            return nullRect;
-            
+            return nullRect;            
         }
 
-        public int GetSendAmmo() {
-            
+        public int GetSendAmmo() {            
             return ammo;
         }
+
+        public bool GetHit(int damage) {
+            HP -= damage;
+            if (HP <= 0) {
+                return true;
+            }
+            return false;
+        }
+
+        public Rectangle GetRect() {
+            return playerHitBox;
+        }
+
+        public Vector2 SendPos() {
+            return playerPos;
+        }
+        #endregion
 
         public bool Counter() {
             if(count >= 10) {
@@ -137,7 +154,6 @@ namespace PlaceholderGame {
                 sourceWeaponRect = new Rectangle(30 * weapon, 90, 25, 25);
             }
         }
-        
 
         private void ChangeDirection(Vector2 direction) {
             this.direction = direction;
@@ -163,30 +179,16 @@ namespace PlaceholderGame {
             if (hitWall) {
                 isMoving = false;
             }
-        }
-        public bool GetHit(int damage) {
-            HP -= damage;
-            if(HP <= 0) {
-                return true;
-            }
-            return false;
-        }
-        public Rectangle GetRect() {
-            return playerHitBox;
-        }
-
-        public override void Draw(SpriteBatch sb) { 
-            sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
-            sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceWeaponRect, Color.White, rotation + 3.1415f, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
-        }
-
-        public Vector2 SendPos() {
-            return playerPos;
-        }
+        }        
 
         public void EquipedWeapon(WeaponObjects weaponStats) {
             weaponSlot[activeWeapon] = weaponStats;
             
+        }
+
+        public override void Draw(SpriteBatch sb) {
+            sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
+            sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceWeaponRect, Color.White, rotation + 3.1415f, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
         }
     }
 }

@@ -1,17 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PlaceholderGame {
     class OptionsMenu {
-
-        //Antal spelare, antalet vapen, se alla vapen
-        Game1 game;
         int nrPlayers,nrWeapons;
         bool[] seeWeapons;
         Texture2D optionTex;
@@ -26,7 +18,11 @@ namespace PlaceholderGame {
             this.seeWeapons = seeWeapons;
             this.optionTex = optionTex;
 
-            returnRec = new Rectangle(700,786, 200, 46);
+            CreateRectangle();
+        }
+
+        private void CreateRectangle() {
+            returnRec = new Rectangle(700, 786, 200, 46);
             twoPlayerRec = new Rectangle(714, 733, 49, 49);
             threePlayerRec = new Rectangle(776, 733, 49, 49);
             fourPlayerRec = new Rectangle(839, 733, 49, 49);
@@ -37,14 +33,9 @@ namespace PlaceholderGame {
             baseBallBatRec = new Rectangle(835, 334, 49, 49);
 
             soundRec = new Rectangle(786, 564, 49, 49);
-
         }
 
         public void Update(Game1 game) {
-            //Beroende på vilken ruta man klickar på ska rätt bool[i] blir false/true
-            //If (bananaRect.Intesect(mousePos)... bool[0] = false;
-            //for (int i = 0; i < 3; i++) {
-            //}
             mouseState = Mouse.GetState();
             mouseRectPos = new Rectangle ((int)mouseState.X, (int)mouseState.Y, 5, 5);
             if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
@@ -69,6 +60,7 @@ namespace PlaceholderGame {
         public bool[] ReturnWeapon() {
             return seeWeapons;
         }
+
         public int ReturnPlayers() {
             return nrPlayers;
         }

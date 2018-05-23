@@ -14,11 +14,10 @@ namespace PlaceholderGame {
         Scoreboard,
     }
 
-    public class Game1 : Game { //Vi måste komma överäns om hur klasserna ska vara uppdelade! Vart ska vapenklassen vara och hur ser den ut?
+    public class Game1 : Game {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GroundObjects groundO;
-        GameObjects gameO;
         WallObjects wallO;
         Bullet bulletO;
         WeaponObjects weaponO;
@@ -28,10 +27,9 @@ namespace PlaceholderGame {
         Hud hud;
         MouseState mouseState, oldMouse;
 
-        Vector2 pos, wallPos, groundPos, playerPos;
+        Vector2 pos, playerPos;
         Rectangle[] sourceRect;
-        Vector2 startPos, optionsPos, quitPos; //För menyn
-        Rectangle startRec, optionsRec, quitRec, mousePos, wallRect, groundRect, playerRect, sourceWeapon; //För menyn
+        Rectangle startRec, optionsRec, quitRec, mousePos, wallRect, playerRect, sourceWeapon;
         List<GameObjects> gameList;
         List<GroundObjects> groundList;
         List<WeaponObjects> weaponList;
@@ -41,15 +39,14 @@ namespace PlaceholderGame {
         SpriteFont spriteFont;
 
         string getLine, winnerText;
-        bool isPicked, showMenu, isBulletDead, turnCounter;
+        bool isPicked, isBulletDead, turnCounter;
         bool[] isPlayerDead, seeWeapons;
         int groundX, groundY, count, player, weaponID, amountWeapon, HP, ammo, deadPlayers;
         public int levels, currentLevel, players;
         char textLetter;
 
         String[] printMap, printObjects;        
-        Texture2D ground, tileWall, picPlayer, spriteSheet, shot, startMenu, hudTex, pauseTex, controlsTex;
-        Texture2D pausTex, optionTex;
+        Texture2D spriteSheet, shot, startMenu, hudTex, pauseTex, controlsTex, optionTex;
         
         KeyboardState keyState, oldKeyState;
         Random rnd;
@@ -81,39 +78,35 @@ namespace PlaceholderGame {
             groundList = new List<GroundObjects>();
             currentLevel = 0;
             
-            FileReader();
-            showMenu = false;
-            
-        }
-
-        protected override void Initialize() {
-            IsMouseVisible = true;
-            base.Initialize();
+            FileReader();            
         }
        
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
             startMenu = Content.Load<Texture2D>("Startmenyn"); //För menyn
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
             shot = Content.Load<Texture2D>("Skott");
             hudTex = Content.Load<Texture2D>("Hud");
-            pausTex = Content.Load<Texture2D>(@"PauseMeny");
-            optionTex = Content.Load<Texture2D>(@"OptionMeny");
+            optionTex = Content.Load<Texture2D>("OptionMeny");
             spriteFont = Content.Load<SpriteFont>("spriteFont");
             pauseTex = Content.Load<Texture2D>("PauseMeny");
             controlsTex = Content.Load<Texture2D>("Controls");
+
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
-            optionsMenu = new OptionsMenu(optionTex, players, amountWeapon, seeWeapons);
-            playerO = new PlayerObjects[players];
-            isPlayerDead = new bool[] { true, true, true, true };
-            deadPlayers = 1;
-            winnerText = "";
-
-            pauseMenu = new PauseMenu(pauseTex, controlsTex);
 
             hud = new Hud(hudTex, spriteSheet, players);
+            pauseMenu = new PauseMenu(pauseTex, controlsTex);
+            optionsMenu = new OptionsMenu(optionTex, players, amountWeapon, seeWeapons);
+            playerO = new PlayerObjects[players];
+
+            IsMouseVisible = true;
+            isPlayerDead = new bool[] { true, true, true, true };
+            deadPlayers = 1;
+            winnerText = ""; 
+                        
             for (int i = 0; i < players; i++) {
                 isPlayerDead[i] = false;
             }
@@ -150,17 +143,16 @@ namespace PlaceholderGame {
             currentGS = GameStates.Menu;
         }
 
-
-        protected override void Update(GameTime gameTime) { //Testa att ta bort Game1 game från alla updates
+        protected override void Update(GameTime gameTime) {
             mouseState = Mouse.GetState();
             keyState = Keyboard.GetState();
-            switch (currentGS) { //gameStates
+
+            switch (currentGS) {
                 case GameStates.Menu:
                     mousePos = new Rectangle(mouseState.X, mouseState.Y, 5, 5);
                     if (mouseState.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released) {
-                        if (startRec.Intersects(mousePos))
-                        {
-                            currentGS = GameStates.Game;                            
+                        if (startRec.Intersects(mousePos)) {
+                            currentGS = GameStates.Game;
                         }
                         if (quitRec.Intersects(mousePos)) {
                             Exit();
@@ -176,6 +168,7 @@ namespace PlaceholderGame {
                     break;
 
                 case GameStates.Game:
+                    IsMouseVisible = false;
                     playerO[player].Update(gameTime);
                     hud.Update(this);
                     foreach (WeaponObjects weaponO in weaponList) {
@@ -200,28 +193,34 @@ namespace PlaceholderGame {
                                 player = 0;
                             }
                         } while (isPlayerDead[player]);
-                        turnCounter = false;
-                        Console.WriteLine("Players turn: " + player);                                                     
+                        turnCounter = false;                                                   
                     }
+
                     for (int i = 0; i < players; i++) {
                         if(isPlayerDead[i]) {
                             deadPlayers++;
                         }
                     }
+
                     if(deadPlayers >= players) {
                         currentGS = GameStates.Scoreboard;
                     }
+
                     else {
                         deadPlayers = 1;
                     }
+
                     if (keyState.IsKeyDown(Keys.Escape)){
+                        IsMouseVisible = true;
                         currentGS = GameStates.PauseMenu;
                     }
                     
                     break;
+
                 case GameStates.PauseMenu:
                     pauseMenu.Update(this, keyState, oldKeyState);
                     break;
+
                 case GameStates.Scoreboard:
                     for (int i = 0; i < players; i++) {
                         if (!isPlayerDead[i]) {
@@ -237,6 +236,8 @@ namespace PlaceholderGame {
             base.Update(gameTime);
         }
 
+        #region Player
+
         public bool HitPlayer(Rectangle bulletRect, int damage, int player) {
             for (int i = 0; i < players; i++) {
                 playerRect = playerO[i].GetRect();
@@ -251,62 +252,24 @@ namespace PlaceholderGame {
             }
             return false;
             
-        }
-        public void LeaveOptions(int players) {
-            this.players = players;
-            RestartGame();
-        }
+        }        
 
-        protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
-            GraphicsDevice.Clear(Color.DimGray);
-            spriteBatch.Begin();
-            switch (currentGS) {
-                case GameStates.Menu:
-                    spriteBatch.Draw(startMenu, Vector2.Zero, Color.White);
-                    break;
+        public void PickGun() {
+            playerPos = playerO[player].SendPos();
+            if (keyState.IsKeyDown(Keys.Space) && !(oldKeyState.IsKeyDown(Keys.Space))) {
 
-                case GameStates.OptionMenu:
-                    optionsMenu.Draw(spriteBatch);
-                    break;
-
-                case GameStates.Game:
-                    
-                    foreach (GameObjects gameO in gameList) {
-                        gameO.Draw(spriteBatch);
+                foreach (WeaponObjects weaponO in weaponList) {
+                    isPicked = weaponO.NewWeapon(playerPos);
+                    if (isPicked) {
+                        playerO[player].EquipedWeapon(weaponO);
+                        gameList.Remove(weaponO);
+                        weaponList.Remove(weaponO);
+                        break;
                     }
-                    foreach (Bullet bulletO in bulletList) {
-                        bulletO.Draw(spriteBatch);
-                    }
-                    for (int i = 0; i < players; i++) {
-                        if(!isPlayerDead[i]) {
-                            playerO[i].Draw(spriteBatch);
-                        }
-                        
-                    }      
-                    hud.Draw(spriteBatch, spriteFont);
-                    break;
-                case GameStates.PauseMenu:
-                    pauseMenu.Draw(spriteBatch);
-                    break;
-
-                case GameStates.Scoreboard:
-                    spriteBatch.DrawString(spriteFont, winnerText, new Vector2(775,435), Color.GhostWhite);
-
-
-                    break;
+                }
             }
-            spriteBatch.End();
-            base.Draw(gameTime);
         }
-        public void LeavePauseMenu() {
-            currentGS = GameStates.Game;
-        }
-        public void RestartGame() {
-            weaponPosList.Clear();
-            weaponList.Clear();
-            gameList.Clear();
-            LoadContent();            
-        }
+
         public int GetHP(int i) {
             HP = playerO[i].GetHP();
             if (i < players && HP >= 0) {
@@ -319,10 +282,35 @@ namespace PlaceholderGame {
             ammo = playerO[i].GetSendAmmo();
             return ammo;
         }
+
         public Rectangle GetWeapon(int i, int weapon) {
             sourceWeapon = playerO[i].GetSendWeapon(weapon);
             return sourceWeapon;
         }
+
+        #endregion
+
+        #region Menu
+
+        public void LeaveOptions(int players) {
+            this.players = players;
+            RestartGame();
+        }
+
+        public void LeavePauseMenu() {
+            currentGS = GameStates.Game;
+        }
+
+        public void RestartGame() {
+            weaponPosList.Clear();
+            weaponList.Clear();
+            gameList.Clear();
+            LoadContent();
+        }
+
+        #endregion
+
+        #region Create Map
 
         public void FileReader() { //Ska vi ha fler banor behöver vi ändra de till arrays och ha struktur 
             for (int i = 0; i < 1; i++) {
@@ -343,13 +331,6 @@ namespace PlaceholderGame {
                 getLine = "";
             }
         }
-        public void CreateBullet(String name, int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Texture2D spriteSheet, Vector2 pos, List<Rectangle> wallRectList, int player, int weapon) {
-            bulletO = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon, this);
-            bulletList.Add(bulletO);
-        }
-        public void KillBullet() {
-            bulletList.Clear();   //Ska vi har vapen som skjuter mer än ett skott måste vi ändra detta!
-        }
 
         public List<Vector2> posGiver(String[] printLevel, char getLetter) { //Skapar listor som ger positioner till föremål beroend på textfilen printLevel
             posList.Clear();
@@ -369,29 +350,13 @@ namespace PlaceholderGame {
                 } else {
                     groundX += 25;
                 }
-            }            
-            return posList;
-        }  
-
-        public void PickGun() {
-            playerPos = playerO[player].SendPos();
-            if (keyState.IsKeyDown(Keys.Space) && !(oldKeyState.IsKeyDown(Keys.Space))) {
-
-                foreach (WeaponObjects weaponO in weaponList) {
-                    isPicked = weaponO.NewWeapon(playerPos);
-                    if (isPicked) {
-                        playerO[player].EquipedWeapon(weaponO);
-                        gameList.Remove(weaponO);
-                        weaponList.Remove(weaponO);
-                        break;
-                    }
-                }
             }
+            return posList;
         }
 
-        public void weaponSpawn (Vector2 pos) {
+        public void weaponSpawn(Vector2 pos) {
             int weapon = rnd.Next(0, amountWeapon);
-            switch (weapon) { 
+            switch (weapon) {
                 case 0:
                     weaponO = new WeaponObjects("BananaGun", 3, 5, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
@@ -403,7 +368,7 @@ namespace PlaceholderGame {
                     break;
                 case 3:
                     weaponO = new WeaponObjects("LaserSword", 3, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
-                    break;                
+                    break;
                 case 4:
                     weaponO = new WeaponObjects("SlingShot", 4, 5, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
@@ -420,6 +385,64 @@ namespace PlaceholderGame {
             gameList.Add(weaponO);
             weaponList.Add(weaponO);
             weaponID++;
+        }
+
+        #endregion
+
+        #region Bullet
+
+        public void CreateBullet(String name, int range, int damage, int durability, int AOE, Vector2 direction, Texture2D shot, Texture2D spriteSheet, Vector2 pos, List<Rectangle> wallRectList, int player, int weapon) {
+            bulletO = new Bullet(name, range, damage, durability, AOE, direction, shot, spriteSheet, pos, wallRectList, player, weapon, this);
+            bulletList.Add(bulletO);
+        }
+
+        public void KillBullet() {
+            bulletList.Clear();   //Ska vi har vapen som skjuter mer än ett skott måste vi ändra detta!
+        }
+
+        #endregion
+
+        protected override void Draw(GameTime gameTime) {
+            GraphicsDevice.Clear(Color.DimGray);
+            spriteBatch.Begin();
+
+            switch (currentGS) {
+                case GameStates.Menu:
+                    spriteBatch.Draw(startMenu, Vector2.Zero, Color.White);
+                    break;
+
+                case GameStates.OptionMenu:
+                    optionsMenu.Draw(spriteBatch);
+                    break;
+
+                case GameStates.Game:
+
+                    foreach (GameObjects gameO in gameList) {
+                        gameO.Draw(spriteBatch);
+                    }
+                    foreach (Bullet bulletO in bulletList) {
+                        bulletO.Draw(spriteBatch);
+                    }
+                    for (int i = 0; i < players; i++) {
+                        if (!isPlayerDead[i]) {
+                            playerO[i].Draw(spriteBatch);
+                        }
+
+                    }
+                    hud.Draw(spriteBatch, spriteFont);
+                    break;
+
+                case GameStates.PauseMenu:
+                    pauseMenu.Draw(spriteBatch);
+                    break;
+
+                case GameStates.Scoreboard:
+                    spriteBatch.DrawString(spriteFont, winnerText, new Vector2(775, 435), Color.GhostWhite);
+                    break;
+            }
+
+            spriteBatch.End();
+            base.Draw(gameTime);
         }
     }
 }

@@ -1,14 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-//using Microsoft.Xna.Framework.Graphics
-using Microsoft.Xna.Framework.Content;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace PlaceholderGame {
 
@@ -17,7 +9,6 @@ namespace PlaceholderGame {
         int[] HP, ammo;
 
         String[] HPText, ammoText;
-        Game1 game;
         Rectangle[] sourceActiveWeapon1, sourceActiveWeapon2, activeWeapon1Pos, activeWeapon2Pos, sourcePlayer, playerPicPos, redBox, HPPos;
         Texture2D hudTex, spriteSheet;
 
@@ -25,18 +16,8 @@ namespace PlaceholderGame {
             this.spriteSheet = spriteSheet;
             this.players = players;
             this.hudTex = hudTex;
-            ammo = new int[players];
-            HP = new int[players];
-            redBox = new Rectangle[players];
-            HPPos = new Rectangle[players];
-            playerPicPos = new Rectangle[players];
-            sourcePlayer = new Rectangle[players];
-            sourceActiveWeapon1 = new Rectangle[players];
-            sourceActiveWeapon2 = new Rectangle[players];
-            activeWeapon1Pos = new Rectangle[players];
-            activeWeapon2Pos = new Rectangle[players];
-            HPText = new String[players];
-            ammoText = new String[players];
+
+            CreateVariables();
 
             for (int i = 0; i < players; i++) {
                 if (i < 2) {
@@ -61,6 +42,21 @@ namespace PlaceholderGame {
             } 
         }
 
+        private void CreateVariables() {
+            ammo = new int[players];
+            HP = new int[players];
+            redBox = new Rectangle[players];
+            HPPos = new Rectangle[players];
+            playerPicPos = new Rectangle[players];
+            sourcePlayer = new Rectangle[players];
+            sourceActiveWeapon1 = new Rectangle[players];
+            sourceActiveWeapon2 = new Rectangle[players];
+            activeWeapon1Pos = new Rectangle[players];
+            activeWeapon2Pos = new Rectangle[players];
+            HPText = new String[players];
+            ammoText = new String[players];
+        }
+
         public void Update(Game1 game){
             for (int i = 0; i < players; i++) {
                 HP[i] = game.GetHP(i);
@@ -69,7 +65,6 @@ namespace PlaceholderGame {
                 sourceActiveWeapon2[i] = game.GetWeapon(i, 1);
                 HPText[i] = ""+HP[i];
                 ammoText[i] = "" + ammo[i];
-                //Console.WriteLine("Active Weapon: " + sourceActiveWeapon1);
             }
         }
 
