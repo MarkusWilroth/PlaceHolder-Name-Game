@@ -20,10 +20,10 @@ namespace PlaceholderGame {
             this.pauseTex = pauseTex;
             this.controlsTex = controlsTex;
 
-            continueRec = new Rectangle(692, 353, 200, 46);
-            controlsRec = new Rectangle(695, 432, 200, 46);
-            restartRec = new Rectangle(693, 508, 200, 46);
-            quitRec = new Rectangle(692, 585, 200, 46);
+            continueRec = new Rectangle(620, 335, 360, 90);
+            controlsRec = new Rectangle(620, 477, 360, 90);
+            restartRec = new Rectangle(620, 615, 360, 90);
+            quitRec = new Rectangle(620, 754, 360, 90);
             showControls = false;
         }
 

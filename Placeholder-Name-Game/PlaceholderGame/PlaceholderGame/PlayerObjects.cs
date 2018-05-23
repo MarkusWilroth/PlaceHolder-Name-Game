@@ -14,10 +14,8 @@ namespace PlaceholderGame {
         Rectangle playerHitBox, playerDest, sourceRect, sourceWeaponRect, sourceWeapon, nullRect;
         List<Rectangle> wallRectList;
         WeaponObjects[] weaponSlot;
-        Bullet bullet;
-        Hud hud;
 
-        int newDestX, newDestY, player, activeWeapon, equipedWeapons, HP, weapon, count, ammo;
+        int newDestX, newDestY, player, activeWeapon, HP, weapon, count, ammo;
         bool hitWall, isMoving, isDone, haveShot;
         float speed, scale, rotation;
 
@@ -31,11 +29,10 @@ namespace PlaceholderGame {
             this.playerPos = playerPos;
             this.wallRectList = wallRectList;
             this.player = player;
-            HP = 20;
+            HP = 2;
             isDone = false;
             haveShot = false;
             activeWeapon = 0;
-            equipedWeapons = 0;
             
             sourceRect = new Rectangle((30 * player), 3, 25,25);
             weaponSlot = new WeaponObjects[2];
@@ -182,7 +179,6 @@ namespace PlaceholderGame {
         public override void Draw(SpriteBatch sb) { //Alla rotarerar med spelare.. kan lösas med att ha en sorts array på rotation, är det värt koden?
             sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceRect, Color.White, rotation, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
             sb.Draw(spriteSheet, new Vector2(playerPos.X + 12, playerPos.Y + 12), sourceWeaponRect, Color.White, rotation + 3.1415f, new Vector2(12.5f, 12.5f), scale, playerFx, 1);
-            //hud.Draw(sb);
         }
 
         public Vector2 SendPos() {

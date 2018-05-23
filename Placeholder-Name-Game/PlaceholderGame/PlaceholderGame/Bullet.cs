@@ -40,7 +40,7 @@ namespace PlaceholderGame {
             speed = 1;
             timer = 0;
 
-            bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 25, 25);
+            bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 15, 15);
             sourceRect = new Rectangle((30 * weapon) + 5, 117, 25, 25);
         }
 

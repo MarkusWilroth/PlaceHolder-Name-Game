@@ -61,15 +61,13 @@ namespace PlaceholderGame {
             graphics.PreferredBackBufferHeight = 900;
             players = 4; //Flyttas till menyn, bestämmer hur många spelare det är!
             levels = 1; //Hur många banfiler, asså hur många banor man man spela på
-            player = 0;
             amountWeapon = 8;
             rnd = new Random();
             sourceRect = new Rectangle[3];
             printMap = new String[levels];
-            isPlayerDead = new bool[] { false, false, false, false };
             seeWeapons = new bool[] {true, true, true, true, true, true, true, true };
             printObjects = new string[levels];
-            playerO = new PlayerObjects[players]; //Ska ta siffra från antalet aktiva vapen... måste kopplas från menyn
+             //Ska ta siffra från antalet aktiva vapen... måste kopplas från menyn
 
             gameList = new List<GameObjects>();
             wallPosList = new List<Vector2>();
@@ -81,7 +79,6 @@ namespace PlaceholderGame {
             posList = new List<Vector2>();
             wallRectList = new List<Rectangle>();
             currentLevel = 0;
-            count = 0;
             
             FileReader();
             showMenu = false;
@@ -108,7 +105,9 @@ namespace PlaceholderGame {
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
             optionsMenu = new OptionsMenu(optionTex, nrPlayers, nrWeapons, seeWeapons);
-            
+            playerO = new PlayerObjects[players];
+            isPlayerDead = new bool[] { false, false, false, false };
+
             pauseMenu = new PauseMenu(pauseTex, controlsTex);
 
             hud = new Hud(hudTex, spriteSheet, players);
@@ -129,8 +128,11 @@ namespace PlaceholderGame {
 
             playerPosList = posGiver(printObjects, 's');
             foreach (Vector2 pos in playerPosList) {
-                playerO[player] = new PlayerObjects(spriteSheet, pos, wallRectList, player);
-                player++;
+                if(player < players) {
+                    playerO[player] = new PlayerObjects(spriteSheet, pos, wallRectList, player);
+                    player++;
+                }
+                
             }
 
             weaponPosList = posGiver(printObjects, 'w');
@@ -225,7 +227,7 @@ namespace PlaceholderGame {
         }
         public void LeaveOptions(int players) {
             this.players = players;
-            currentGS = GameStates.Menu;
+            RestartGame();
         }
 
         protected override void Draw(GameTime gameTime) { //Zoomfunktionen borde vara något vi kan få från Fungus Invasion
@@ -271,12 +273,17 @@ namespace PlaceholderGame {
         }
         public void RestartGame() {
             weaponPosList.Clear();
+            weaponList.Clear();
             gameList.Clear();
             LoadContent();            
         }
         public int GetHP(int i) {
             HP = playerO[i].GetHP();
-            return HP;
+            if (i < players && HP >= 0) {
+                return HP;
+            }
+            return 0;
+            
         }
 
         public int GetAmmo(int i) {
@@ -335,7 +342,7 @@ namespace PlaceholderGame {
                 }
             }            
             return posList;
-        }  //Nivåerna
+        }  
 
         public void PickGun() {
             playerPos = playerO[player].SendPos();
@@ -355,9 +362,8 @@ namespace PlaceholderGame {
 
         public void weaponSpawn (Vector2 pos) {
             int weapon = rnd.Next(0, amountWeapon);
-            switch (weapon) { //sourceRect?
+            switch (weapon) { 
                 case 0:
-                    //sourceRect = new Rectangle(56, 140, 7, 32); banan uppifrån
                     weaponO = new WeaponObjects("BananaGun", 3, 5, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 1:
