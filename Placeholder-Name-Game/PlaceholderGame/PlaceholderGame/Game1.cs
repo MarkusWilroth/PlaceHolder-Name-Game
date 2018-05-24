@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Media;
 
 namespace PlaceholderGame {
     enum GameStates {
@@ -15,6 +16,7 @@ namespace PlaceholderGame {
     }
 
     public class Game1 : Game {
+        SystemSound music;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GroundObjects groundO;
@@ -38,10 +40,10 @@ namespace PlaceholderGame {
         List<Bullet> bulletList;
         SpriteFont spriteFont;
 
-        string getLine, winnerText;
+        string getLine, winnerText, mp3File, voxFile;
         bool isPicked, isBulletDead, turnCounter;
         bool[] isPlayerDead, seeWeapons;
-        int groundX, groundY, count, player, weaponID, amountWeapon, HP, ammo, deadPlayers;
+        int groundX, groundY, count, player, weaponID, amountWeapon, HP, ammo, range, damage, deadPlayers;
         public int levels, currentLevel, players;
         char textLetter;
 
@@ -65,6 +67,8 @@ namespace PlaceholderGame {
             printMap = new String[levels];
             seeWeapons = new bool[] {true, true, true, true, true, true, true, true };
             printObjects = new string[levels];
+            //mp3File = "IngameMusic.mp3";
+            //voxFile = "in.vox";
 
             gameList = new List<GameObjects>();
             wallPosList = new List<Vector2>();
@@ -83,6 +87,7 @@ namespace PlaceholderGame {
        
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            //music = new SoundPlayer ("IngameMusic.mp3");
 
             startMenu = Content.Load<Texture2D>("Startmenyn"); //För menyn
             spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
@@ -281,6 +286,16 @@ namespace PlaceholderGame {
         public int GetAmmo(int i) {
             ammo = playerO[i].GetSendAmmo();
             return ammo;
+        }
+
+        public int GetDamage(int i, int activeWeapon) {
+            damage = playerO[i].GetSendDamage(activeWeapon);
+            return damage;
+        }
+
+        public int GetRange(int i, int activeWeapon) {
+            range = playerO[i].GetSendRange(activeWeapon);
+            return range;
         }
 
         public Rectangle GetWeapon(int i, int weapon) {

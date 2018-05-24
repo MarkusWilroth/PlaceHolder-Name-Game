@@ -17,7 +17,7 @@ namespace PlaceholderGame {
         KeyboardState keyState, oldKeyState;
         MouseState mouseState, oldMouseState;
 
-        int newDestX, newDestY, player, activeWeapon, HP, weapon, count, ammo;
+        int newDestX, newDestY, player, activeWeapon, HP, weapon, count, ammo, damage, range;
         bool hitWall, isMoving, isDone, haveShot;
         float speed, scale, rotation;
 
@@ -53,6 +53,8 @@ namespace PlaceholderGame {
             rotation = (float)Math.Atan2(distance.Y, distance.X) + (float)Math.PI / 2;
             if (!(weaponSlot[activeWeapon] == null)) {
                 ammo = weaponSlot[activeWeapon].SendAmmo();
+                damage = weaponSlot[activeWeapon].SendDamage();
+                range = weaponSlot[activeWeapon].SendRange();
                 if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released && haveShot == false && ammo > 0) {
                     shotDir = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
                     weaponSlot[activeWeapon].Attack(shotDir, playerPos, wallRectList, player);
@@ -106,6 +108,22 @@ namespace PlaceholderGame {
 
         public int GetSendAmmo() {            
             return ammo;
+        }
+
+        public int GetSendDamage(int activeWeapon) {
+            if (!(weaponSlot[activeWeapon] == null)) {
+                damage = weaponSlot[activeWeapon].SendDamage();
+                return damage;
+            }
+            return 0;
+        }
+
+        public int GetSendRange(int activeWeapon) {
+            if (!(weaponSlot[activeWeapon] == null)) {
+                range = weaponSlot[activeWeapon].SendRange();
+                return range;
+            }
+            return 0;
         }
 
         public bool GetHit(int damage) {

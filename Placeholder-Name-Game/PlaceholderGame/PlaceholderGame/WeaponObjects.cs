@@ -40,6 +40,13 @@ namespace PlaceholderGame {
             return ammo;
         }
 
+        public int SendDamage() {
+            return damage;
+        }
+        public int SendRange() {
+            return range;
+        }
+
         public Rectangle SendSourceRect() {
             return sourceRect;
         }

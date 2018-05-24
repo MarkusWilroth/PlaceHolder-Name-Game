@@ -8,9 +8,7 @@ namespace PlaceholderGame {
         bool[] seeWeapons;
         Texture2D optionTex;
         MouseState mouseState, oldMouseState;
-        Rectangle returnRec, twoPlayerRec, threePlayerRec, fourPlayerRec, mouseRectPos;
-        Rectangle bananaRec, waterGunRec, laserSwordRec, baseBallBatRec;
-        Rectangle soundRec;
+        Rectangle returnRec, twoPlayerRec, threePlayerRec, fourPlayerRec, mouseRectPos, soundRec;
 
         public OptionsMenu(Texture2D optionTex ,int nrPlayers, int nrWeapons, bool[] seeWeapons) {
             this.nrPlayers = nrPlayers;
@@ -22,17 +20,12 @@ namespace PlaceholderGame {
         }
 
         private void CreateRectangle() {
-            returnRec = new Rectangle(700, 786, 200, 46);
-            twoPlayerRec = new Rectangle(714, 733, 49, 49);
-            threePlayerRec = new Rectangle(776, 733, 49, 49);
-            fourPlayerRec = new Rectangle(839, 733, 49, 49);
+            returnRec = new Rectangle(666, 717, 305, 70);
+            twoPlayerRec = new Rectangle(684, 473, 77, 77);
+            threePlayerRec = new Rectangle(778, 473, 77, 77);
+            fourPlayerRec = new Rectangle(875, 473, 77, 77);
 
-            bananaRec = new Rectangle(727, 259, 49, 49);
-            waterGunRec = new Rectangle(835, 259, 49, 49);
-            laserSwordRec = new Rectangle(726, 332, 49, 49);
-            baseBallBatRec = new Rectangle(835, 334, 49, 49);
-
-            soundRec = new Rectangle(786, 564, 49, 49);
+            soundRec = new Rectangle(766, 173, 100, 100);
         }
 
         public void Update(Game1 game) {
@@ -41,6 +34,7 @@ namespace PlaceholderGame {
             if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released) {
                 if (twoPlayerRec.Contains(mouseRectPos)) {
                     nrPlayers = 2;
+                    
                 }
                 if (threePlayerRec.Contains(mouseRectPos)) {
                     nrPlayers = 3;
