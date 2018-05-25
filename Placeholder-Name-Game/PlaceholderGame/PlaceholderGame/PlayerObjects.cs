@@ -55,7 +55,7 @@ namespace PlaceholderGame {
                 ammo = weaponSlot[activeWeapon].SendAmmo();
                 damage = weaponSlot[activeWeapon].SendDamage();
                 range = weaponSlot[activeWeapon].SendRange();
-                if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released && haveShot == false && ammo > 0) {
+                if (mouseState.LeftButton == ButtonState.Pressed && haveShot == false && ammo > 0) {
                     shotDir = new Vector2((float)Math.Cos(MathHelper.ToRadians(90) - rotation), -(float)Math.Sin(MathHelper.ToRadians(90) - rotation));
                     weaponSlot[activeWeapon].Attack(shotDir, playerPos, wallRectList, player);
                     count = 5;
@@ -64,19 +64,21 @@ namespace PlaceholderGame {
                 }
             }
             SwitchWeapon();
-
-            if (!isDone) {   
+            if (count >= 10) {
+                isDone = true;
+            }
+            if (!isDone) {
                 if (!isMoving) {
-                    if (keyState.IsKeyDown(Keys.A)) {
+                    if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left)) {
                         ChangeDirection(new Vector2(-1, 0));
 
-                    } else if (keyState.IsKeyDown(Keys.W)) {
+                    } else if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up)) {
                         ChangeDirection(new Vector2(0, -1));
 
-                    } else if (keyState.IsKeyDown(Keys.D)) {
+                    } else if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right)) {
                         ChangeDirection(new Vector2(1, 0));
 
-                    } else if (keyState.IsKeyDown(Keys.S)) {
+                    } else if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down)) {
                         ChangeDirection(new Vector2(0, 1));
                     }
                 } else {
@@ -144,23 +146,21 @@ namespace PlaceholderGame {
         #endregion
 
         public bool Counter() {
-            if (count >= 10) {
-                isDone = true;
-                if (keyState.IsKeyDown(Keys.Enter)) {
-                    isDone = false;
-                    count = 0;
-                    haveShot = false;
-                    return true;
-                }return false;                
-            }return false;
+            if (keyState.IsKeyDown(Keys.Tab) && count >= 1) {
+                isDone = false;
+                count = 0;
+                haveShot = false;
+                return true;
+            }
+            return false;
         }
 
-        private void SwitchWeapon() {
-            if (keyState.IsKeyDown(Keys.F1)) {
+    private void SwitchWeapon() {
+            if (keyState.IsKeyDown(Keys.Q)) {
                 activeWeapon = 0;
                 
             }
-            if (keyState.IsKeyDown(Keys.F2)) {
+            if (keyState.IsKeyDown(Keys.E)) {
                 activeWeapon = 1;
             }
 

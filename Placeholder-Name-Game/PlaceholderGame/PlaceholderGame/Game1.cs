@@ -373,28 +373,28 @@ namespace PlaceholderGame {
             int weapon = rnd.Next(0, amountWeapon);
             switch (weapon) {
                 case 0:
-                    weaponO = new WeaponObjects("BananaGun", 3, 5, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("BananaGun", 4, 5, 4, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 1:
-                    weaponO = new WeaponObjects("WaterGun", 4, 8, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("WaterGun", 3, 7, 4, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 2:
-                    weaponO = new WeaponObjects("BaseballBat", 3, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("BaseballBat", 5, 1, 6, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 3:
-                    weaponO = new WeaponObjects("LaserSword", 3, 1, 5, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("LaserSword", 3, 1, 7, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 4:
-                    weaponO = new WeaponObjects("SlingShot", 4, 5, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("SlingShot", 6, 3, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 5:
-                    weaponO = new WeaponObjects("LaserRifle", 4, 10, 2, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("LaserRifle", 4, 10, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 6:
-                    weaponO = new WeaponObjects("PickleGun", 3, 6, 3, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("PickleGun", 4, 5, 4, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 7:
-                    weaponO = new WeaponObjects("ChickenClub", 3, 1, 6, 1, spriteSheet, pos, shot, weapon, this);
+                    weaponO = new WeaponObjects("ChickenClub", 7, 1, 4, 1, spriteSheet, pos, shot, weapon, this);
                     break;
             }
             gameList.Add(weaponO);
