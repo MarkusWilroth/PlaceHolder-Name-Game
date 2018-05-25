@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace PlaceholderGame {
     class Bullet: GameObjects{
         int range, damage, durability, AOE, timer, shotTime, weapon, player;
-        float speed;
+        float bulletSpeed;
         bool isBulletDead;        
         
         Vector2 direction;
@@ -30,7 +30,7 @@ namespace PlaceholderGame {
             this.wallRectList = wallRectList;
             isBulletDead = false;
             shotTime = 180;
-            speed = 0.2f;
+            bulletSpeed = 0.3f;
             timer = 0;
 
             bulletRect = new Rectangle((int)pos.X, (int)pos.Y, 15, 15);
@@ -40,7 +40,7 @@ namespace PlaceholderGame {
         public override void Update(GameTime gameTime) { //Ha rotation på bullets här
             isBulletDead = game.HitPlayer(bulletRect, damage, player);
             if (timer <= range * shotTime) {
-                pos += direction * speed;
+                pos += direction * bulletSpeed;
                 timer++;
             }
             else {
