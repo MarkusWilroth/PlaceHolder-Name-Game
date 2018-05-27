@@ -16,7 +16,6 @@ namespace PlaceholderGame {
     }
 
     public class Game1 : Game {
-        SystemSound music;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GroundObjects groundO;
@@ -40,7 +39,7 @@ namespace PlaceholderGame {
         List<Bullet> bulletList;
         SpriteFont spriteFont;
 
-        string getLine, winnerText, mp3File, voxFile;
+        string getLine, winnerText;
         bool isPicked, isBulletDead, turnCounter;
         bool[] isPlayerDead, seeWeapons;
         int groundX, groundY, count, player, weaponID, amountWeapon, HP, ammo, range, damage, deadPlayers;
@@ -67,8 +66,6 @@ namespace PlaceholderGame {
             printMap = new String[levels];
             seeWeapons = new bool[] {true, true, true, true, true, true, true, true };
             printObjects = new string[levels];
-            //mp3File = "IngameMusic.mp3";
-            //voxFile = "in.vox";
 
             gameList = new List<GameObjects>();
             wallPosList = new List<Vector2>();
@@ -86,18 +83,7 @@ namespace PlaceholderGame {
         }
        
         protected override void LoadContent() {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            //music = new SoundPlayer ("IngameMusic.mp3");
-
-            startMenu = Content.Load<Texture2D>("Startmenyn"); //För menyn
-            spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
-            shot = Content.Load<Texture2D>("Skott");
-            hudTex = Content.Load<Texture2D>("Hud");
-            optionTex = Content.Load<Texture2D>("OptionMeny");
-            spriteFont = Content.Load<SpriteFont>("spriteFont");
-            pauseTex = Content.Load<Texture2D>("PauseMeny");
-            controlsTex = Content.Load<Texture2D>("Controls");
-
+            Textures();
             startRec = new Rectangle(695, 432, 200, 50);
             optionsRec = new Rectangle(697, 503, 199, 49);
             quitRec = new Rectangle(698, 577, 199, 49);
@@ -173,53 +159,7 @@ namespace PlaceholderGame {
                     break;
 
                 case GameStates.Game:
-                    IsMouseVisible = false;
-                    playerO[player].Update(gameTime);
-                    hud.Update(this);
-                    foreach (WeaponObjects weaponO in weaponList) {
-                        weaponO.Update(gameTime);
-                        foreach (Bullet bulletO in bulletList) {
-                            bulletO.Update(gameTime);
-                            isBulletDead = bulletO.KillBullet();
-                            if (isBulletDead) {
-                                bulletList.Remove(bulletO);
-                                break;
-                            }
-                        }
-                    }
-                    
-                    
-                    PickGun();
-                    turnCounter = playerO[player].Counter();
-                    if (turnCounter) {                        
-                        do {
-                            player++;
-                            if (player >= players) {
-                                player = 0;
-                            }
-                        } while (isPlayerDead[player]);
-                        turnCounter = false;                                                   
-                    }
-
-                    for (int i = 0; i < players; i++) {
-                        if(isPlayerDead[i]) {
-                            deadPlayers++;
-                        }
-                    }
-
-                    if(deadPlayers >= players) {
-                        currentGS = GameStates.Scoreboard;
-                    }
-
-                    else {
-                        deadPlayers = 1;
-                    }
-
-                    if (keyState.IsKeyDown(Keys.Escape)){
-                        IsMouseVisible = true;
-                        currentGS = GameStates.PauseMenu;
-                    }
-                    
+                    Play(gameTime);
                     break;
 
                 case GameStates.PauseMenu:
@@ -239,6 +179,52 @@ namespace PlaceholderGame {
 
 
             base.Update(gameTime);
+        }
+
+        public void Play(GameTime gameTime) {
+            IsMouseVisible = false;
+            playerO[player].Update(gameTime);
+            hud.Update(this);
+            foreach (WeaponObjects weaponO in weaponList) {
+                weaponO.Update(gameTime);
+                foreach (Bullet bulletO in bulletList) {
+                    bulletO.Update(gameTime);
+                    isBulletDead = bulletO.KillBullet();
+                    if (isBulletDead) {
+                        bulletList.Remove(bulletO);
+                        break;
+                    }
+                }
+            }
+
+            PickGun();
+            turnCounter = playerO[player].Counter();
+            if (turnCounter) {
+                do {
+                    player++;
+                    if (player >= players) {
+                        player = 0;
+                    }
+                } while (isPlayerDead[player]);
+                turnCounter = false;
+            }
+
+            for (int i = 0; i < players; i++) {
+                if (isPlayerDead[i]) {
+                    deadPlayers++;
+                }
+            }
+
+            if (deadPlayers >= players) {
+                currentGS = GameStates.Scoreboard;
+            } else {
+                deadPlayers = 1;
+            }
+
+            if (keyState.IsKeyDown(Keys.Escape)) {
+                IsMouseVisible = true;
+                currentGS = GameStates.PauseMenu;
+            }
         }
 
         #region Player
@@ -400,6 +386,18 @@ namespace PlaceholderGame {
             gameList.Add(weaponO);
             weaponList.Add(weaponO);
             weaponID++;
+        }
+
+        public void Textures() {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            startMenu = Content.Load<Texture2D>("Startmenyn"); //För menyn
+            spriteSheet = Content.Load<Texture2D>("Spritesheet"); //Måste fixas så att mellanrummet mellan spelarna är identiska så vi slipper hårdkodning
+            shot = Content.Load<Texture2D>("Skott");
+            hudTex = Content.Load<Texture2D>("Hud");
+            optionTex = Content.Load<Texture2D>("OptionMeny");
+            spriteFont = Content.Load<SpriteFont>("spriteFont");
+            pauseTex = Content.Load<Texture2D>("PauseMeny");
+            controlsTex = Content.Load<Texture2D>("Controls");
         }
 
         #endregion

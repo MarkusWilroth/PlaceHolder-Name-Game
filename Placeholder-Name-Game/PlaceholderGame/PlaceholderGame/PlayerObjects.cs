@@ -155,7 +155,7 @@ namespace PlaceholderGame {
             return false;
         }
 
-    private void SwitchWeapon() {
+        private void SwitchWeapon() {
             if (keyState.IsKeyDown(Keys.Q)) {
                 activeWeapon = 0;
                 
