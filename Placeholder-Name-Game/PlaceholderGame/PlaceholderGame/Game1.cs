@@ -365,20 +365,20 @@ namespace PlaceholderGame {
                     weaponO = new WeaponObjects("WaterGun", 3, 7, 4, 1, spriteSheet, pos, shot, weapon, this);
                     break;
                 case 2:
-                    weaponO = new WeaponObjects("BaseballBat", 5, 1, 6, 1, spriteSheet, pos, shot, weapon, this);
-                    break;
-                case 3:
-                    weaponO = new WeaponObjects("LaserSword", 3, 1, 7, 1, spriteSheet, pos, shot, weapon, this);
-                    break;
-                case 4:
                     weaponO = new WeaponObjects("SlingShot", 6, 3, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
-                case 5:
+                case 3:
                     weaponO = new WeaponObjects("LaserRifle", 4, 10, 3, 1, spriteSheet, pos, shot, weapon, this);
                     break;
-                case 6:
+                case 4:
                     weaponO = new WeaponObjects("PickleGun", 4, 5, 4, 1, spriteSheet, pos, shot, weapon, this);
                     break;
+                case 5:
+                    weaponO = new WeaponObjects("BaseballBat", 5, 1, 6, 1, spriteSheet, pos, shot, weapon, this);
+                    break;
+                case 6:
+                    weaponO = new WeaponObjects("LaserSword", 3, 1, 7, 1, spriteSheet, pos, shot, weapon, this);
+                    break;               
                 case 7:
                     weaponO = new WeaponObjects("ChickenClub", 7, 1, 4, 1, spriteSheet, pos, shot, weapon, this);
                     break;
